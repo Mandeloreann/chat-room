@@ -34,39 +34,39 @@ body {
   background-size: cover;
 }
 
-// #signIn {
-//   color: green;
-//   font-size: 350px;
-// }
+#signIn {
+  color: green;
+  font-size: 350px;
+}
 
 
-// // controls the area around home
-// .navbar-brand {
-//   background-color: black;
-//   &:hover {
-//     background-color: red;
-//   }
-// }
+// controls the area around home
+.navbar-brand {
+  background-color: black;
+  &:hover {
+    background-color: red;
+  }
+}
 
-// // controls the middle part of the navigation bar (wide bar on top)
-// #basic-navbar-nav {
-//   background-color: white;
-// }
+// controls the middle part of the navigation bar (wide bar on top)
+#basic-navbar-nav {
+  background-color: transparent;
+}
 
-// // controls the area around sign up, sign in
-// .nav-link {
-//   background-color: black;
-//   &:hover {
-//     background-color: red;
-//   }
-// }
+// controls the area around sign up, sign in
+.nav-link {
+  background-color: black;
+  &:hover {
+    background-color: red;
+  }
+}
 
-// // controls the entire navigation bar (the parts without words)
-// .navbar {
-//   background-color: white;
-//   color: black;
-// }
+// controls the entire navigation bar (the parts without words)
+.navbar {
+  background-color: transparent;
+  color: black;
+}
 
-// #signIn {
-//   font-size: 350px;
-// }
+#signIn {
+  font-size: 350px;
+}
