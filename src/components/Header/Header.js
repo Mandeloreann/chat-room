@@ -26,16 +26,6 @@ const unauthenticatedOptions = (
 //   </Fragment>
 // )
 
-const welcomeMessageStyle = {
-  color: 'red',
-  padding: '10px',
-  fontFamily: 'Arial',
-  fontSize: '25px',
-  position: 'absolute',
-  top: '20%',
-  left: '25%'
-}
-
 const Header = ({ user }) => (
   <Navbar variant="dark" expand="md">
     <Navbar.Brand href="#">
@@ -44,7 +34,7 @@ const Header = ({ user }) => (
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="ml-auto">
-        { user && <span className="navbar-text mr-2" style={welcomeMessageStyle}>Welcome, {user.email}</span>}
+        { user && <span className="navbar-text mr-2">Welcome, {user.email}</span>}
         {/* { alwaysOptions } */}
         { user ? authenticatedOptions : unauthenticatedOptions }
       </Nav>

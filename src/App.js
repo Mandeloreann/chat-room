@@ -10,7 +10,7 @@ import SignIn from './components/SignIn/SignIn'
 import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
 import ChatIndex from './components/ChatIndex/ChatIndex'
-import ChatCreate from './routes/ChatCreate'
+import firstTitle from './firstTitle'
 
 class App extends Component {
   constructor () {
@@ -55,7 +55,7 @@ class App extends Component {
           />
         ))}
         <main className="container">
-
+          <Route exact path="/" component={firstTitle} />
           <Route path='/sign-up' render={() => (
             <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
@@ -81,7 +81,6 @@ class App extends Component {
           )} />
         </main>
       </Fragment>
-    // <Route exact path="/" component={FirstTitle} />
       // <Route exact path="/channels" component={SecondTitle} />
       // <Route exact path="/settings" component={colorPicker} />
       // <Route exact path="/chats" component={ThirdTitle} />
