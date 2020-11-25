@@ -9,6 +9,7 @@ import SignUp from './components/SignUp/SignUp'
 import SignIn from './components/SignIn/SignIn'
 import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
+<<<<<<< HEAD
 import ChatIndex from './components/ChatIndex/ChatIndex'
 import ChatCreate from './routes/ChatCreate/ChatCreate'
 import FirstTitle from './titles/firstTitle'
@@ -17,6 +18,10 @@ import ThirdTitle from './titles/thirdTitle'
 import colorPicker from './settings/colorPicker'
 // import English from './components/Channels/English'
 // import channelChats from './components/Channels/chats'
+=======
+import CreateMessage from './components/CreateMessage/CreateMessage'
+// import TestR from './TestR'
+>>>>>>> 7647fc6... Started to add create message functionality
 
 class App extends Component {
   constructor () {
@@ -61,7 +66,7 @@ class App extends Component {
           />
         ))}
         <main className="container">
-          <Route exact path="/" component={FirstTitle} />
+
           <Route path='/sign-up' render={() => (
             <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
@@ -89,6 +94,10 @@ class App extends Component {
         <Route exact path="/channels" component={SecondTitle} />
         <Route exact path="/settings" component={colorPicker} />
       </Fragment>
+    // <Route exact path="/" component={FirstTitle} />
+      // <Route exact path="/channels" component={SecondTitle} />
+      // <Route exact path="/settings" component={colorPicker} />
+      // <Route exact path="/chats" component={ThirdTitle} />
     )
   }
 }
