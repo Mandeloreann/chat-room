@@ -10,13 +10,7 @@ import SignIn from './components/SignIn/SignIn'
 import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
 import ChatIndex from './components/ChatIndex/ChatIndex'
-import ChatCreate from './routes/ChatCreate/ChatCreate'
-import FirstTitle from './titles/firstTitle'
-import SecondTitle from './titles/secondTitle'
-import ThirdTitle from './titles/thirdTitle'
-import colorPicker from './settings/colorPicker'
-// import English from './components/Channels/English'
-// import channelChats from './components/Channels/chats'
+import ChatCreate from './routes/ChatCreate'
 
 class App extends Component {
   constructor () {
@@ -86,8 +80,6 @@ class App extends Component {
             )} />
           )} />
         </main>
-        <Route exact path="/channels" component={SecondTitle} />
-        <Route exact path="/settings" component={colorPicker} />
       </Fragment>
     // <Route exact path="/" component={FirstTitle} />
       // <Route exact path="/channels" component={SecondTitle} />
