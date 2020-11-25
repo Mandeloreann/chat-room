@@ -9,8 +9,6 @@ import SignUp from './components/SignUp/SignUp'
 import SignIn from './components/SignIn/SignIn'
 import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
-<<<<<<< HEAD
-<<<<<<< HEAD
 import ChatIndex from './components/ChatIndex/ChatIndex'
 import ChatCreate from './routes/ChatCreate/ChatCreate'
 import FirstTitle from './titles/firstTitle'
@@ -19,15 +17,6 @@ import ThirdTitle from './titles/thirdTitle'
 import colorPicker from './settings/colorPicker'
 // import English from './components/Channels/English'
 // import channelChats from './components/Channels/chats'
-=======
-import CreateMessage from './components/CreateMessage/CreateMessage'
-// import TestR from './TestR'
->>>>>>> 7647fc6... Started to add create message functionality
-=======
-// import CreateMessage from './components/CreateMessage/CreateMessage'
-import TestR from './TestR'
-import ChatCreate from './routes/ChatCreate'
->>>>>>> f74cd48... Create message
 
 class App extends Component {
   constructor () {
