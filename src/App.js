@@ -9,13 +9,8 @@ import SignUp from './components/SignUp/SignUp'
 import SignIn from './components/SignIn/SignIn'
 import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
-import ChatIndex from './components/ChatIndex/ChatIndex'
-import FirstTitle from './titles/firstTitle'
-import SecondTitle from './titles/secondTitle'
-import ThirdTitle from './titles/thirdTitle'
-import colorPicker from './settings/colorPicker'
-// import English from './components/Channels/English'
-// import channelChats from './components/Channels/chats'
+import CreateMessage from './components/CreateMessage/CreateMessage'
+import TestR from './TestR'
 
 class App extends Component {
   constructor () {
@@ -73,9 +68,8 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
-          { /* ChatIndex will render a list of all chats within the server's chat array and requires the user to be logged in */ }
-          <AuthenticatedRoute user={user} path='/chats' render={() => (
-            <ChatIndex msgAlert={this.msgAlert} user={user} component={ThirdTitle} />
+          <AuthenticatedRoute user={user} path='/create-message' render={() => (
+            <CreateMessage msgAlert={this.msgAlert} user={user} />
           )} />
         </main>
         <Route exact path="/channels" component={SecondTitle} />
