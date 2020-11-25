@@ -9,6 +9,7 @@ import SignUp from './components/SignUp/SignUp'
 import SignIn from './components/SignIn/SignIn'
 import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
+import CreateMessage from './components/CreateMessage/CreateMessage'
 import TestR from './TestR'
 
 class App extends Component {
@@ -66,6 +67,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} path='/create-message' render={() => (
+            <CreateMessage msgAlert={this.msgAlert} user={user} />
           )} />
         </main>
       </Fragment>
