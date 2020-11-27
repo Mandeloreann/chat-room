@@ -1,24 +1,56 @@
 @import '~bootstrap/scss/bootstrap';
 
-.thirdTitle {
+.channels {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  border-left: 10px solid red;
+  border-right: 10px solid red; 
+  border-top: 10px solid red;
+  border-bottom: 10px solid red;
+  width: 25vw;
+  height: 80vh;
   font-size: 50px;
   text-align: center;
   position: absolute;
-  top: 0%;
-  right: 60%;
   color: black;
-  animation: title3 1.5s ease-in-out infinite alternate;
-  @keyframes title3 {
-    from {
-      text-shadow: 0 0 10px red, 0 0 20px white, 0 0 30px blue, 0 0 40px red, 0 0 50px white, 0 0 60px blue, 0 0 70px red;
-    }
-    to {
-      text-shadow: 0 0 20px blue, 0 0 30px white, 0 0 40px red, 0 0 50px blue, 0 0 60px white, 0 0 70px red, 0 0 80px blue;
-    }
-  }
 }
 
-body {
-  background-color: black;
-  border: 5px solid black;
+.chat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 10px solid blue;
+  border-right: 10px solid blue;
+  border-top: 10px solid blue;
+  border-bottom: 10px solid blue;
+  width: 50vw;
+  height: 80vh;
+  font-size: 50px;
+  text-align: center;
+  position: absolute;
+  left: 25%;
+  color: black;
 }
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 10px solid green;
+  border-right: 10px solid green;
+  border-top: 10px solid green;
+  border-bottom: 10px solid green;
+  width: 25vw;
+  height: 80vh;
+  font-size: 50px;
+  text-align: center;
+  position: absolute;
+  right: 0%;
+  color: black;
+}
+
+// body {
+//   background-color: black;
+//   border: 5px solid black;
+// }
