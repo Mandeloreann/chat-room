@@ -1,0 +1,24 @@
+@import '~bootstrap/scss/bootstrap';
+
+.thirdTitle {
+  font-size: 50px;
+  text-align: center;
+  position: absolute;
+  top: 0%;
+  right: 60%;
+  color: black;
+  animation: title3 1.5s ease-in-out infinite alternate;
+  @keyframes title3 {
+    from {
+      text-shadow: 0 0 10px red, 0 0 20px white, 0 0 30px blue, 0 0 40px red, 0 0 50px white, 0 0 60px blue, 0 0 70px red;
+    }
+    to {
+      text-shadow: 0 0 20px blue, 0 0 30px white, 0 0 40px red, 0 0 50px blue, 0 0 60px white, 0 0 70px red, 0 0 80px blue;
+    }
+  }
+}
+
+body {
+  background-color: black;
+  border: 5px solid black;
+}
