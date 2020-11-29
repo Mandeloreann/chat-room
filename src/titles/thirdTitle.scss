@@ -1,57 +1,76 @@
 @import '~bootstrap/scss/bootstrap';
 
-.channels {
-  fill-opacity: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: left;
-  border-left: 10px solid red;
-  border-right: 10px solid red; 
-  border-top: 10px solid red;
-  border-bottom: 10px solid red;
-  width: 25vw;
-  height: 80vh;
-  font-size: 50px;
-  text-align: center;
-  position: absolute;
-  color: red;
+body {
+  border: 5px solid cyan;
+  height: 100vh;
+  .channels {
+    fill-opacity: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    border-left: 5px solid red;
+    border-right: 5px solid red; 
+    border-top: 5px solid red;
+    border-bottom: 5px solid red;
+    width: 25vw;
+    height: 85vh;
+    font-size: 50px;
+    text-align: center;
+    position: absolute;
+    color: red;
+  }
+  .chat {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-left: 5px solid blue;
+    border-right: 5px solid blue;
+    border-top: 5px solid blue;
+    border-bottom: 5px solid blue;
+    width: 50vw;
+    height: 85vh;
+    font-size: 50px;
+    text-align: center;
+    position: absolute;
+    left: 25%;
+    color: blue;
+  }
+  .profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-left: 5px solid green;
+    border-right: 5px solid green;
+    border-top: 5px solid green;
+    border-bottom: 5px solid green;
+    width: 25vw;
+    height: 85vh;
+    font-size: 50px;
+    text-align: center;
+    position: absolute;
+    right: 0%;
+    color: green;
+  }
+  .typeMessage {
+    height: 15%;
+    width: 85%;
+    position: absolute;
+    bottom: 0%;
+    background-color: transparent;
+    font-size: 70%;
+    color: red;
+    border-color: black;
+  }
+  .sendMessage {
+    height: 15%;
+    width: 15%;
+    background-image: url('https://lh3.googleusercontent.com/proxy/oj8ek1Jc0QYwZlxIgpBYBIVFK2GerxQzc4ReBLEy5CmqWNzklMCykmNv-4mrGchmrWzdH6jnZ2lZP4XRiuCz_dVNbls08-ItffCz-5PzWLYrPpg4HToZzOr1U0Kin-UlsFaDgA');
+    background-color: transparent;
+    border-color: black;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    bottom: 0%;
+    right: 0%;
+  }
 }
-
-.chat {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border-left: 10px solid blue;
-  border-right: 10px solid blue;
-  border-top: 10px solid blue;
-  border-bottom: 10px solid blue;
-  width: 50vw;
-  height: 80vh;
-  font-size: 50px;
-  text-align: center;
-  position: absolute;
-  left: 25%;
-  color: blue;
-}
-
-.profile {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border-left: 10px solid green;
-  border-right: 10px solid green;
-  border-top: 10px solid green;
-  border-bottom: 10px solid green;
-  width: 25vw;
-  height: 80vh;
-  font-size: 50px;
-  text-align: center;
-  position: absolute;
-  right: 0%;
-  color: green;
-}
-
-// body {
-//   background-color: black;
-//   border: 5px solid black;
-// }
