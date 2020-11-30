@@ -66,9 +66,8 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
-
           { /* ChatIndex will render a list of all chats within the server's chat array and requires the user to be logged in */ }
-          <AuthenticatedRoute user={user} exact path='/chats' render={() => (
+          <AuthenticatedRoute user={user} path='/chats' render={() => (
             <ChatIndex msgAlert={this.msgAlert} user={user} />
           )} />
         </main>
