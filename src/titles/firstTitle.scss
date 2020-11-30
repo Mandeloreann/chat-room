@@ -54,6 +54,7 @@ body {
 // controls the area around home
 .navbar-brand {
   background-color: black;
+  font-size: 300px;
   &:hover {
     background-color: red;
     text-decoration: underline;
@@ -68,6 +69,7 @@ body {
 // controls the area around sign up, sign in
 .nav-link {
   background-color: black;
+  font-size: 111%;
   &:hover {
     background-color: red;
     text-decoration: underline;

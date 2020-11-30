@@ -27,9 +27,10 @@ const unauthenticatedOptions = (
 // )
 
 const welcomeMessageStyle = {
-  color: 'white',
+  color: 'red',
   padding: '10px',
-  fontFamily: 'Arial'
+  fontFamily: 'Arial',
+  fontSize: '100%'
 }
 
 const Header = ({ user }) => (
