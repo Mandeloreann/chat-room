@@ -30,7 +30,10 @@ const welcomeMessageStyle = {
   color: 'red',
   padding: '10px',
   fontFamily: 'Arial',
-  fontSize: '100%'
+  fontSize: '25px',
+  position: 'absolute',
+  top: '15%',
+  left: '33%'
 }
 
 const Header = ({ user }) => (
