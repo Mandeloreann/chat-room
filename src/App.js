@@ -78,7 +78,7 @@ class App extends Component {
           <Route exact path="/settings" component={colorPicker} />
         </second>
         <third className="container">
-          <Route exact path="/channels/chats" component={thirdTitle} />
+          <Route exact path="/chats" component={thirdTitle} />
         </third>
       </Fragment>
     )

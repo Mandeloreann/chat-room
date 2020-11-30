@@ -35,7 +35,7 @@ class SignIn extends Component {
         message: messages.signInSuccess,
         variant: 'success'
       }))
-      .then(() => history.push('/channels/chats'))
+      .then(() => history.push('/chats'))
       .catch(error => {
         this.setState({ email: '', password: '' })
         msgAlert({
