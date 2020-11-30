@@ -47,6 +47,8 @@ class Chats extends Component {
     // })
   }
 
+    // console.log(socket)
+    // define what you will be listening for here
   render () {
     const chats = this.state.chats.map(chat => (
       <li key={chat._id}>
@@ -66,14 +68,16 @@ class Chats extends Component {
           <button type="button" className="channel5">Japanese1</button>
           <button type="button" className="channel6">Japanese2</button>
         </p>
-        <h4>Chats</h4>
-        <ul>
-          {chats}
-        </ul>
-        <button type="submit" className="sendMessageButton"></button>
-        <textarea className="typeMessage" type="text" name="chat[text]" placeholder="Type Your Message Here"></textarea>
-        <output type="text" name="chat[text]" className="sentMessage"></output>
-        <p className="profile">MISC</p>
+        <div>
+          <h4>Chats</h4>
+          <ul>
+            {chats}
+          </ul>
+          <button type="submit" className="sendMessageButton"></button>
+          <textarea className="typeMessage" type="text" name="chat[text]" placeholder="Type Your Message Here"></textarea>
+          <output type="text" name="chat[text]" className="sentMessage"></output>
+          <p className="profile">MISC</p>
+        </div>
       </Fragment>
     )
   }

@@ -7,6 +7,8 @@ import messages from '../AutoDismissAlert/messages'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
+import signInStyle from './SignIn.scss'
+
 class SignIn extends Component {
   constructor () {
     super()
@@ -33,7 +35,7 @@ class SignIn extends Component {
         message: messages.signInSuccess,
         variant: 'success'
       }))
-      .then(() => history.push('/'))
+      .then(() => history.push('/chats'))
       .catch(error => {
         this.setState({ email: '', password: '' })
         msgAlert({
@@ -50,10 +52,10 @@ class SignIn extends Component {
     return (
       <div className="row">
         <div className="col-sm-10 col-md-8 mx-auto mt-5">
-          <h3>Sign In</h3>
+          <h3 className="signInStyle" style={signInStyle}>Sign In</h3>
           <Form onSubmit={this.onSignIn}>
             <Form.Group controlId="email">
-              <Form.Label>Email address</Form.Label>
+              <Form.Label className="signInStyle" style={signInStyle}>Email address</Form.Label>
               <Form.Control
                 required
                 type="email"
@@ -64,7 +66,7 @@ class SignIn extends Component {
               />
             </Form.Group>
             <Form.Group controlId="password">
-              <Form.Label>Password</Form.Label>
+              <Form.Label className="signInStyle" style={signInStyle}>Password</Form.Label>
               <Form.Control
                 required
                 name="password"
