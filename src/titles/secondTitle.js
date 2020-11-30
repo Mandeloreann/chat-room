@@ -5,7 +5,7 @@ import React from 'react'
 
 import './secondTitle.scss'
 
-const channel = () => (
+const SecondTitle = () => (
   <div>
     <p className="secondTitle">Pick a channel</p>
     <button type="button" className="DefaultChannelButton">English 1</button>
@@ -45,4 +45,4 @@ const channel = () => (
 
 // ReactDOM.render(<Example />)
 
-export default channel
+export default SecondTitle
