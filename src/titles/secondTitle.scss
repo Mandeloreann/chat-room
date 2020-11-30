@@ -20,9 +20,11 @@
 }
 
 .DefaultChannelButton {
+  outline: none;
+  border: transparent;
+  background-color: transparent;
   margin: 40px;
   text-align: center;
-  border: 3px solid black;
   border-radius: 30px;
   position: absolute;
   bottom: 45%;
@@ -34,5 +36,4 @@
     50% { color: cyan }
     100% { color: red }
   }
-  background-color: black;
 }
