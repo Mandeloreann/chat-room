@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 
 import './thirdTitle.scss'
 
-const chat = () => (
+const ThirdTitle = () => (
   <Fragment>
     <p
       className="channels">
@@ -25,4 +25,4 @@ const chat = () => (
   </Fragment>
 )
 
-export default chat
+export default ThirdTitle
