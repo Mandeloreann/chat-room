@@ -48,6 +48,7 @@ class ChatCreate extends Component {
 
     return (
       <div>
+        <h1>Chat</h1>
         <form onSubmit={this.handleSubmit}>
           <input
             placeholder="chat away..."
