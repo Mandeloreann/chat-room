@@ -10,6 +10,7 @@ import SignIn from './components/SignIn/SignIn'
 import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
 import ChatIndex from './components/ChatIndex/ChatIndex'
+import ChatUpdate from './components/Update/Update'
 import FirstTitle from './titles/firstTitle'
 import SecondTitle from './titles/secondTitle'
 import ThirdTitle from './titles/thirdTitle'
@@ -83,6 +84,9 @@ class App extends Component {
             <AuthenticatedRoute user={user} path='/chats' render={() => (
               <ChatIndex msgAlert={this.msgAlert} user={user} />
             )} />
+          )} />
+          <AuthenticatedRoute user={user} path='/chats' render={() => (
+            <ChatUpdate msgAlert={this.msgAlert} user={user} />
           )} />
         </main>
         <Route exact path="/channels" component={SecondTitle} />
