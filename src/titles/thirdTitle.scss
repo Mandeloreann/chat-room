@@ -63,7 +63,7 @@ body {
     border-bottom: none;
     border-left: none;
   }
-  .sendMessage {
+  .sendMessageButton {
     outline: none;
     height: 15%;
     width: 15%;
@@ -78,6 +78,19 @@ body {
     position: absolute;
     bottom: 11%;
     right: 0%;
+  }
+  .sentMessage {
+    display: inline-block;
+    vertical-align: top;
+    border: 1px solid #bdbdbd;
+    border-radius: 4px;
+    padding: 1rem;
+    line-height: 1.3;
+    width: 100%;
+    color: red;
+    position: absolute;
+    right: 0%;
+    bottom: 27%;
   }
   .channel1 {
     outline: none;
