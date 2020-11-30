@@ -8,6 +8,6 @@ export default {
   changePasswordFailure: 'Failed to change passwords. Check your old password and try again.',
   createMessageSuccess: 'Sent!',
   createMessageFailure: 'Failed to send message.',
-  messageUpdateSuccess: 'Message updated successfully!',
-  messageUpdateFailure: 'Failed to update message, please try again.'
+  chatUpdateSuccess: 'Message updated successfully!',
+  chatUpdateFailure: 'Failed to update message, please try again.'
 }

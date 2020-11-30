@@ -6,25 +6,25 @@ import messages from '../AutoDismissAlert/messages'
 
 import Form from 'react-bootstrap/Form'
 // import Button from 'react-bootstrap/Button'
-class UpdateMessage extends Component {
+class UpdateChat extends Component {
   constructor () {
     super()
     this.state = {}
   }
-  onUpdateMessage = event => {
+  onUpdateChat = event => {
     event.preventDefault()
     // const { msgAlert, history, chat } = this.props <-- use when need arises
     const { msgAlert } = this.props
     // updateMessage(this.state, chat) <-- add when available in api
       .then(() => msgAlert({
         heading: 'Message Updated',
-        message: messages.messageUpdateSuccess,
+        message: messages.chatUpdateSuccess,
         variant: 'success'
       }))
       .catch(error => {
         msgAlert({
           heading: 'Message Update Failed with error: ' + error.message,
-          message: messages.messageUpdateFailure,
+          message: messages.chatUpdateFailure,
           variant: 'danger'
         })
       })
@@ -33,11 +33,11 @@ class UpdateMessage extends Component {
     return (
       <div>
         <h3>Update Message</h3>
-        <Form onSubmit={this.onUpdateMessage}>
+        <Form onSubmit={this.onUpdateChat}>
         </Form>
       </div>
     )
   }
 }
 
-export default withRouter(UpdateMessage)
+export default withRouter(UpdateChat)
