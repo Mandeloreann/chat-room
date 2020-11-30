@@ -10,6 +10,12 @@ import SignIn from './components/SignIn/SignIn'
 import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
 import ChatIndex from './components/ChatIndex/ChatIndex'
+import firstTitle from './titles/firstTitle'
+import secondTitle from './titles/secondTitle'
+import thirdTitle from './titles/thirdTitle'
+import colorPicker from './settings/colorPicker'
+// import English from './components/Channels/English'
+// import channelChats from './components/Channels/chats'
 
 class App extends Component {
   constructor () {
@@ -54,6 +60,7 @@ class App extends Component {
           />
         ))}
         <main className="container">
+          <Route exact path="/" component={firstTitle} />
           <Route path='/sign-up' render={() => (
             <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
@@ -71,6 +78,13 @@ class App extends Component {
             <ChatIndex msgAlert={this.msgAlert} user={user} />
           )} />
         </main>
+        <second className="container">
+          <Route exact path="/channels" component={secondTitle} />
+          <Route exact path="/settings" component={colorPicker} />
+        </second>
+        <third className="container">
+          <Route exact path="/chats" component={thirdTitle} />
+        </third>
       </Fragment>
     )
   }
