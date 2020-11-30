@@ -75,12 +75,11 @@ class App extends Component {
           )} />
           { /* ChatIndex will render a list of all chats within the server's chat array and requires the user to be logged in */ }
           <AuthenticatedRoute user={user} path='/chats' render={() => (
-            <ChatIndex msgAlert={this.msgAlert} user={user} />
+            <ChatIndex msgAlert={this.msgAlert} user={user} component={ThirdTitle} />
           )} />
         </main>
         <Route exact path="/channels" component={SecondTitle} />
         <Route exact path="/settings" component={colorPicker} />
-        <Route exact path="/chats" component={ThirdTitle} />
       </Fragment>
     )
   }
