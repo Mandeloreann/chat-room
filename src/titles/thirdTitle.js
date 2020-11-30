@@ -18,8 +18,8 @@ const chat = () => (
       className="chat">
       THE CHAT
       <button type="submit" className="sendMessageButton"></button>
-      <input type="text" name="chat[text]" placeholder="Type Your Message Here" className="typeMessage"></input>
-      <output type="text" name="chat[text]" className="sentMessage">LOoooooooooooooooooooooooooooooooooooooooooL</output>
+      <textarea className="typeMessage" type="text" name="chat[text]" placeholder="Type Your Message Here"></textarea>
+      <output type="text" name="chat[text]" className="sentMessage"></output>
     </p>
     <p className="profile">MISC</p>
   </Fragment>

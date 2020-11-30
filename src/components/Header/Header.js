@@ -32,8 +32,8 @@ const welcomeMessageStyle = {
   fontFamily: 'Arial',
   fontSize: '25px',
   position: 'absolute',
-  top: '15%',
-  left: '33%'
+  top: '20%',
+  left: '25%'
 }
 
 const Header = ({ user }) => (
