@@ -34,7 +34,6 @@ class Chats extends Component {
     // define what you will be listening for here
     socket.on('connect', () => {
       console.log(socket)
-      socket.emit('join')
     })
 
     socket.on('disconnect', () => {
