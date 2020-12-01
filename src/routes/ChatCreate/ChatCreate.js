@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 // import { Redirect } from 'react-router-dom'
 
 import axios from 'axios'
-import apiUrl from '../apiConfig'
+import apiUrl from '../../apiConfig'
+
+// import ThirdTitle from '../../titles/thirdTitle'
 
 class ChatCreate extends Component {
   constructor () {
@@ -47,15 +49,30 @@ class ChatCreate extends Component {
     // }
 
     return (
-      <div>
+      <div className="chat">
+      THE CHAT
         <form onSubmit={this.handleSubmit}>
-          <input
-            placeholder="chat away..."
-            name="text"
+          <textarea
+            className="typeMessage"
+            type="text"
+            name="chat[text]"
+            placeholder="Type Message Here"
             value={this.state.chat.text}
             onChange={this.handleInputChange}
-          />
-          <button type="submit">Send</button>
+          >
+          </textarea>
+          {/* <input
+            type='text'
+            name='text'
+            value={this.state.chat.text}
+            onChange={this.handleInputChange}
+          ></input> */}
+          {/* <ThirdTitle
+            value={this.state.chat.text}
+            onChange={this.handleInputChange}
+          /> */}
+          <output type="text" name="chat[text]" className="sentMessage"></output>
+          <button type="submit" className="sendMessageButton"></button>
         </form>
       </div>
     )
