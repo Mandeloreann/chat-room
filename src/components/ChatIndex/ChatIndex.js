@@ -27,10 +27,10 @@ class Chats extends Component {
     this.state = {
       chats: [],
       chat: {
-        text: ''
-      },
-      createdId: null,
-      owner: null
+        text: '',
+        createdId: null,
+        owner: null
+      }
     }
   }
   handleChange = event => this.setState({
@@ -44,6 +44,7 @@ class Chats extends Component {
     console.log(socket)
     // define what you will be listening for here
   }
+
   handleInputChange = (event) => {
     event.persist()
     this.setState(prevState => {
@@ -58,11 +59,13 @@ class Chats extends Component {
     event.preventDefault()
 
     const { msgAlert } = this.props
-
-    createMessage(this.state)
+    console.log('this is ', this)
+    const { user } = this.props
+    createMessage(this.state, user)
       .then(response => {
         this.setState({ createdId: response.data.chat._id })
       })
+
       .then(() => msgAlert({
         heading: 'Sent!',
         message: messages.createMessageSuccess,
