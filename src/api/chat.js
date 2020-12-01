@@ -11,3 +11,13 @@ export const createMessage = user => {
     data: { chat: this.state.chat.text }
   })
 }
+
+export const chatIndex = user => {
+  return axios({
+    method: 'GET',
+    url: apiUrl + '/chats',
+    headers: {
+      'Authorization': `Token token=${user.token}`
+    }
+  })
+}
