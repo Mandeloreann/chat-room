@@ -5,7 +5,11 @@ import { Link } from 'react-router-dom'
 import io from 'socket.io-client'
 // import ThirdTitle from '../../titles/thirdTitle'
 
+<<<<<<< HEAD
 import messages from '../../components/AutoDismissAlert/messages'
+=======
+import messages from '../AutoDismissAlert/messages'
+>>>>>>> 36bb0e0... (hopefully nothing breaks) merging into dev
 import { chatIndex, createMessage } from '../../api/chat'
 
 let socketUrl
@@ -40,12 +44,9 @@ class Chats extends Component {
       socket.emit('join')
     })
 
-    // Alert Other Users this User Has Disconnected/Closed the Page
     socket.on('disconnect', () => {
       console.log(socket)
     })
-
-    // listen for messages and update the chat index when one is received
     // socket.on('message', data => {
     //   this.setState({
     //     chats: data
