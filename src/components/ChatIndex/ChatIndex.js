@@ -28,10 +28,10 @@ class Chats extends Component {
     this.state = {
       chats: [],
       chat: {
-        text: '',
-        createdId: null,
-        owner: null
-      }
+        text: ''
+      },
+      createdId: null,
+      owner: null
     }
   }
   handleChange = event => this.setState({
@@ -58,6 +58,40 @@ class Chats extends Component {
     // })
   }
 
+  handleInputChange = (event) => {
+    event.persist()
+    this.setState(prevState => {
+      const updatedField = {
+        [event.target.name]: event.target.value
+      }
+      const updatedData = Object.assign({}, prevState.chat, updatedField)
+      return { chat: updatedData }
+    })
+  }
+  onCreateMessage = (event) => {
+    event.preventDefault()
+
+    const { msgAlert } = this.props
+
+    createMessage(this.state)
+      .then(response => {
+        this.setState({ createdId: response.data.chat._id })
+      })
+      .then(() => msgAlert({
+        heading: 'Sent!',
+        message: messages.createMessageSuccess,
+        variant: 'success'
+      }))
+      .catch(error => {
+        this.setState({ text: '' })
+        msgAlert({
+          heading: 'Message failed ' + error.message,
+          message: messages.createMessageFailure,
+          variant: 'danger'
+        })
+      })
+  }
+
   render () {
     const chats = this.state.chats.map(chat => (
       <li key={chat._id}>
@@ -81,6 +115,19 @@ class Chats extends Component {
         <ul>
           {chats}
         </ul>
+
+        <div>
+          <h1>(username)</h1>
+          <form onSubmit={this.onCreateMessage}>
+            <input
+              placeholder="chat away..."
+              name="text"
+              value={this.state.chat.text}
+              onChange={this.handleInputChange}
+            />
+            <button type="submit">Send</button>
+          </form>
+        </div>
         <button type="submit" className="sendMessageButton"></button>
         <textarea className="typeMessage" type="text" name="chat[text]" placeholder="Type Your Message Here"></textarea>
         <output type="text" name="chat[text]" className="sentMessage"></output>
