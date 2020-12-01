@@ -1,9 +1,12 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import '../../titles/thirdTitle.scss'
 
 // import socket.io to establish socket connection with server
 import io from 'socket.io-client'
+// import ThirdTitle from '../../titles/thirdTitle'
+
+import messages from '../../components/AutoDismissAlert/messages'
+import { chatIndex, createMessage } from '../../api/chat'
 
 let socketUrl
 const socketUrls = {
@@ -37,9 +40,12 @@ class Chats extends Component {
       socket.emit('join')
     })
 
+    // Alert Other Users this User Has Disconnected/Closed the Page
     socket.on('disconnect', () => {
       console.log(socket)
     })
+
+    // listen for messages and update the chat index when one is received
     // socket.on('message', data => {
     //   this.setState({
     //     chats: data
@@ -47,8 +53,75 @@ class Chats extends Component {
     // })
   }
 
-  // console.log(socket)
-  // define what you will be listening for here
+  handleInputChange = (event) => {
+    event.persist()
+    this.setState(prevState => {
+      const updatedField = {
+        [event.target.name]: event.target.value
+      }
+      const updatedData = Object.assign({}, prevState.chat, updatedField)
+      return { chat: updatedData }
+    })
+  }
+  onCreateMessage = (event) => {
+    event.preventDefault()
+
+    const { msgAlert } = this.props
+
+    createMessage(this.state)
+      .then(response => {
+        this.setState({ createdId: response.data.chat._id })
+      })
+      .then(() => msgAlert({
+        heading: 'Sent!',
+        message: messages.createMessageSuccess,
+        variant: 'success'
+      }))
+      .catch(error => {
+        this.setState({ text: '' })
+        msgAlert({
+          heading: 'Message failed ' + error.message,
+          message: messages.createMessageFailure,
+          variant: 'danger'
+        })
+      })
+  }
+  // Begin New Message Component, may be moved to it's own page
+  handleInputChange = (event) => {
+    event.persist()
+    this.setState(prevState => {
+      const updatedField = {
+        [event.target.name]: event.target.value
+      }
+      const updatedData = Object.assign({}, prevState.chat, updatedField)
+      return { chat: updatedData }
+    })
+  }
+
+  onCreateMessage = (event) => {
+    event.preventDefault()
+
+    const { msgAlert } = this.props
+
+    createMessage(this.state)
+      .then(response => {
+        this.setState({ createdId: response.data.chat._id })
+      })
+      .then(() => msgAlert({
+        heading: 'Sent!',
+        message: messages.createMessageSuccess,
+        variant: 'success'
+      }))
+      .catch(error => {
+        this.setState({ text: '' })
+        msgAlert({
+          heading: 'Message failed ' + error.message,
+          message: messages.createMessageFailure,
+          variant: 'danger'
+        })
+      })
+  }
+
   render () {
     const chats = this.state.chats.map(chat => (
       <li key={chat._id}>
@@ -57,7 +130,11 @@ class Chats extends Component {
     ))
 
     return (
-      <Fragment>
+      <div>
+        <ul>
+          {chats}
+        </ul>
+        {/* <ThirdTitle /> */}
         <p
           className="channels">
           CHANNELS
@@ -68,15 +145,7 @@ class Chats extends Component {
           <button type="button" className="channel5">Japanese1</button>
           <button type="button" className="channel6">Japanese2</button>
         </p>
-        <h4>Chats</h4>
-        <ul>
-          {chats}
-        </ul>
-        <button type="submit" className="sendMessageButton"></button>
-        <textarea className="typeMessage" type="text" name="chat[text]" placeholder="Type Your Message Here"></textarea>
-        <output type="text" name="chat[text]" className="sentMessage"></output>
-        <p className="profile">MISC</p>
-      </Fragment>
+      </div>
     )
   }
 }
