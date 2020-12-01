@@ -47,8 +47,8 @@ class Chats extends Component {
     // })
   }
 
-    // console.log(socket)
-    // define what you will be listening for here
+  // console.log(socket)
+  // define what you will be listening for here
   render () {
     const chats = this.state.chats.map(chat => (
       <li key={chat._id}>
