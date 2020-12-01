@@ -19,9 +19,15 @@ if (window.location.hostname === 'localhost') {
   socketUrl = socketUrls.production
 }
 class UpdateChat extends Component {
-  constructor () {
-    super()
-    this.state = {}
+  constructor (props) {
+    super(props)
+    this.state = {
+      chat: {
+        text: '',
+        owner: ''
+      },
+      updated: false
+    }
   }
   componentDidMount () {
     const socket = io(socketUrl, {
