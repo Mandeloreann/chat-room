@@ -4,7 +4,7 @@ import './thirdTitle.scss'
 
 const ThirdTitle = () => (
   <Fragment>
-    <p
+    {/* <p
       className="channels">
       CHANNELS
       <button type="button" className="channel1">English1</button>
@@ -13,15 +13,20 @@ const ThirdTitle = () => (
       <button type="button" className="channel4">Spanish2</button>
       <button type="button" className="channel5">Japanese1</button>
       <button type="button" className="channel6">Japanese2</button>
-    </p>
-    <p
+    </p> */}
+    {/* <div
       className="chat">
       THE CHAT
-      <button type="submit" className="sendMessageButton"></button>
-      <textarea className="typeMessage" type="text" name="chat[text]" placeholder="Type Your Message Here"></textarea>
+      <textarea
+        className="typeMessage"
+        type="text"
+        name="chat[text]"
+        placeholder="Type Your Message Here">
+      </textarea>
       <output type="text" name="chat[text]" className="sentMessage"></output>
-    </p>
-    <p className="profile">MISC</p>
+      <button type="submit" className="sendMessageButton"></button>
+    </div> */}
+    <div className="profile">MISC</div>
   </Fragment>
 )
 
