@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom'
 import io from 'socket.io-client'
 // import ThirdTitle from '../../titles/thirdTitle'
 
+import messages from '../../components/AutoDismissAlert/messages'
+import { chatIndex, createMessage } from '../../api/chat'
+
 let socketUrl
 const socketUrls = {
   production: 'wss://aqueous-atoll-85096.herokuapp.com',
