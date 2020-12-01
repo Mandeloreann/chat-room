@@ -9,10 +9,14 @@ import SignUp from './components/SignUp/SignUp'
 import SignIn from './components/SignIn/SignIn'
 import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
-// import CreateMessage from './components/CreateMessage/CreateMessage'
-import TestR from './TestR'
-import ChatCreate from './routes/ChatCreate'
-import ChatIndex from './components/ChatIndex/ChatIndex'
+import ChatIndex from './routes/ChatIndex/ChatIndex'
+import ChatCreate from './routes/ChatCreate/ChatCreate'
+import FirstTitle from './titles/firstTitle'
+import SecondTitle from './titles/secondTitle'
+import ThirdTitle from './titles/thirdTitle'
+import colorPicker from './settings/colorPicker'
+// import English from './components/Channels/English'
+// import channelChats from './components/Channels/chats'
 
 class App extends Component {
   constructor () {
