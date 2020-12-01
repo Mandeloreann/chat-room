@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import io from 'socket.io-client'
 // import ThirdTitle from '../../titles/thirdTitle'
 
-import messages from '../../components/AutoDismissAlert/messages'
+import messages from '../AutoDismissAlert/messages'
 import { chatIndex, createMessage } from '../../api/chat'
 
 let socketUrl
@@ -118,30 +118,6 @@ class Chats extends Component {
       const updatedData = Object.assign({}, prevState.chat, updatedField)
       return { chat: updatedData }
     })
-  }
-
-  onCreateMessage = (event) => {
-    event.preventDefault()
-
-    const { msgAlert } = this.props
-
-    createMessage(this.state)
-      .then(response => {
-        this.setState({ createdId: response.data.chat._id })
-      })
-      .then(() => msgAlert({
-        heading: 'Sent!',
-        message: messages.createMessageSuccess,
-        variant: 'success'
-      }))
-      .catch(error => {
-        this.setState({ text: '' })
-        msgAlert({
-          heading: 'Message failed ' + error.message,
-          message: messages.createMessageFailure,
-          variant: 'danger'
-        })
-      })
   }
 
   render () {
