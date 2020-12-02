@@ -1,11 +1,11 @@
 @import '~bootstrap/scss/bootstrap';
 
-.secondTitle {
+.secondPage {
   margin: 40px;
   font-size: 40px;
   text-align: center;
-  animation: title3 1.5s ease-in-out infinite alternate;
-  @keyframes title3 {
+  animation: page3 1.5s ease-in-out infinite alternate;
+  @keyframes page3 {
     from {
       text-shadow: 0 0 10px red, 0 0 20px white, 0 0 30px blue, 0 0 40px red, 0 0 50px white, 0 0 60px blue, 0 0 70px red;
     }
