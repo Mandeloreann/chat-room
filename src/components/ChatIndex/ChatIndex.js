@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import messages from '../AutoDismissAlert/messages'
 // import socket.io to establish socket connection with server
 import io from 'socket.io-client'
@@ -7,6 +7,10 @@ import io from 'socket.io-client'
 import { chatIndex, createMessage } from '../../api/chat'
 
 import '../../pages/thirdPage.scss'
+
+const channelStyle = {
+  outline: 'none'
+}
 
 let socketUrl
 const socketUrls = {
@@ -89,7 +93,7 @@ class Chats extends Component {
     const { msgAlert } = this.props
     // console.log('this is ', this)
     const { user } = this.props
-    createMessage(this.state, user)
+    createMessage(this.state.chat, user)
       .then(response => {
         console.log('this is the rep ' + response)
         console.log('this is the rep data ' + response.data.chat)
@@ -126,16 +130,16 @@ class Chats extends Component {
     })
   }
 
-  handleInputChange = (event) => {
-    event.persist()
-    this.setState(prevState => {
-      const updatedField = {
-        [event.target.name]: event.target.value
-      }
-      const updatedData = Object.assign({}, prevState.chat, updatedField)
-      return { chat: updatedData }
-    })
-  }
+  // handleInputChange = (event) => {
+  //   event.persist()
+  //   this.setState(prevState => {
+  //     const updatedField = {
+  //       [event.target.name]: event.target.value
+  //     }
+  //     const updatedData = Object.assign({}, prevState.chat, updatedField)
+  //     return { chat: updatedData }
+  //   })
+  // }
   onCreateMessage = (event) => {
     event.preventDefault()
 
@@ -165,23 +169,23 @@ class Chats extends Component {
       })
   }
   // Begin New Message Component, may be moved to it's own page
-  handleInputChange = (event) => {
-    event.persist()
-    this.setState(prevState => {
-      const updatedField = {
-        [event.target.name]: event.target.value
-      }
-      const updatedData = Object.assign({}, prevState.chat, updatedField)
-      return { chat: updatedData }
-    })
-  }
+  // handleInputChange = (event) => {
+  //   event.persist()
+  //   this.setState(prevState => {
+  //     const updatedField = {
+  //       [event.target.name]: event.target.value
+  //     }
+  //     const updatedData = Object.assign({}, prevState.chat, updatedField)
+  //     return { chat: updatedData }
+  //   })
+  // }
 
   render () {
-    // const chats = this.state.chats.map(chat => (
-    //   <li key={chat._id}>
-    //     <Link to={`/chats/${chat._id}`}>{chat.title}</Link>
-    //   </li>
-    // ))
+    const chats = this.state.chats.map(chat => (
+      <li key={chat._id}>
+        <Link to={`/chats/${chat._id}`}>{chat.text}</Link>
+      </li>
+    ))
     return (
       <div>
         {/* <ul>
@@ -204,20 +208,21 @@ class Chats extends Component {
         <p
           className="channels">
           CHANNELS
-          <button type="button" className="channel1">English1</button>
-          <button type="button" className="channel2">English2</button>
-          <button type="button" className="channel3">Spanish1</button>
-          <button type="button" className="channel4">Spanish2</button>
-          <button type="button" className="channel5">Japanese1</button>
-          <button type="button" className="channel6">Japanese2</button>
+          <button type="button" className="channel1" style={channelStyle}>English1</button>
+          <button type="button" className="channel2" style={channelStyle}>English2</button>
+          <button type="button" className="channel3" style={channelStyle}>Spanish1</button>
+          <button type="button" className="channel4" style={channelStyle}>Spanish2</button>
+          <button type="button" className="channel5" style={channelStyle}>Japanese1</button>
+          <button type="button" className="channel6" style={channelStyle}>Japanese2</button>
         </p>
         <form onSubmit={this.onCreateMessage}>
-          <p
-            className="chat">
-            THE CHAT
+          <div className="chat">
+            <ul className="chatArray">
+              {chats}
+            </ul>
             <textarea
               className="typeMessage"
-              placeholder="Type AMessage Here"
+              placeholder="Type A Message Here"
               name="text"
               value={this.state.chat.text}
               onChange={this.handleInputChange}
@@ -225,9 +230,9 @@ class Chats extends Component {
             <button type="submit" className="sendMessageButton"></button>
             {/* <textarea className="typeMessage" type="text" name="chat[text]" placeholder="Type Your Message Here"></textarea> */}
             <output type="text" name="chat[text]" className="sentMessage">LOOOL</output>
-          </p>
+          </div>
         </form>
-        <p className="profile">MISC</p>
+        <p className="profile"></p>
       </div>
     )
   }

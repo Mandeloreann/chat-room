@@ -5,6 +5,7 @@ body {
   overflow: hidden;
   outline: none;
   background-color: black;
+
   .channels {
     fill-opacity: 1;
     display: flex;
@@ -18,8 +19,9 @@ body {
     position: absolute;
     left: 0%;
     color: red;
-    background-color: transparent;
+    background-color: black;
   }
+
   .chat {
     display: flex;
     flex-direction: column;
@@ -34,8 +36,9 @@ body {
     position: absolute;
     left: 25%;
     color: blue;
-    background-color: transparent;
+    background-color: black;
   }
+
   .profile {
     display: flex;
     flex-direction: column;
@@ -48,8 +51,9 @@ body {
     position: absolute;
     right: 0%;
     color: green;
-    background-color: transparent;
+    background-color: black;
   }
+
   .typeMessage {
     outline: none;
     height: 20%;
@@ -65,6 +69,7 @@ body {
     border-bottom: none;
     border-left: none;
   }
+
   .sendMessageButton {
     outline: none;
     height: 20%;
@@ -83,6 +88,7 @@ body {
     bottom: 0%;
     right: 0%;
   }
+
   .sentMessage {
     text-align: center;
     vertical-align: top;
@@ -98,13 +104,23 @@ body {
     overflow: auto;
     &:hover{
       color: red;
+      height: auto;
     }
   }
+
   .chatList {
     color: red;
     position: absolute;
     left: 24%;
   }
+
+  .chatArray {
+    font-size: 15px;
+    position: absolute;
+    top: 0%;
+    color: white;
+  }
+
   .channel1 {
     outline: none;
     position: absolute;
@@ -131,6 +147,7 @@ body {
     }
     border: none;
   }
+
   .channel2 {
     outline: none;
     position: absolute;
@@ -157,6 +174,7 @@ body {
       color: cyan;
     }
   }
+
   .channel3 {
     outline: none;
     position: absolute;
@@ -183,6 +201,7 @@ body {
       color: cyan;
     }
   }
+
   .channel4 {
     outline: none;
     position: absolute;
@@ -209,6 +228,7 @@ body {
       color: cyan;
     }
   }
+
   .channel5 {
     outline: none;
     position: absolute;
@@ -235,6 +255,7 @@ body {
       color: cyan;
     }
   }
+
   .channel6 {
     outline: none;
     position: absolute;
