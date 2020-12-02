@@ -29,11 +29,36 @@ class Chats extends Component {
     super(props)
 
     this.state = {
-      chats: []
+      chats: [],
+      chat: {
+        text: ''
+      }
     }
   }
 
   componentDidMount () {
+    // After Page Loads perform Axios Index Request for Chat Resource
+    const { user, msgAlert } = this.props
+    chatIndex(user)
+      .then(res => {
+        this.setState({ chats: res.data.chats })
+      })
+      // .then(console.log(this.state))
+      .then(() => {
+        msgAlert({
+          heading: 'Chat Thread Refreshed',
+          variant: 'success',
+          message: 'Chat room has now loaded, send a message to get started.'
+        })
+      })
+      .catch(err => {
+        msgAlert({
+          heading: 'Chat Thread Failed to Load',
+          variant: 'danger',
+          message: 'Chat Error Message: ' + err.message
+        })
+      })
+    // Initialize the Server Side Socket
     const socket = io(socketUrl, {
       reconnection: false
     })
@@ -68,10 +93,15 @@ class Chats extends Component {
     event.preventDefault()
 
     const { msgAlert } = this.props
-
-    createMessage(this.state)
+    // console.log('this is ', this)
+    const { user } = this.props
+    createMessage(this.state, user)
       .then(response => {
-        this.setState({ createdId: response.data.chat._id })
+        // console.log('response.data.chat.owner is ', response.data.chat.owner)
+        this.setState({
+          createdId: response.data._id
+          // owner: response.data.chat.owner
+        })
       })
       .then(() => msgAlert({
         heading: 'Sent!',
