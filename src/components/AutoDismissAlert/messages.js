@@ -7,5 +7,7 @@ export default {
   changePasswordSuccess: 'Password changed successfully!',
   changePasswordFailure: 'Failed to change passwords. Check your old password and try again.',
   createMessageSuccess: 'Sent!',
-  createMessageFailure: 'Failed to send message.'
+  createMessageFailure: 'Failed to send message.',
+  chatUpdateSuccess: 'Message updated successfully!',
+  chatUpdateFailure: 'Failed to update message, please try again.'
 }

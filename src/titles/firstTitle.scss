@@ -1,0 +1,66 @@
+@import '~bootstrap/scss/bootstrap';
+
+.firstTitle {
+  margin: 40px;
+}
+
+.firstTitle_content {
+  font-size: 40px;
+  text-align: center;
+  display: inline;
+  position: absolute;
+  bottom: 50%;
+  left: 29%;
+  color: white;
+  background-color: black;
+  border-radius: 15%;
+}
+
+.firstTitle_content2 {
+  font-size: 40px;
+  text-align: center;
+  display: inline;
+  position: absolute;
+  color: white;
+  background-color: black;
+  border-radius: 15%;
+  bottom: 40%;
+  left: 20%;
+}
+
+body {
+  background-image: url('../images/5bfbc6fc218ebe70-bees-bombs-rainbow-spiral.gif');
+  background-size: cover;
+}
+
+// controls the area around home
+.navbar-brand {
+  background-color: black;
+  font-size: 300px;
+  &:hover {
+    background-color: red;
+    text-decoration: underline;
+  }
+}
+
+// controls the middle part of the navigation bar (wide bar on top)
+#basic-navbar-nav {
+  background-color: transparent;
+}
+
+// controls the area around sign up, sign in
+.nav-link {
+  background-color: black;
+  font-size: 111%;
+  border-radius: 50px;
+  &:hover {
+    background-color: red;
+    text-decoration: underline;
+  }
+}
+
+// controls the entire navigation bar (the parts without words)
+.navbar {
+  background-color: transparent;
+  color: black;
+}
