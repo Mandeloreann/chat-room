@@ -6,7 +6,7 @@ import io from 'socket.io-client'
 // import ThirdTitle from '../../titles/thirdTitle'
 import { chatIndex, createMessage } from '../../api/chat'
 
-import '../../pages/thirdPage.scss'
+// import '../../pages/thirdPage.scss'
 
 let socketUrl
 const socketUrls = {
@@ -138,7 +138,7 @@ class Chats extends Component {
         </ul>
         <div>
           <h1>(username)</h1>
-          {/* <form onSubmit={this.onCreateMessage}>
+          <form onSubmit={this.onCreateMessage}>
             <input
               placeholder="chat away..."
               name="text"
@@ -146,7 +146,7 @@ class Chats extends Component {
               onChange={this.handleInputChange}
             />
             <button type="submit">Send</button>
-          </form> */}
+          </form>
         </div>
         {/* <ThirdTitle /> */}
         <p
@@ -159,14 +159,14 @@ class Chats extends Component {
           <button type="button" className="channel5">Japanese1</button>
           <button type="button" className="channel6">Japanese2</button>
         </p>
-        <p
+        {/* <p
           className="chat">
           THE CHAT
           <button type="submit" className="sendMessageButton"></button>
           <textarea className="typeMessage" type="text" name="chat[text]" placeholder="Type Your Message Here"></textarea>
           <output type="text" name="chat[text]" className="sentMessage"></output>
         </p>
-        <p className="profile">MISC</p>
+        <p className="profile">MISC</p> */}
       </div>
     )
   }
