@@ -29,9 +29,7 @@ class Chats extends Component {
     this.state = {
       chats: [],
       chat: {
-        text: '',
-        createdId: null,
-        owner: null
+        text: ''
       }
     }
   }
@@ -46,7 +44,7 @@ class Chats extends Component {
       .then(res => {
         this.setState({ chats: res.data.chats })
       })
-      .then(console.log(this.state))
+      // .then(console.log(this.state))
       .then(() => {
         msgAlert({
           heading: 'Chat Thread Refreshed',
@@ -99,13 +97,16 @@ class Chats extends Component {
     event.preventDefault()
 
     const { msgAlert } = this.props
-    console.log('this is ', this)
+    // console.log('this is ', this)
     const { user } = this.props
     createMessage(this.state, user)
       .then(response => {
-        this.setState({ createdId: response.data.chat._id })
+        // console.log('response.data.chat.owner is ', response.data.chat.owner)
+        this.setState({
+          createdId: response.data._id
+          // owner: response.data.chat.owner
+        })
       })
-
       .then(() => msgAlert({
         heading: 'Sent!',
         message: messages.createMessageSuccess,
