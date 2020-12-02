@@ -5,6 +5,7 @@ import messages from '../AutoDismissAlert/messages'
 import io from 'socket.io-client'
 // import ThirdTitle from '../../titles/thirdTitle'
 import { chatIndex, createMessage } from '../../api/chat'
+// import '../../pages/thirdPage.scss'
 let socketUrl
 const socketUrls = {
   production: 'wss://aqueous-atoll-85096.herokuapp.com',
@@ -88,11 +89,14 @@ class Chats extends Component {
     const { user } = this.props
     createMessage(this.state, user)
       .then(response => {
+        console.log('this is the rep ' + response)
+        console.log('this is the rep data ' + response.data.chat)
         // console.log('response.data.chat.owner is ', response.data.chat.owner)
         this.setState({
           createdId: response.data._id
           // owner: response.data.chat.owner
         })
+        console.log('this is state ' + this.state)
       })
       .then(() => msgAlert({
         heading: 'Sent!',
@@ -122,8 +126,7 @@ class Chats extends Component {
   render () {
     const chats = this.state.chats.map(chat => (
       <li key={chat._id}>
-        <Link to={`/chats/${chat._id}`}>{chat.text}</Link>
-
+        <Link to={`/chats/${chat._id}`}>{chat.title}</Link>
       </li>
     ))
     return (
@@ -154,6 +157,14 @@ class Chats extends Component {
           <button type="button" className="channel5">Japanese1</button>
           <button type="button" className="channel6">Japanese2</button>
         </p>
+        {/* <p
+          className="chat">
+          THE CHAT
+          <button type="submit" className="sendMessageButton"></button>
+          <textarea className="typeMessage" type="text" name="chat[text]" placeholder="Type Your Message Here"></textarea>
+          <output type="text" name="chat[text]" className="sentMessage"></output>
+        </p>
+        <p className="profile">MISC</p> */}
       </div>
     )
   }

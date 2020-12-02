@@ -14,7 +14,7 @@ import ChatUpdate from './components/Update/Update'
 import ChatCreate from './routes/ChatCreate/ChatCreate'
 import FirstTitle from './titles/firstTitle'
 import SecondTitle from './titles/secondTitle'
-import ThirdTitle from './titles/thirdTitle'
+// import ThirdTitle from './titles/thirdTitle'
 import colorPicker from './settings/colorPicker'
 // import English from './components/Channels/English'
 // import channelChats from './components/Channels/chats'
@@ -92,8 +92,8 @@ class App extends Component {
         </main>
         <Route exact path="/channels" component={SecondTitle} />
         <Route exact path="/settings" component={colorPicker} />
-        <Route exact path="/chats" component={ThirdTitle} />
       </Fragment>
+      // <Route exact path="/chats" component={ThirdTitle} />
     )
   }
 }
