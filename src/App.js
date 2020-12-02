@@ -9,7 +9,7 @@ import SignUp from './components/SignUp/SignUp'
 import SignIn from './components/SignIn/SignIn'
 import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
-import ChatCreate from '../src/components/ChatCreate/ChatCreate'
+// import ChatCreate from '../src/components/ChatCreate/ChatCreate'
 import ChatIndex from './components/ChatIndex/ChatIndex'
 import FirstPage from './pages/firstPage'
 import SecondPage from './pages/secondPage'
@@ -80,7 +80,7 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/chats' render={() => (
             <div>
               <ChatIndex msgAlert={this.msgAlert} user={user} />
-              <ChatCreate msgAlert={this.msgAlert} user={user} />
+              {/* <ChatCreate msgAlert={this.msgAlert} user={user} /> */}
             </div>
           )} />
         </main>
