@@ -19,22 +19,26 @@
   left: 33%;
 }
 
-.DefaultChannelButton {
+.DefaultChannel1 {
+  text-decoration: transparent;
   outline: none;
   outline-style: none;
   border: transparent;
-  background-color: transparent;
+  background-color: black;
   margin: 40px;
   text-align: center;
-  border-radius: 30px;
+  border-radius: 15px;
   position: absolute;
   bottom: 45%;
-  left: 38%;
+  left: 40%;
   font-size: 30px;
   animation: english 10s infinite;
   @keyframes english {
     0% { color: red }
     50% { color: cyan }
     100% { color: red }
+  }
+  &:hover {
+    text-decoration: none;
   }
 }

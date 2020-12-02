@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 // import React, { Fragment, useState } from 'react'
 // import ReactDOM from 'react-dom'
 // import Modal, { Button } from 'react-modal'
@@ -8,7 +9,7 @@ import './secondPage.scss'
 const SecondPage = () => (
   <div>
     <p className="secondPage">Pick a channel</p>
-    <button type="button" className="DefaultChannelButton">English 1</button>
+    <Link to="/chats" className="DefaultChannel1">English 1</Link>
   </div>
 )
 
