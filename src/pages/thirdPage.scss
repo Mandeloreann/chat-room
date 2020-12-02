@@ -106,19 +106,19 @@ body {
     &:hover{
       color: red;
     }
-    height: 100%;
+    height: 100vh;
   }
 
-  .chatList {
-    color: red;
-    position: absolute;
-    left: 23%;
-  }
+  // .chatList {
+  //   color: red;
+  //   position: absolute;
+  //   left: 23%;
+  // }
 
   .chatArray {
     position: absolute;
     // top: -315%;
-    top: -280vh;
+    top: -285vh;
     left: 6vw;
     color: black;
   }
