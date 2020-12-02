@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import messages from '../AutoDismissAlert/messages'
 // import socket.io to establish socket connection with server
 import io from 'socket.io-client'
 // import ThirdTitle from '../../titles/thirdTitle'
 import { chatIndex, createMessage } from '../../api/chat'
 
-// import '../../pages/thirdPage.scss'
+import '../../pages/thirdPage.scss'
 
 let socketUrl
 const socketUrls = {
@@ -126,27 +126,28 @@ class Chats extends Component {
     })
   }
   render () {
-    const chats = this.state.chats.map(chat => (
-      <li key={chat._id}>
-        <Link to={`/chats/${chat._id}`}>{chat.title}</Link>
-      </li>
-    ))
+    // const chats = this.state.chats.map(chat => (
+    //   <li key={chat._id}>
+    //     <Link to={`/chats/${chat._id}`}>{chat.title}</Link>
+    //   </li>
+    // ))
     return (
       <div>
-        <ul>
+        {/* <ul>
           {chats}
-        </ul>
+        </ul> */}
         <div>
-          <h1>(username)</h1>
-          <form onSubmit={this.onCreateMessage}>
-            <input
+          {/* <h1>(username)</h1> */}
+          {/* <form onSubmit={this.onCreateMessage}>
+            <textarea
+              className="typeMessage"
               placeholder="chat away..."
               name="text"
               value={this.state.chat.text}
               onChange={this.handleInputChange}
             />
             <button type="submit">Send</button>
-          </form>
+          </form> */}
         </div>
         {/* <ThirdTitle /> */}
         <p
@@ -159,14 +160,23 @@ class Chats extends Component {
           <button type="button" className="channel5">Japanese1</button>
           <button type="button" className="channel6">Japanese2</button>
         </p>
-        {/* <p
+        <p
           className="chat">
           THE CHAT
-          <button type="submit" className="sendMessageButton"></button>
-          <textarea className="typeMessage" type="text" name="chat[text]" placeholder="Type Your Message Here"></textarea>
-          <output type="text" name="chat[text]" className="sentMessage"></output>
+          <form onSubmit={this.onCreateMessage}>
+            <textarea
+              className="typeMessage"
+              placeholder="chat away..."
+              name="text"
+              value={this.state.chat.text}
+              onChange={this.handleInputChange}
+            />
+            <button type="submit" className="sendMessageButton"></button>
+          </form>
+          {/* <textarea className="typeMessage" type="text" name="chat[text]" placeholder="Type Your Message Here"></textarea> */}
+          <output type="text" name="chat[text]" className="sentMessage">LOOOL</output>
         </p>
-        <p className="profile">MISC</p> */}
+        <p className="profile">MISC</p>
       </div>
     )
   }
