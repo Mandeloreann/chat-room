@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 // import { Link } from 'react-router-dom'
 import messages from '../AutoDismissAlert/messages'
 // import socket.io to establish socket connection with server
@@ -6,6 +7,7 @@ import io from 'socket.io-client'
 // import ThirdTitle from '../../titles/thirdTitle'
 import { chatIndex, createMessage } from '../../api/chat'
 
+import handleDelete from '../ChatDelete/ChatDelete'
 import '../../pages/thirdPage.scss'
 
 let socketUrl
@@ -177,16 +179,15 @@ class Chats extends Component {
   }
 
   render () {
-    // const chats = this.state.chats.map(chat => (
-    //   <li key={chat._id}>
-    //     <Link to={`/chats/${chat._id}`}>{chat.title}</Link>
-    //   </li>
-    // ))
+    const chats = this.state.chats.map(chat => (
+      <li key={chat._id}>
+        <Link to={`/chats/${chat._id}`}>{chat.title}</Link>
+        <button onClick={handleDelete}>Delete</button>
+        <Link to={'/chat-update/' + chat._id}>Update Chat</Link>
+      </li>
+    ))
     return (
       <div>
-        {/* <ul>
-          {chats}
-        </ul> */}
         <div>
           {/* <h1>(username)</h1> */}
           {/* <form onSubmit={this.onCreateMessage}>
@@ -214,6 +215,9 @@ class Chats extends Component {
         <form onSubmit={this.onCreateMessage}>
           <p
             className="chat">
+            <ul>
+              {chats}
+            </ul>
             THE CHAT
             <textarea
               className="typeMessage"
@@ -223,7 +227,6 @@ class Chats extends Component {
               onChange={this.handleInputChange}
             />
             <button type="submit" className="sendMessageButton"></button>
-            {/* <textarea className="typeMessage" type="text" name="chat[text]" placeholder="Type Your Message Here"></textarea> */}
             <output type="text" name="chat[text]" className="sentMessage">LOOOL</output>
           </p>
         </form>
