@@ -27,13 +27,15 @@ const unauthenticatedOptions = (
 // )
 
 const welcomeMessageStyle = {
-  color: 'red',
+  color: 'white',
   padding: '10px',
   fontFamily: 'Arial',
   fontSize: '25px',
   position: 'absolute',
-  top: '20%',
-  left: '25%'
+  top: '10%',
+  left: '25%',
+  backgroundColor: 'black',
+  borderRadius: '25%'
 }
 
 const Header = ({ user }) => (

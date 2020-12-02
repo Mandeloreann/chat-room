@@ -1,14 +1,15 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 // import React, { Fragment, useState } from 'react'
 // import ReactDOM from 'react-dom'
 // import Modal, { Button } from 'react-modal'
 
-import './secondTitle.scss'
+import './secondPage.scss'
 
-const SecondTitle = () => (
+const SecondPage = () => (
   <div>
-    <p className="secondTitle">Pick a channel</p>
-    <button type="button" className="DefaultChannelButton">English 1</button>
+    <p className="secondPage">Pick a channel</p>
+    <Link to="/chats" className="DefaultChannel1">English 1</Link>
   </div>
 )
 
@@ -45,4 +46,4 @@ const SecondTitle = () => (
 
 // ReactDOM.render(<Example />)
 
-export default SecondTitle
+export default SecondPage

@@ -1,0 +1,44 @@
+@import '~bootstrap/scss/bootstrap';
+
+.secondPage {
+  margin: 40px;
+  font-size: 40px;
+  text-align: center;
+  animation: page3 1.5s ease-in-out infinite alternate;
+  @keyframes page3 {
+    from {
+      text-shadow: 0 0 10px red, 0 0 20px white, 0 0 30px blue, 0 0 40px red, 0 0 50px white, 0 0 60px blue, 0 0 70px red;
+    }
+    to {
+      text-shadow: 0 0 20px blue, 0 0 30px white, 0 0 40px red, 0 0 50px blue, 0 0 60px white, 0 0 70px red, 0 0 80px blue;
+    }
+  }
+  display: inline;
+  position: absolute;
+  bottom: 55%;
+  left: 33%;
+}
+
+.DefaultChannel1 {
+  text-decoration: transparent;
+  outline: none;
+  outline-style: none;
+  border: transparent;
+  background-color: black;
+  margin: 40px;
+  text-align: center;
+  border-radius: 15px;
+  position: absolute;
+  bottom: 45%;
+  left: 40%;
+  font-size: 30px;
+  animation: english 10s infinite;
+  @keyframes english {
+    0% { color: red }
+    50% { color: cyan }
+    100% { color: red }
+  }
+  &:hover {
+    text-decoration: none;
+  }
+}
