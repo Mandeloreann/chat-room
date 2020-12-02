@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import messages from '../AutoDismissAlert/messages'
 // import socket.io to establish socket connection with server
 import io from 'socket.io-client'
@@ -37,6 +37,7 @@ class Chats extends Component {
     const { user, msgAlert } = this.props
     chatIndex(user)
       .then(res => {
+        // console.log(res)
         this.setState({ chats: res.data.chats })
       })
       // .then(console.log(this.state))
@@ -89,7 +90,8 @@ class Chats extends Component {
     const { msgAlert } = this.props
     // console.log('this is ', this)
     const { user } = this.props
-    createMessage(this.state, user)
+    console.log(this.state)
+    createMessage(this.state.chat, user)
       .then(response => {
         console.log('this is the rep ' + response)
         console.log('this is the rep data ' + response.data.chat)
@@ -114,79 +116,44 @@ class Chats extends Component {
         })
       })
   }
-  // Begin New Message Component, may be moved to it's own page
-  handleInputChange = (event) => {
-    event.persist()
-    this.setState(prevState => {
-      const updatedField = {
-        [event.target.name]: event.target.value
-      }
-      const updatedData = Object.assign({}, prevState.chat, updatedField)
-      return { chat: updatedData }
-    })
-  }
 
-  handleInputChange = (event) => {
-    event.persist()
-    this.setState(prevState => {
-      const updatedField = {
-        [event.target.name]: event.target.value
-      }
-      const updatedData = Object.assign({}, prevState.chat, updatedField)
-      return { chat: updatedData }
-    })
-  }
-  onCreateMessage = (event) => {
-    event.preventDefault()
-
-    const { msgAlert } = this.props
-    // console.log('this is ', this)
-    const { user } = this.props
-    createMessage(this.state, user)
-      .then(response => {
-        // console.log('response.data.chat.owner is ', response.data.chat.owner)
-        this.setState({
-          createdId: response.data._id
-          // owner: response.data.chat.owner
-        })
-      })
-      .then(() => msgAlert({
-        heading: 'Sent!',
-        message: messages.createMessageSuccess,
-        variant: 'success'
-      }))
-      .catch(error => {
-        this.setState({ text: '' })
-        msgAlert({
-          heading: 'Message failed ' + error.message,
-          message: messages.createMessageFailure,
-          variant: 'danger'
-        })
-      })
-  }
-  // Begin New Message Component, may be moved to it's own page
-  handleInputChange = (event) => {
-    event.persist()
-    this.setState(prevState => {
-      const updatedField = {
-        [event.target.name]: event.target.value
-      }
-      const updatedData = Object.assign({}, prevState.chat, updatedField)
-      return { chat: updatedData }
-    })
-  }
+  // onCreateMessage = (event) => {
+  //   event.preventDefault()
+  //
+  //   const { msgAlert } = this.props
+  //   // console.log('this is ', this)
+  //   const { user } = this.props
+  //   createMessage(this.state, user)
+  //     .then(response => {
+  //       // console.log('response.data.chat.owner is ', response.data.chat.owner)
+  //       this.setState({
+  //         createdId: response.data._id
+  //         // owner: response.data.chat.owner
+  //       })
+  //     })
+  //     .then(() => msgAlert({
+  //       heading: 'Sent!',
+  //       message: messages.createMessageSuccess,
+  //       variant: 'success'
+  //     }))
+  //     .catch(error => {
+  //       this.setState({ text: '' })
+  //       msgAlert({
+  //         heading: 'Message failed ' + error.message,
+  //         message: messages.createMessageFailure,
+  //         variant: 'danger'
+  //       })
+  //     })
+  // }
 
   render () {
-    // const chats = this.state.chats.map(chat => (
-    //   <li key={chat._id}>
-    //     <Link to={`/chats/${chat._id}`}>{chat.title}</Link>
-    //   </li>
-    // ))
+    const chats = this.state.chats.map(chat => (
+      <li key={chat._id}>
+        <Link to={`/chats/${chat._id}`}>{chat.text}</Link>
+      </li>
+    ))
     return (
       <div>
-        {/* <ul>
-          {chats}
-        </ul> */}
         <div>
           {/* <h1>(username)</h1> */}
           {/* <form onSubmit={this.onCreateMessage}>
@@ -216,6 +183,7 @@ class Chats extends Component {
           </form> */}
         </div>
         {/* <ThirdTitle /> */}
+
         <p
           className="channels">
           CHANNELS
@@ -227,12 +195,13 @@ class Chats extends Component {
           <button type="button" className="channel6">Japanese2</button>
         </p>
         <form onSubmit={this.onCreateMessage}>
-          <p
-            className="chat">
-            THE CHAT
+          <div className="chat">
+            <ul>
+              {chats}
+            </ul>
             <textarea
               className="typeMessage"
-              placeholder="Type AMessage Here"
+              placeholder="Type A Message Here"
               name="text"
               value={this.state.chat.text}
               onChange={this.handleInputChange}
@@ -240,7 +209,7 @@ class Chats extends Component {
             <button type="submit" className="sendMessageButton"></button>
             {/* <textarea className="typeMessage" type="text" name="chat[text]" placeholder="Type Your Message Here"></textarea> */}
             <output type="text" name="chat[text]" className="sentMessage">LOOOL</output>
-          </p>
+          </div>
         </form>
         <p className="profile">MISC</p>
       </div>

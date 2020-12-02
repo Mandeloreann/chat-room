@@ -18,7 +18,7 @@ body {
     position: absolute;
     left: 0%;
     color: red;
-    background-color: transparent;
+    background-color: black;
   }
   .chat {
     display: flex;
@@ -34,7 +34,7 @@ body {
     position: absolute;
     left: 25%;
     color: blue;
-    background-color: transparent;
+    background-color: black;
   }
   .profile {
     display: flex;
@@ -48,7 +48,7 @@ body {
     position: absolute;
     right: 0%;
     color: green;
-    background-color: transparent;
+    background-color: black;
   }
   .typeMessage {
     outline: none;
