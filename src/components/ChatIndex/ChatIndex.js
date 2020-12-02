@@ -1,21 +1,13 @@
 import React, { Component } from 'react'
-<<<<<<< HEAD
 // import { Link } from 'react-router-dom'
-=======
-import { Link } from 'react-router-dom'
->>>>>>> msg-update
 import messages from '../AutoDismissAlert/messages'
 // import socket.io to establish socket connection with server
 import io from 'socket.io-client'
 // import ThirdTitle from '../../titles/thirdTitle'
 import { chatIndex, createMessage } from '../../api/chat'
-<<<<<<< HEAD
 
 import '../../pages/thirdPage.scss'
 
-=======
-// import '../../pages/thirdPage.scss'
->>>>>>> msg-update
 let socketUrl
 const socketUrls = {
   production: 'wss://aqueous-atoll-85096.herokuapp.com',
@@ -133,7 +125,6 @@ class Chats extends Component {
       return { chat: updatedData }
     })
   }
-<<<<<<< HEAD
 
   handleInputChange = (event) => {
     event.persist()
@@ -201,7 +192,6 @@ class Chats extends Component {
           {/* <form onSubmit={this.onCreateMessage}>
             <textarea
               className="typeMessage"
-=======
   render () {
     const chats = this.state.chats.map(chat => (
       <li key={chat._id}>
@@ -217,18 +207,13 @@ class Chats extends Component {
           <h1>(username)</h1>
           <form onSubmit={this.onCreateMessage}>
             <input
->>>>>>> msg-update
               placeholder="chat away..."
               name="text"
               value={this.state.chat.text}
               onChange={this.handleInputChange}
             />
             <button type="submit">Send</button>
-<<<<<<< HEAD
           </form> */}
-=======
-          </form>
->>>>>>> msg-update
         </div>
         {/* <ThirdTitle /> */}
         <p
@@ -241,7 +226,6 @@ class Chats extends Component {
           <button type="button" className="channel5">Japanese1</button>
           <button type="button" className="channel6">Japanese2</button>
         </p>
-<<<<<<< HEAD
         <form onSubmit={this.onCreateMessage}>
           <p
             className="chat">
@@ -259,16 +243,6 @@ class Chats extends Component {
           </p>
         </form>
         <p className="profile">MISC</p>
-=======
-        {/* <p
-          className="chat">
-          THE CHAT
-          <button type="submit" className="sendMessageButton"></button>
-          <textarea className="typeMessage" type="text" name="chat[text]" placeholder="Type Your Message Here"></textarea>
-          <output type="text" name="chat[text]" className="sentMessage"></output>
-        </p>
-        <p className="profile">MISC</p> */}
->>>>>>> msg-update
       </div>
     )
   }
