@@ -87,6 +87,7 @@ class Chats extends Component {
   }
   onCreateMessage = (event) => {
     event.preventDefault()
+
     const { msgAlert } = this.props
     // console.log('this is ', this)
     const { user } = this.props
@@ -194,7 +195,7 @@ class Chats extends Component {
           <button type="button" className="channel5">Japanese1</button>
           <button type="button" className="channel6">Japanese2</button>
         </p>
-        <form onSubmit={this.onCreateMessage}>
+        <form onSubmit={this.onCreateMessage} className="typeMessageForm">
           <div className="chat">
             <textarea
               className="typeMessage"
