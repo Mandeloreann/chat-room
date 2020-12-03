@@ -9,6 +9,10 @@ import { chatIndex, createMessage } from '../../api/chat'
 import handleDelete from '../ChatDelete/ChatDelete'
 import '../../pages/thirdPage.scss'
 
+// const channelStyle = () => {
+
+// }
+
 let socketUrl
 const socketUrls = {
   production: 'wss://aqueous-atoll-85096.herokuapp.com',
@@ -119,33 +123,9 @@ class Chats extends Component {
       })
   }
 
-  // onCreateMessage = (event) => {
-  //   event.preventDefault()
-  //
-  //   const { msgAlert } = this.props
-  //   // console.log('this is ', this)
-  //   const { user } = this.props
-  //   createMessage(this.state, user)
-  //     .then(response => {
-  //       // console.log('response.data.chat.owner is ', response.data.chat.owner)
-  //       this.setState({
-  //         createdId: response.data._id
-  //         // owner: response.data.chat.owner
-  //       })
-  //     })
-  //     .then(() => msgAlert({
-  //       heading: 'Sent!',
-  //       message: messages.createMessageSuccess,
-  //       variant: 'success'
-  //     }))
-  //     .catch(error => {
-  //       this.setState({ text: '' })
-  //       msgAlert({
-  //         heading: 'Message failed ' + error.message,
-  //         message: messages.createMessageFailure,
-  //         variant: 'danger'
-  //       })
-  //     })
+  // onChangeColor () {
+  //   const color = document.getElementById('InputText').value
+  //   document.body.style.backgroundColor = color
   // }
 
   render () {
@@ -157,38 +137,16 @@ class Chats extends Component {
         <Link to={`/chats/${chat._id}`}>{chat.text}</Link>
       </li>
     ))
+    // const changeColor = (
+    //   <input type="text" id="InputText">
+    //     <input type="color" id="InputColor">
+    //       <input type="button" id="colorButton" value="select color" onClick="changeColor()">
+    //       </input>
+    //     </input>
+    //   </input>
+    // )
     return (
       <div>
-        <div>
-          {/* <h1>(username)</h1> */}
-          {/* <form onSubmit={this.onCreateMessage}>
-            <textarea
-              className="typeMessage"
-  render () {
-    const chats = this.state.chats.map(chat => (
-      <li key={chat._id}>
-        <Link to={`/chats/${chat._id}`}>{chat.title}</Link>
-      </li>
-    ))
-    return (
-      <div>
-        <ul>
-          {chats}
-        </ul>
-        <div>
-          <h1>(username)</h1>
-          <form onSubmit={this.onCreateMessage}>
-            <input
-              placeholder="chat away..."
-              name="text"
-              value={this.state.chat.text}
-              onChange={this.handleInputChange}
-            />
-            <button type="submit">Send</button>
-          </form> */}
-        </div>
-        {/* <ThirdTitle /> */}
-
         <p
           className="channels">
           CHANNELS
@@ -209,10 +167,10 @@ class Chats extends Component {
               onChange={this.handleInputChange}
             />
             <button type="submit" className="sendMessageButton"></button>
-            {/* <textarea className="typeMessage" type="text" name="chat[text]" placeholder="Type Your Message Here"></textarea> */}
             <output type="text" name="chat[text]" className="sentMessage">
               <ul className="chatArray">
                 {chats}
+                {/* {changeColor} */}
               </ul>
             </output>
           </div>
