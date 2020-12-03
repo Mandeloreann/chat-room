@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 
 import { changePassword } from '../../api/auth'
 import messages from '../AutoDismissAlert/messages'
@@ -83,7 +83,7 @@ class ChangePassword extends Component {
             </Button>
           </Form>
         </div>
-        <button className="backButton" style={changePasswordStyle}>Back</button>
+        <Link to="/chats" className="backButton">Back</Link>
       </div>
     )
   }
