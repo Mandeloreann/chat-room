@@ -7,23 +7,23 @@
 .Box_content {
   font-size: 40px;
   text-align: center;
-  animation: test 10s infinite;
-  @keyframes test {
-    0% { color: red }
-    25% { color: green }
-    50% { color: cyan }
-    100% { color: red }
-  }
+  // animation: test 10s infinite;
+  // @keyframes test {
+  //   0% { color: red }
+  //   25% { color: green }
+  //   50% { color: cyan }
+  //   100% { color: red }
+  // }
 }
 
 #test {
-  animation: test 10s infinite;
-  @keyframes test {
-    0% { color: red }
-    25% { color: green }
-    50% { color: cyan }
-    100% { color: red }
-  }
+  // animation: test 10s infinite;
+  // @keyframes test {
+  //   0% { color: red }
+  //   25% { color: green }
+  //   50% { color: cyan }
+  //   100% { color: red }
+  // }
   font-size: 30px;
   text-align: center;
   position: absolute;
