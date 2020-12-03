@@ -153,7 +153,7 @@ class Chats extends Component {
       <li key={chat._id}>
         <Link to={`/chats/${chat._id}`}>{chat.title}</Link>
         <button onClick={handleDelete}>Delete</button>
-        <Link to={'/chat-update/' + chat._id}>Update Chat</Link>
+        <Link to={'/chat-update/' + chat._id}>Update Chat </Link>
         <Link to={`/chats/${chat._id}`}>{chat.text}</Link>
       </li>
     ))
