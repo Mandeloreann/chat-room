@@ -37,6 +37,7 @@ body {
     left: 25%;
     color: blue;
     background-color: black;
+    overflow: auto;
   }
 
   .profile {
@@ -104,21 +105,21 @@ body {
     overflow: auto;
     &:hover{
       color: red;
-      height: auto;
     }
+    height: 100%;
   }
 
   .chatList {
     color: red;
     position: absolute;
-    left: 24%;
+    left: 23%;
   }
 
   .chatArray {
-    font-size: 15px;
     position: absolute;
-    top: 0%;
-    color: white;
+    top: -315%;
+    left: 15%;
+    color: black;
   }
 
   .channel1 {
