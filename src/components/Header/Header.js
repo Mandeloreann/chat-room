@@ -6,10 +6,10 @@ const navBarTextStyle = {
   color: 'white'
 }
 
-const navBarHomeStyle = {
-  color: 'white',
-  borderRadius: '30%'
-}
+// const navBarHomeStyle = {
+//   color: 'white',
+//   borderRadius: '30%'
+// }
 
 const authenticatedOptions = (
   <Fragment>
@@ -45,9 +45,9 @@ const welcomeMessageStyle = {
 
 const Header = ({ user }) => (
   <Navbar variant="dark" expand="md">
-    <Navbar.Brand href="#" style={navBarHomeStyle}>
+    {/* <Navbar.Brand href="#" style={navBarHomeStyle}>
       Home
-    </Navbar.Brand>
+    </Navbar.Brand> */}
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="ml-auto">
