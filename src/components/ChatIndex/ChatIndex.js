@@ -4,9 +4,8 @@ import messages from '../AutoDismissAlert/messages'
 // import socket.io to establish socket connection with server
 import io from 'socket.io-client'
 // import ThirdTitle from '../../titles/thirdTitle'
-import { chatIndex, createMessage } from '../../api/chat'
+import { chatIndex, createMessage, chatDelete } from '../../api/chat'
 
-import handleDelete from '../ChatDelete/ChatDelete'
 import '../../pages/thirdPage.scss'
 
 // const channelStyle = () => {
@@ -123,6 +122,36 @@ class Chats extends Component {
       })
   }
 
+  onMessageDelete = (event) => {
+    event.preventDefault()
+
+    const { msgAlert } = this.props
+    const { user } = this.props
+
+    chatDelete(this.chats._id, user)
+    console.log('this is the id ' + this.chats.id)
+      .then(response => {
+        this.setState({
+          deleteId: response.data._id
+        })
+          .then(() => {
+            this.setState({ text: '' })
+            msgAlert({
+              heading: 'Message Deleted!',
+              message: messages.deleteMessageSuccess,
+              variant: 'success'
+            })
+          })
+          .catch(error => {
+            msgAlert({
+              heading: 'Message delete failed ' + error.message,
+              message: messages.deleteMessageFailure,
+              variant: 'danger'
+            })
+          })
+      })
+  }
+
   // onChangeColor () {
   //   const color = document.getElementById('InputText').value
   //   document.body.style.backgroundColor = color
@@ -132,7 +161,7 @@ class Chats extends Component {
     const chats = this.state.chats.map(chat => (
       <li key={chat._id}>
         <Link to={`/chats/${chat._id}`}>{chat.title}</Link>
-        <button onClick={handleDelete}>Delete</button>
+        <button onClick={this.onMessageDelete}>Delete</button>
         <Link to={'/chat-update/' + chat._id}>Update Chat </Link>
         <Link to={`/chats/${chat._id}`}>{chat.text}</Link>
       </li>

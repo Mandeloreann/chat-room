@@ -25,7 +25,7 @@ export const chatIndex = user => {
 export const chatDelete = (data, user) => {
   return axios({
     method: 'DELETE',
-    url: apiUrl + '/chats',
+    url: apiUrl + '/chats/:id',
     headers: {
       'Authorization': `Token token=${user.token}`
     },
