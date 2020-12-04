@@ -40,7 +40,7 @@ body {
     overflow: auto;
   }
 
-  .profile {
+  .misc {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -108,12 +108,6 @@ body {
     }
     height: 100vh;
   }
-
-  // .chatList {
-  //   color: red;
-  //   position: absolute;
-  //   left: 23%;
-  // }
 
   .chatArray {
     position: absolute;

@@ -122,33 +122,6 @@ class Chats extends Component {
       })
   }
 
-  // onCreateMessage = (event) => {
-  //   event.preventDefault()
-  //
-  //   const { msgAlert } = this.props
-  //   // console.log('this is ', this)
-  //   const { user } = this.props
-  //   createMessage(this.state, user)
-  //     .then(response => {
-  //       // console.log('response.data.chat.owner is ', response.data.chat.owner)
-  //       this.setState({
-  //         createdId: response.data._id
-  //         // owner: response.data.chat.owner
-  //       })
-  //     })
-  //     .then(() => msgAlert({
-  //       heading: 'Sent!',
-  //       message: messages.createMessageSuccess,
-  //       variant: 'success'
-  //     }))
-  //     .catch(error => {
-  //       this.setState({ text: '' })
-  //       msgAlert({
-  //         heading: 'Message failed ' + error.message,
-  //         message: messages.createMessageFailure,
-  //         variant: 'danger'
-  //       })
-  //     })
   onMessageDelete = (event) => {
     event.preventDefault()
 
@@ -231,7 +204,7 @@ class Chats extends Component {
             </output>
           </div>
         </form>
-        <p className="profile">MISC</p>
+        <p className="misc">MISC</p>
       </div>
     )
   }
