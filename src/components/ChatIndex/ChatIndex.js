@@ -4,9 +4,13 @@ import messages from '../AutoDismissAlert/messages'
 // import socket.io to establish socket connection with server
 import io from 'socket.io-client'
 // import ThirdTitle from '../../titles/thirdTitle'
-import { chatIndex, createMessage } from '../../api/chat'
+import { chatIndex, createMessage, chatDelete } from '../../api/chat'
 
 import '../../pages/thirdPage.scss'
+
+// const channelStyle = () => {
+
+// }
 
 let socketUrl
 const socketUrls = {
@@ -145,46 +149,60 @@ class Chats extends Component {
   //         variant: 'danger'
   //       })
   //     })
+  onMessageDelete = (event) => {
+    event.preventDefault()
+
+    const { msgAlert } = this.props
+    const { user } = this.props
+
+    chatDelete(this.chats._id, user)
+    console.log('this is the id ' + this.chats.id)
+      .then(response => {
+        this.setState({
+          deleteId: response.data._id
+        })
+          .then(() => {
+            this.setState({ text: '' })
+            msgAlert({
+              heading: 'Message Deleted!',
+              message: messages.deleteMessageSuccess,
+              variant: 'success'
+            })
+          })
+          .catch(error => {
+            msgAlert({
+              heading: 'Message delete failed ' + error.message,
+              message: messages.deleteMessageFailure,
+              variant: 'danger'
+            })
+          })
+      })
+  }
+
+  // onChangeColor () {
+  //   const color = document.getElementById('InputText').value
+  //   document.body.style.backgroundColor = color
   // }
 
   render () {
     const chats = this.state.chats.map(chat => (
       <li key={chat._id}>
+        <Link to={`/chats/${chat._id}`}>{chat.title}</Link>
+        <button onClick={this.onMessageDelete}>Delete</button>
+        <Link to={'/chat-update/' + chat._id}>Update Chat </Link>
         <Link to={`/chats/${chat._id}`}>{chat.text}</Link>
       </li>
     ))
+    // const changeColor = (
+    //   <input type="text" id="InputText">
+    //     <input type="color" id="InputColor">
+    //       <input type="button" id="colorButton" value="select color" onClick="changeColor()">
+    //       </input>
+    //     </input>
+    //   </input>
+    // )
     return (
       <div>
-        <div>
-          {/* <h1>(username)</h1> */}
-          {/* <form onSubmit={this.onCreateMessage}>
-            <textarea
-              className="typeMessage"
-  render () {
-    const chats = this.state.chats.map(chat => (
-      <li key={chat._id}>
-        <Link to={`/chats/${chat._id}`}>{chat.title}</Link>
-      </li>
-    ))
-    return (
-      <div>
-        <ul>
-          {chats}
-        </ul>
-        <div>
-          <h1>(username)</h1>
-          <form onSubmit={this.onCreateMessage}>
-            <input
-              placeholder="chat away..."
-              name="text"
-              value={this.state.chat.text}
-              onChange={this.handleInputChange}
-            />
-            <button type="submit">Send</button>
-          </form> */}
-        </div>
-        {/* <ThirdTitle /> */}
-
         <p
           className="channels">
           CHANNELS
@@ -205,10 +223,10 @@ class Chats extends Component {
               onChange={this.handleInputChange}
             />
             <button type="submit" className="sendMessageButton"></button>
-            {/* <textarea className="typeMessage" type="text" name="chat[text]" placeholder="Type Your Message Here"></textarea> */}
             <output type="text" name="chat[text]" className="sentMessage">
               <ul className="chatArray">
                 {chats}
+                {/* {changeColor} */}
               </ul>
             </output>
           </div>

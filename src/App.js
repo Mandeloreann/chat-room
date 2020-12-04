@@ -11,6 +11,7 @@ import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
 // import ChatCreate from '../src/components/ChatCreate/ChatCreate'
 import ChatIndex from './components/ChatIndex/ChatIndex'
+import UpdateChat from './components/Update/Update'
 import FirstPage from './pages/firstPage'
 import SecondPage from './pages/secondPage'
 // import ThirdPage from './pages/thirdPage'
@@ -83,6 +84,14 @@ class App extends Component {
               {/* <ChatCreate msgAlert={this.msgAlert} user={user} /> */}
             </div>
           )} />
+          <AuthenticatedRoute user={user} path='/movie-update/:movieId' render={({ match, history }) => (
+            <UpdateChat
+              match={match}
+              history={history}
+              user={user}
+              msgAlert={this.msgAlert}
+            />
+          )}/>
         </main>
         <Route exact path="/channels" component={SecondPage} />
         <Route exact path="/settings" component={colorPicker} />
