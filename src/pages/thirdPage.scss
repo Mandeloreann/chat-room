@@ -57,7 +57,7 @@ body {
 
   .typeMessage {
     outline: none;
-    height: 20%;
+    height: 25%;
     width: 85%;
     position: absolute;
     left: 0%;
@@ -73,7 +73,7 @@ body {
 
   .sendMessageButton {
     outline: none;
-    height: 20%;
+    height: 25%;
     width: 15%;
     background-image: url('https://image.flaticon.com/icons/png/512/60/60525.png');
     background-color: white;
@@ -101,7 +101,7 @@ body {
     color: white;
     position: absolute;
     right: 0%;
-    bottom: 22%;
+    bottom: 25%;
     overflow: auto;
     &:hover{
       color: red;
