@@ -96,7 +96,6 @@ class Chats extends Component {
     const { msgAlert } = this.props
     // console.log('this is ', this)
     const { user } = this.props
-    console.log(this.state)
     createMessage(this.state.chat, user)
       .then(response => {
         console.log('this is the rep ' + response)
