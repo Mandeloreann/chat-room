@@ -15,6 +15,7 @@ const authenticatedOptions = (
   <Fragment>
     <Nav.Link href="#change-password" style={navBarTextStyle}>Change Password</Nav.Link>
     <Nav.Link href="#sign-out" style={navBarTextStyle}>Sign Out</Nav.Link>
+    <Nav.Link href="#chats" style={navBarTextStyle}>Chats</Nav.Link>
   </Fragment>
 )
 
