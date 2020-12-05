@@ -19,6 +19,10 @@ const navBarHomeStyle = {
   top: '-15%'
 }
 
+const channelStyle = {
+  outline: 'none'
+}
+
 let socketUrl
 const socketUrls = {
   production: 'wss://aqueous-atoll-85096.herokuapp.com',
@@ -141,6 +145,7 @@ class Chats extends Component {
         this.setState({
           deleteId: response.data._id
         })
+        console.log('this is the resss' + response)
           .then(() => {
             this.setState({ text: '' })
             msgAlert({
@@ -188,13 +193,16 @@ class Chats extends Component {
         </Navbar.Brand>
         <p
           className="channels">
-          CHANNELS
-          <button type="button" className="channel1">English1</button>
-          <button type="button" className="channel2">English2</button>
-          <button type="button" className="channel3">Spanish1</button>
-          <button type="button" className="channel4">Spanish2</button>
-          <button type="button" className="channel5">Japanese1</button>
-          <button type="button" className="channel6">Japanese2</button>
+          Created Channels
+          <Link to="/channelCreator" className="channelCreator">Create A Channel</Link>
+          <p className="defaultChannels">Default Channels
+            <button type="button" className="channel1" style={channelStyle}>English1</button>
+            <button type="button" className="channel2" style={channelStyle}>English2</button>
+            {/* <button type="button" className="channel3" style={channelStyle}>Spanish1</button>
+            <button type="button" className="channel4" style={channelStyle}>Spanish2</button>
+            <button type="button" className="channel5" style={channelStyle}>Japanese1</button>
+            <button type="button" className="channel6" style={channelStyle}>Japanese2</button> */}
+          </p>
         </p>
         <form onSubmit={this.onCreateMessage} className="typeMessageForm">
           <div className="chat">

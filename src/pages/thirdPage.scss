@@ -20,6 +20,7 @@ body {
     left: 0%;
     color: red;
     background-color: black;
+    overflow: auto;
   }
 
   .chat {
@@ -121,10 +122,54 @@ body {
     outline: none;
   }
 
+  .channelCreator{
+    outline: none;
+    position: absolute;
+    top: 25%;
+    right: 35%;
+    height: 10%;
+    width: 40%;
+    font-size: 50%;
+    text-align: center;
+    background-color: transparent;
+    border-radius: 35%;
+    animation: channelNames 10s infinite;
+    @keyframes channelNames {
+      from {
+        text-shadow: 0 0 10px blue, 0 0 20px white, 0 0 30px red, 0 0 40px blue, 0 0 50px white, 0 0 60px red, 0 0 70px blue;
+      }
+      to {
+        text-shadow: 0 0 10px red, 0 0 20px white, 0 0 30px blue, 0 0 40px red, 0 0 50px white, 0 0 60px blue, 0 0 70px red;
+      }
+    }
+    color: white;
+    &:hover {
+      color: cyan;
+    }
+    border: none;
+  }
+
+  .defaultChannels{
+    fill-opacity: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    border-top: 5px solid green;
+    width: 25vw;
+    height: 100vh;
+    font-size: 50px;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    color: green;
+    overflow: auto;
+  }
+
   .channel1 {
     outline: none;
     position: absolute;
-    top: 15%;
+    top: 20%;
     right: 35%;
     height: 10%;
     width: 40%;
@@ -151,6 +196,7 @@ body {
   .channel2 {
     outline: none;
     position: absolute;
+    top: 30%;
     right: 35%;
     height: 10%;
     width: 40%;
@@ -168,7 +214,6 @@ body {
       }
     }
     border: none;
-    top: 25%;
     color: white;
     &:hover {
       color: cyan;
@@ -195,7 +240,7 @@ body {
       }
     }
     border: none;
-    top: 35%;
+    top: 45%;
     color: white;
     &:hover {
       color: cyan;
@@ -222,7 +267,7 @@ body {
       }
     }
     border: none;
-    top: 45%;
+    top: 55%;
     color: white;
     &:hover {
       color: cyan;
@@ -249,7 +294,7 @@ body {
       }
     }
     border: none;
-    top: 55%;
+    top: 65%;
     color: white;
     &:hover {
       color: cyan;
@@ -276,7 +321,7 @@ body {
       }
     }
     border: none;
-    top: 65%;
+    top: 75%;
     color: white;
     &:hover {
       color: cyan;

@@ -1,32 +1,32 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
 
-export const createMessage = (chat, user) => {
+export const createChannel = (channel, user) => {
   return axios({
     method: 'POST',
-    url: apiUrl + '/chats',
+    url: apiUrl + '/channelCreator',
     headers: {
       'Authorization': `Token token=${user.token}`
     },
-    data: { chat }
+    data: { channel }
   })
 }
 
-export const chatIndex = user => {
+export const channelIndex = user => {
   return axios({
     method: 'GET',
-    url: apiUrl + '/chats',
+    url: apiUrl + '/channelCreator',
     headers: {
       'Authorization': `Token token=${user.token}`
     }
   })
 }
 
-export const chatDelete = (data, user) => {
+export const channelDelete = (data, user) => {
   return axios({
     method: 'DELETE',
-    url: apiUrl + '/chats/:id',
-    // url: apiUrl + '/chats/' + data.chats._id
+    url: apiUrl + '/channelCreator/:id',
+    // url: apiUrl + '/channelCreator/' + data.channels._id
     headers: {
       'Authorization': `Token token=${user.token}`
     },
