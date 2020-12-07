@@ -13,6 +13,10 @@ import '../../pages/thirdPage.scss'
 
 // }
 
+const channelStyle = {
+  outline: 'none'
+}
+
 const navBarHomeStyle = {
   color: 'white',
   borderRadius: '30%',
@@ -189,7 +193,7 @@ class Chats extends Component {
         <p
           className="channels">
           CHANNELS
-          <button type="button" className="channel1">English1</button>
+          <button type="button" className="channel1" style={channelStyle}>English1</button>
           {/* <button type="button" className="channel2">English2</button>
           <button type="button" className="channel3">Spanish1</button>
           <button type="button" className="channel4">Spanish2</button>
