@@ -5,7 +5,7 @@ import messages from '../AutoDismissAlert/messages'
 // import socket.io to establish socket connection with server
 import io from 'socket.io-client'
 // import ThirdTitle from '../../titles/thirdTitle'
-import { chatIndex, createMessage } from '../../api/chat'
+import { chatIndex, createMessage, chatDelete } from '../../api/chat'
 import '../../pages/thirdPage.scss'
 // const channelStyle = () => {
 // }
@@ -126,29 +126,29 @@ class Chats extends Component {
         })
       })
   }
+
   onMessageDelete = (event) => {
     event.preventDefault()
-    console.log(this.props)
-    console.log(this)
+    const chatId = event.target.name
 
-    // chatDelete(name, user)
-    // // console.log()
-    // // console.log(data)
-    //   .then(() => {
-    //     this.setState({ text: '' })
-    //     msgAlert({
-    //       heading: 'Message Deleted!',
-    //       message: messages.deleteMessageSuccess,
-    //       variant: 'success'
-    //     })
-    //   })
-    //   .catch(error => {
-    //     msgAlert({
-    //       heading: 'Message delete failed ' + error.message,
-    //       message: messages.deleteMessageFailure,
-    //       variant: 'danger'
-    //     })
-    //   })
+    chatDelete(this.props.user, chatId)
+    // console.log()
+    // console.log(data)
+      .then(() => {
+        this.setState({ text: '' })
+        this.props.msgAlert({
+          heading: 'Message Deleted!',
+          message: messages.deleteMessageSuccess,
+          variant: 'success'
+        })
+      })
+      .catch(error => {
+        this.props.msgAlert({
+          heading: 'Message delete failed ' + error.message,
+          message: messages.deleteMessageFailure,
+          variant: 'danger'
+        })
+      })
   }
   // onChangeColor () {
   //   const color = document.getElementById('InputText').value
@@ -158,6 +158,7 @@ class Chats extends Component {
     const chats = this.state.chats.map(chat => (
       <li key={chat._id}>
         <Link to={`/chat/${chat._id}`}>{chat.text}</Link>
+        <button name={chat._id} onClick={this.onMessageDelete}>Click</button>
       </li>
     ))
     // const changeColor = (
