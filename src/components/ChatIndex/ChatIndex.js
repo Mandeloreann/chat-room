@@ -1,18 +1,22 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
+import Navbar from 'react-bootstrap/Navbar'
 import messages from '../AutoDismissAlert/messages'
 // import socket.io to establish socket connection with server
 import io from 'socket.io-client'
 // import ThirdTitle from '../../titles/thirdTitle'
 import { chatIndex, createMessage } from '../../api/chat'
-
-import handleDelete from '../ChatDelete/ChatDelete'
 import '../../pages/thirdPage.scss'
-
 // const channelStyle = () => {
-
 // }
-
+const channelStyle = {
+  outline: 'none'
+}
+const navBarHomeStyle = {
+  color: 'white',
+  borderRadius: '30%',
+  top: '-15%'
+}
 let socketUrl
 const socketUrls = {
   production: 'wss://aqueous-atoll-85096.herokuapp.com',
@@ -92,10 +96,10 @@ class Chats extends Component {
   }
   onCreateMessage = (event) => {
     event.preventDefault()
-
     const { msgAlert } = this.props
     // console.log('this is ', this)
     const { user } = this.props
+    console.log(this.state)
     createMessage(this.state.chat, user)
       .then(response => {
         console.log('this is the rep ' + response)
@@ -112,6 +116,7 @@ class Chats extends Component {
         message: messages.createMessageSuccess,
         variant: 'success'
       }))
+      // Next make form clear on submit
       .catch(error => {
         this.setState({ text: '' })
         msgAlert({
@@ -121,19 +126,38 @@ class Chats extends Component {
         })
       })
   }
+  onMessageDelete = (event) => {
+    event.preventDefault()
+    console.log(this.props)
+    console.log(this)
 
+    // chatDelete(name, user)
+    // // console.log()
+    // // console.log(data)
+    //   .then(() => {
+    //     this.setState({ text: '' })
+    //     msgAlert({
+    //       heading: 'Message Deleted!',
+    //       message: messages.deleteMessageSuccess,
+    //       variant: 'success'
+    //     })
+    //   })
+    //   .catch(error => {
+    //     msgAlert({
+    //       heading: 'Message delete failed ' + error.message,
+    //       message: messages.deleteMessageFailure,
+    //       variant: 'danger'
+    //     })
+    //   })
+  }
   // onChangeColor () {
   //   const color = document.getElementById('InputText').value
   //   document.body.style.backgroundColor = color
   // }
-
   render () {
     const chats = this.state.chats.map(chat => (
       <li key={chat._id}>
-        <Link to={`/chats/${chat._id}`}>{chat.title}</Link>
-        <button onClick={handleDelete}>Delete</button>
-        <Link to={'/chat-update/' + chat._id}>Update Chat </Link>
-        <Link to={`/chats/${chat._id}`}>{chat.text}</Link>
+        <Link to={`/chat/${chat._id}`}>{chat.text}</Link>
       </li>
     ))
     // const changeColor = (
@@ -146,15 +170,18 @@ class Chats extends Component {
     // )
     return (
       <div>
+        <Navbar.Brand href="#/chats" style={navBarHomeStyle}>
+          Home
+        </Navbar.Brand>
         <p
           className="channels">
           CHANNELS
-          <button type="button" className="channel1">English1</button>
-          <button type="button" className="channel2">English2</button>
+          <button type="button" className="channel1" style={channelStyle}>English1</button>
+          {/* <button type="button" className="channel2">English2</button>
           <button type="button" className="channel3">Spanish1</button>
           <button type="button" className="channel4">Spanish2</button>
           <button type="button" className="channel5">Japanese1</button>
-          <button type="button" className="channel6">Japanese2</button>
+          <button type="button" className="channel6">Japanese2</button> */}
         </p>
         <form onSubmit={this.onCreateMessage} className="typeMessageForm">
           <div className="chat">
@@ -174,9 +201,9 @@ class Chats extends Component {
             </output>
           </div>
         </form>
-        <p className="profile">MISC</p>
+        <p className="misc">MISC</p>
       </div>
     )
   }
 }
-export default Chats
+export default withRouter(Chats)

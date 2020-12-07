@@ -22,13 +22,22 @@ export const chatIndex = user => {
   })
 }
 
-export const chatDelete = (data, user) => {
+export const chatDelete = (user, chatId) => {
   return axios({
     method: 'DELETE',
-    url: apiUrl + '/chats',
+    url: apiUrl + '/chats/' + chatId,
     headers: {
       'Authorization': `Token token=${user.token}`
-    },
-    data: data
+    }
+  })
+}
+
+export const showChats = (user, chatId) => {
+  return axios({
+    method: 'GET',
+    url: apiUrl + '/chats/' + chatId,
+    headers: {
+      'Authorization': `Token token=${user.token}`
+    }
   })
 }
