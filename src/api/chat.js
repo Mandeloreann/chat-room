@@ -41,3 +41,14 @@ export const showChats = (user, chatId) => {
     }
   })
 }
+
+export const chatUpdate = (updateChatData, chatId, user) => {
+  return axios({
+    method: 'PATCH',
+    url: apiUrl + '/chats/' + chatId,
+    headers: {
+      'Authorization': `Token token=${user.token}`
+    },
+    data: { updateChatData }
+  })
+}
