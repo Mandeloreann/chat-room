@@ -5,7 +5,7 @@ import messages from '../AutoDismissAlert/messages'
 // import socket.io to establish socket connection with server
 import io from 'socket.io-client'
 // import ThirdTitle from '../../titles/thirdTitle'
-import { chatIndex, createMessage, chatDelete } from '../../api/chat'
+import { chatIndex, createMessage, chatDelete, chatUpdate } from '../../api/chat'
 import '../../pages/thirdPage.scss'
 // const channelStyle = () => {
 // }
@@ -84,13 +84,17 @@ class Chats extends Component {
     //   })
     // })
   }
+
   handleInputChange = (event) => {
     event.persist()
+    console.log(event)
+    console.log(event.target.value)
     this.setState(prevState => {
       const updatedField = {
         [event.target.name]: event.target.value
       }
       const updatedData = Object.assign({}, prevState.chat, updatedField)
+      console.log({ chat: updatedData })
       return { chat: updatedData }
     })
   }
@@ -127,6 +131,54 @@ class Chats extends Component {
       })
   }
 
+updateChat = (event) => {
+  event.preventDefault()
+  const chatId = event.target.name
+  const updateChatData = this.state.chat.uData
+  chatUpdate(this.props.user, chatId, updateChatData)
+    .then(() => {
+      this.setState({ text: '' })
+      this.props.msgAlert({
+        heading: 'Message Updated!',
+        message: messages.updateMessageSuccess,
+        variant: 'success'
+      })
+    })
+    .catch(error => {
+      this.props.msgAlert({
+        heading: 'Message update failed ' + error.message,
+        message: messages.updateMessageFailure,
+        variant: 'danger'
+      })
+    })
+}
+
+handleInputUpdate = (event) => {
+  event.persist()
+  console.log(event)
+  console.log(event.target.value) // this references the updated chat text
+  this.setState(prevState => {
+    const uField = {
+      'text': event.target.value
+    }
+    const uData = Object.assign({}, prevState.chat, uField)
+    console.log(uField)
+    console.log({ chat: uData })
+    return { chat: uData }
+  })
+}
+
+// handleInputChange = (event) => {
+//   event.persist()
+//   this.setState(prevState => {
+//     const updatedField = {
+//       [event.target.name]: event.target.value
+//     }
+//     const updatedData = Object.assign({}, prevState.chat, updatedField)
+//     return { chat: updatedData }
+//   })
+// }
+
   onMessageDelete = (event) => {
     event.preventDefault()
     const chatId = event.target.name
@@ -158,9 +210,12 @@ class Chats extends Component {
     const chats = this.state.chats.map(chat => (
       <li key={chat._id}>
         <Link to={`/chat/${chat._id}`}>{chat.text}</Link>
-        <button name={chat._id} onClick={this.onMessageDelete}>Click</button>
+        <button name={chat._id} onClick={this.onMessageDelete}>Delete</button>
+        <textarea placeholder='update chat?' type='text' name='update' value={this.state.chat.udpateData} onChange={this.handleInputUpdate}/>
+        <button name={chat._id} type='submit'onSubmit={this.updateChat}>Update</button>
       </li>
     ))
+
     // const changeColor = (
     //   <input type="text" id="InputText">
     //     <input type="color" id="InputColor">
