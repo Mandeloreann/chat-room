@@ -1,28 +1,21 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import Navbar from 'react-bootstrap/Navbar'
 import messages from '../AutoDismissAlert/messages'
 // import socket.io to establish socket connection with server
 import io from 'socket.io-client'
-// import ThirdTitle from '../../titles/thirdTitle'
-import { chatIndex, createMessage, chatDelete } from '../../api/chat'
-
+import { chatIndex, createMessage, chatDelete, chatUpdate } from '../../api/chat'
 import '../../pages/thirdPage.scss'
-
 // const channelStyle = () => {
-
 // }
-
+const channelStyle = {
+  outline: 'none'
+}
 const navBarHomeStyle = {
   color: 'white',
   borderRadius: '30%',
   top: '-15%'
 }
-
-const channelStyle = {
-  outline: 'none'
-}
-
 let socketUrl
 const socketUrls = {
   production: 'wss://aqueous-atoll-85096.herokuapp.com',
@@ -40,7 +33,8 @@ class Chats extends Component {
     this.state = {
       chats: [],
       chat: {
-        text: ''
+        text: '',
+        update: ''
       }
     }
   }
@@ -90,19 +84,22 @@ class Chats extends Component {
     //   })
     // })
   }
+
   handleInputChange = (event) => {
     event.persist()
+    console.log(event)
+    console.log(event.target.value)
     this.setState(prevState => {
       const updatedField = {
         [event.target.name]: event.target.value
       }
       const updatedData = Object.assign({}, prevState.chat, updatedField)
+      console.log({ chat: updatedData })
       return { chat: updatedData }
     })
   }
   onCreateMessage = (event) => {
     event.preventDefault()
-
     const { msgAlert } = this.props
     // console.log('this is ', this)
     const { user } = this.props
@@ -123,6 +120,7 @@ class Chats extends Component {
         message: messages.createMessageSuccess,
         variant: 'success'
       }))
+      // Next make form clear on submit
       .catch(error => {
         this.setState({ text: '' })
         msgAlert({
@@ -133,51 +131,93 @@ class Chats extends Component {
       })
   }
 
+updateChat = (event) => {
+  event.preventDefault()
+
+  const chatId = event.target.name
+  const updateChatData = this.state.chat.uData
+
+  chatUpdate(this.props.user, chatId, updateChatData)
+    .then(() => {
+      this.setState({ text: '' })
+      this.props.msgAlert({
+        heading: 'Message Updated!',
+        message: messages.updateMessageSuccess,
+        variant: 'success'
+      })
+    })
+    .catch(error => {
+      this.props.msgAlert({
+        heading: 'Message update failed ' + error.message,
+        message: messages.updateMessageFailure,
+        variant: 'danger'
+      })
+    })
+}
+
+handleInputUpdate = (event) => {
+  event.persist()
+  console.log(event)
+  console.log(event.target.value) // this references the updated chat text
+  this.setState(prevState => {
+    const uField = {
+      'text': event.target.value
+    }
+    const uData = Object.assign({}, prevState.chat, uField)
+    console.log(uField)
+    console.log({ chat: uData })
+    return { chat: uData }
+  })
+}
+
+// handleInputChange = (event) => {
+//   event.persist()
+//   this.setState(prevState => {
+//     const updatedField = {
+//       [event.target.name]: event.target.value
+//     }
+//     const updatedData = Object.assign({}, prevState.chat, updatedField)
+//     return { chat: updatedData }
+//   })
+// }
+
   onMessageDelete = (event) => {
     event.preventDefault()
+    const chatId = event.target.name
 
-    const { msgAlert } = this.props
-    const { user } = this.props
-
-    chatDelete(this.chats._id, user)
-    // console.log('this is the id ' + this.chats.id)
-      .then(response => {
-        this.setState({
-          deleteId: response.data._id
+    chatDelete(this.props.user, chatId)
+    // console.log()
+    // console.log(data)
+      .then(() => {
+        this.setState({ text: '' })
+        this.props.msgAlert({
+          heading: 'Message Deleted!',
+          message: messages.deleteMessageSuccess,
+          variant: 'success'
         })
-        console.log('this is the resss' + response)
-          .then(() => {
-            this.setState({ text: '' })
-            msgAlert({
-              heading: 'Message Deleted!',
-              message: messages.deleteMessageSuccess,
-              variant: 'success'
-            })
-          })
-          .catch(error => {
-            msgAlert({
-              heading: 'Message delete failed ' + error.message,
-              message: messages.deleteMessageFailure,
-              variant: 'danger'
-            })
-          })
+      })
+      .catch(error => {
+        this.props.msgAlert({
+          heading: 'Message delete failed ' + error.message,
+          message: messages.deleteMessageFailure,
+          variant: 'danger'
+        })
       })
   }
-
   // onChangeColor () {
   //   const color = document.getElementById('InputText').value
   //   document.body.style.backgroundColor = color
   // }
-
   render () {
     const chats = this.state.chats.map(chat => (
       <li key={chat._id}>
-        <Link to={`/chats/${chat._id}`}>{chat.title}</Link>
-        <button onClick={this.onMessageDelete}>Delete </button>
-        <Link to={'/chat-update/' + chat._id}>Update Chat </Link>
-        <Link to={`/chats/${chat._id}`}>{chat.text}</Link>
+        <Link to={`/chat/${chat._id}`}>{chat.text}</Link>
+        <button name={chat._id} onClick={this.onMessageDelete}>Delete</button>
+        <textarea placeholder='update chat?' type='text' name='update' value={this.state.chat.udpateData} onChange={this.handleInputUpdate}/>
+        <button name={chat._id} type='submit'onSubmit={this.updateChat}>Update</button>
       </li>
     ))
+
     // const changeColor = (
     //   <input type="text" id="InputText">
     //     <input type="color" id="InputColor">
@@ -195,14 +235,19 @@ class Chats extends Component {
           className="channels">
           Created Channels
           <Link to="/channelCreator" className="channelCreator">Create A Channel</Link>
-          <p className="defaultChannels">Default Channels
-            <button type="button" className="channel1" style={channelStyle}>English1</button>
-            <button type="button" className="channel2" style={channelStyle}>English2</button>
-            {/* <button type="button" className="channel3" style={channelStyle}>Spanish1</button>
-            <button type="button" className="channel4" style={channelStyle}>Spanish2</button>
-            <button type="button" className="channel5" style={channelStyle}>Japanese1</button>
-            <button type="button" className="channel6" style={channelStyle}>Japanese2</button> */}
-          </p>
+          <output type="text" name="channel[name]" className="channelsCreated">
+            <p>
+              {/* <ChannelIndex /> */}
+            </p>
+          </output>
+        </p>
+        <p className="defaultChannels">Default Channels
+          <button type="button" className="channel1" style={channelStyle}>English1</button>
+          <button type="button" className="channel2" style={channelStyle}>English2</button>
+          {/* <button type="button" className="channel3" style={channelStyle}>Spanish1</button>
+          <button type="button" className="channel4" style={channelStyle}>Spanish2</button>
+          <button type="button" className="channel5" style={channelStyle}>Japanese1</button>
+          <button type="button" className="channel6" style={channelStyle}>Japanese2</button> */}
         </p>
         <form onSubmit={this.onCreateMessage} className="typeMessageForm">
           <div className="chat">
@@ -227,4 +272,4 @@ class Chats extends Component {
     )
   }
 }
-export default Chats
+export default withRouter(Chats)

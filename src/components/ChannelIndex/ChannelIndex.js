@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import messages from '../AutoDismissAlert/messages'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-import { channelIndex, createChannel } from '../../api/channel'
+import { channelIndex, createChannel, channelDelete, channelUpdate } from '../../api/channel'
 
 const createChannelStyle = {
   color: 'red'
@@ -25,24 +25,10 @@ class Channels extends Component {
     [event.target.name]: event.target.value
   })
   componentDidMount () {
-    const { user, msgAlert } = this.props
+    const { user } = this.props
     channelIndex(user)
       .then(res => {
         this.setState({ channels: res.data.channels })
-      })
-      .then(() => {
-        msgAlert({
-          heading: 'Created a channel successfully',
-          variant: 'success',
-          message: 'Create your channel.'
-        })
-      })
-      .catch(err => {
-        msgAlert({
-          heading: 'you have failed to create the channel',
-          variant: 'danger',
-          message: 'Channel Error Message: ' + err.message
-        })
       })
   }
     handleInputChange = (event) => {
@@ -55,17 +41,18 @@ class Channels extends Component {
         return { channel: updatedData }
       })
     }
+
     onChannelCreate = (event) => {
       event.preventDefault()
 
-      const { msgAlert } = this.props
-      const { user } = this.props
+      const { msgAlert, user, history } = this.props
       createChannel(this.state.channel, user)
         .then(response => {
           this.setState({
             createdId: response.data._id
           })
         })
+        .then(() => history.push('/chats'))
         .then(() => msgAlert({
           heading: 'Channel Created',
           message: messages.createChannelSuccess,
@@ -80,13 +67,69 @@ class Channels extends Component {
           })
         })
     }
+
+    updateChannel = (event) => {
+      event.preventDefault()
+      const channelId = event.target.name
+      const updateChannelData = this.state.channel.uData
+      channelUpdate(this.props.user, channelId, updateChannelData)
+        .then(() => {
+          this.setState({ text: '' })
+          this.props.msgAlert({
+            heading: 'Channel Updated!',
+            message: messages.updateMessageSuccess,
+            variant: 'success'
+          })
+        })
+        .catch(error => {
+          this.props.msgAlert({
+            heading: 'Channel update failed ' + error.message,
+            message: messages.updateMessageFailure,
+            variant: 'danger'
+          })
+        })
+    }
+
+    handleChannelUpdate = (event) => {
+      event.persist()
+      this.setState(prevState => {
+        const uField = {
+          'text': event.target.value
+        }
+        const uData = Object.assign({}, prevState.channel, uField)
+        return { chat: uData }
+      })
+    }
+
+    onChannelDelete = (event) => {
+      event.preventDefault()
+      const channelId = event.target.name
+
+      channelDelete(this.props.user, channelId)
+        .then(() => {
+          this.setState({ text: '' })
+          this.props.msgAlert({
+            heading: 'Channel Deleted!',
+            message: messages.deleteChannelSuccess,
+            variant: 'success'
+          })
+        })
+        .catch(error => {
+          this.props.msgAlert({
+            heading: 'Channel delete failed ' + error.message,
+            message: messages.deleteChannelFailure,
+            variant: 'danger'
+          })
+        })
+    }
+
     render () {
       const channels = this.state.channels.map(channel => (
         <li key={channel._id}>
           <Link to={`/channelCreator/${channel._id}`}>{channel.title}</Link>
-          {/* <button onClick={this.channelDelete}>Delete </button> */}
-          <Link to={'/channel-update/' + channel._id}>Update Channel </Link>
-          <Link to={`/channelCreator/${channel._id}`}>{channel.name}</Link>
+          <button name={channel._id} onClick={this.onChannelDelete}>Delete</button>
+          <textarea placeholder='update channel' type='text' name='update' value={this.state.channel.updateData} onChange={this.handleChannelUpdate}/>
+          <button name={channel._id} type='submit' onSubmit={this.updateChannel}>Update</button>
         </li>
       ))
       return (
@@ -100,10 +143,10 @@ class Channels extends Component {
                 <Form.Control
                   required
                   type="text"
-                  name="text"
+                  name="name"
                   placeholder="Enter Your Channels Name"
                   value={this.state.channel.name}
-                  onChange={this.handleChange}
+                  onChange={this.handleInputChange}
                 />
               </Form.Group>
               <Button
@@ -112,9 +155,9 @@ class Channels extends Component {
               >
                 Submit
               </Button>
-              <p>
+              <ul>
                 {channels}
-              </p>
+              </ul>
             </Form>
           </div>
         </div>
@@ -135,4 +178,4 @@ class Channels extends Component {
     }
 }
 
-export default Channels
+export default withRouter(Channels)

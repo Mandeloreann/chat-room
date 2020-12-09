@@ -22,14 +22,33 @@ export const chatIndex = user => {
   })
 }
 
-export const chatDelete = (data, user) => {
+export const chatDelete = (user, chatId) => {
   return axios({
     method: 'DELETE',
-    url: apiUrl + '/chats/:id',
-    // url: apiUrl + '/chats/' + data.chats._id
+    url: apiUrl + '/chats/' + chatId,
+    headers: {
+      'Authorization': `Token token=${user.token}`
+    }
+  })
+}
+
+export const showChats = (user, chatId) => {
+  return axios({
+    method: 'GET',
+    url: apiUrl + '/chats/' + chatId,
+    headers: {
+      'Authorization': `Token token=${user.token}`
+    }
+  })
+}
+
+export const chatUpdate = (updateChatData, chatId, user) => {
+  return axios({
+    method: 'PATCH',
+    url: apiUrl + '/chats/' + chatId,
     headers: {
       'Authorization': `Token token=${user.token}`
     },
-    data: data._id
+    data: { updateChatData }
   })
 }

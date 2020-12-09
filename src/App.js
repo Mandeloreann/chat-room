@@ -9,16 +9,12 @@ import SignUp from './components/SignUp/SignUp'
 import SignIn from './components/SignIn/SignIn'
 import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
-// import ChatCreate from '../src/components/ChatCreate/ChatCreate'
 import ChatIndex from './components/ChatIndex/ChatIndex'
 import ChannelIndex from './components/ChannelIndex/ChannelIndex'
-// import UpdateChat from './components/Update/Update'
 import FirstPage from './pages/firstPage'
 import SecondPage from './pages/secondPage'
 // import ThirdPage from './pages/thirdPage'
-import colorPicker from './settings/colorPicker'
-// import English from './components/Channels/English'
-// import channelChats from './components/Channels/chats'
+// import colorPicker from './settings/colorPicker'
 
 class App extends Component {
   constructor () {
@@ -100,7 +96,7 @@ class App extends Component {
           )} />
         </main>
         <Route exact path="/channels" component={SecondPage} />
-        <Route exact path="/settings" component={colorPicker} />
+        {/* <Route exact path="/settings" component={colorPicker} /> */}
         {/* <Route exact path="/chats" component={ThirdPage} /> */}
       </Fragment>
     )
