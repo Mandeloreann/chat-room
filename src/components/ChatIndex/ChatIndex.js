@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import Navbar from 'react-bootstrap/Navbar'
 import messages from '../AutoDismissAlert/messages'
 // import socket.io to establish socket connection with server
@@ -34,7 +34,8 @@ class Chats extends Component {
     this.state = {
       chats: [],
       chat: {
-        text: ''
+        text: '',
+        update: ''
       }
     }
   }
@@ -98,6 +99,7 @@ class Chats extends Component {
       return { chat: updatedData }
     })
   }
+
   onCreateMessage = (event) => {
     event.preventDefault()
     const { msgAlert } = this.props
@@ -134,7 +136,15 @@ class Chats extends Component {
 updateChat = (event) => {
   event.preventDefault()
   const chatId = event.target.name
-  const updateChatData = this.state.chat.uData
+  const data = this.state.chat.update
+  console.log(data)
+  const updateChatData = {
+    'chat': {
+      'text': data
+    }
+  }
+  console.log(updateChatData)
+
   chatUpdate(this.props.user, chatId, updateChatData)
     .then(() => {
       this.setState({ text: '' })
@@ -159,7 +169,7 @@ handleInputUpdate = (event) => {
   console.log(event.target.value) // this references the updated chat text
   this.setState(prevState => {
     const uField = {
-      'text': event.target.value
+      'update': event.target.value
     }
     const uData = Object.assign({}, prevState.chat, uField)
     console.log(uField)
@@ -184,8 +194,6 @@ handleInputUpdate = (event) => {
     const chatId = event.target.name
 
     chatDelete(this.props.user, chatId)
-    // console.log()
-    // console.log(data)
       .then(() => {
         this.setState({ text: '' })
         this.props.msgAlert({
@@ -209,10 +217,10 @@ handleInputUpdate = (event) => {
   render () {
     const chats = this.state.chats.map(chat => (
       <li key={chat._id}>
-        <Link to={`/chat/${chat._id}`}>{chat.text}</Link>
+        <p className='chatTextStyle'>{chat.text}</p>
         <button name={chat._id} onClick={this.onMessageDelete}>Delete</button>
-        <textarea placeholder='update chat?' type='text' name='update' value={this.state.chat.udpateData} onChange={this.handleInputUpdate}/>
-        <button name={chat._id} type='submit'onSubmit={this.updateChat}>Update</button>
+        <textarea placeholder='update chat?' type='text' name='update' onChange={this.handleInputUpdate}/>
+        <button name={chat._id} onClick={this.updateChat}>Update</button>
       </li>
     ))
 
