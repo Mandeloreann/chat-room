@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { withRouter } from 'react-router-dom'
 // import Navbar from 'react-bootstrap/Navbar'
 =======
+=======
+>>>>>>> tempbranch
 import { withRouter, Link } from 'react-router-dom'
 import Navbar from 'react-bootstrap/Navbar'
 >>>>>>> 1b5d215... Debugged Update Path
