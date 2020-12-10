@@ -16,7 +16,7 @@ const ChatShow = (props) => {
 
     showChats(user, match.params.chatId)
       .then(res => {
-        console.log(res)
+        // console.log(res)
         setChat(res.data.chat)
       })
       .then(() => {
