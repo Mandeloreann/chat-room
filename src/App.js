@@ -85,7 +85,7 @@ class App extends Component {
               {/* <ChatCreate msgAlert={this.msgAlert} user={user} /> */}
             </div>
           )} />
-          <AuthenticatedRoute user={user} path='/chats/:chatId' render={({ match, history }) => (
+          <AuthenticatedRoute user={user} path='/chat-update/:chatId' render={({ match, history }) => (
             <UpdateChat
               match={match}
               history={history}

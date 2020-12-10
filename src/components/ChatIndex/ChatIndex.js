@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import Navbar from 'react-bootstrap/Navbar'
+// import Navbar from 'react-bootstrap/Navbar'
 import messages from '../AutoDismissAlert/messages'
 // import socket.io to establish socket connection with server
 import io from 'socket.io-client'
@@ -12,16 +12,19 @@ import '../../pages/thirdPage.scss'
 const channelStyle = {
   outline: 'none'
 }
-const navBarHomeStyle = {
-  color: 'white',
-  borderRadius: '30%',
-  top: '-15%'
-}
+// const navBarHomeStyle = {
+//   color: 'white',
+//   borderRadius: '30%',
+//   top: '-15%'
+// }
 let socketUrl
 const socketUrls = {
   production: 'wss://aqueous-atoll-85096.herokuapp.com',
   development: 'ws://localhost:4741'
 }
+// const socket = io(socketUrl, {
+//   // reconnection: false
+// })
 if (window.location.hostname === 'localhost') {
   socketUrl = socketUrls.development
 } else {
@@ -51,13 +54,13 @@ class Chats extends Component {
         this.setState({ chats: res.data.chats })
       })
       // .then(console.log(this.state))
-      .then(() => {
-        msgAlert({
-          heading: 'Chat Thread Refreshed',
-          variant: 'success',
-          message: 'Chat room has now loaded, send a message to get started.'
-        })
-      })
+      // .then(() => {
+      //   msgAlert({
+      //     heading: 'Chat Thread Refreshed',
+      //     variant: 'success',
+      //     message: 'Chat room has now loaded, send a message to get started.'
+      //   })
+      // })
       .catch(err => {
         msgAlert({
           heading: 'Chat Thread Failed to Load',
@@ -234,9 +237,6 @@ handleInputUpdate = (event) => {
     // )
     return (
       <div>
-        <Navbar.Brand href="#/chats" style={navBarHomeStyle}>
-          Home
-        </Navbar.Brand>
         <p
           className="channels">
           CHANNELS
@@ -265,7 +265,6 @@ handleInputUpdate = (event) => {
             </output>
           </div>
         </form>
-        <p className="misc">MISC</p>
       </div>
     )
   }
