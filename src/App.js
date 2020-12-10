@@ -11,7 +11,6 @@ import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
 // import ChatCreate from '../src/components/ChatCreate/ChatCreate'
 import ChatIndex from './components/ChatIndex/ChatIndex'
-import ChatShow from './components/ChatShow/ChatShow'
 import UpdateChat from './components/Update/Update'
 import FirstPage from './pages/firstPage'
 import SecondPage from './pages/secondPage'
@@ -93,8 +92,8 @@ class App extends Component {
               msgAlert={this.msgAlert}
             />
           )}/>
-          <AuthenticatedRoute user={user} path='/chat/:chatId' render={({ match, history }) => (
-            <ChatShow
+          <AuthenticatedRoute user={user} exact path='/update/:chatId' render={({ match, history }) => (
+            <UpdateChat
               match={match}
               history={history}
               user={user}

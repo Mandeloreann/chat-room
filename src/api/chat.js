@@ -42,13 +42,13 @@ export const showChats = (user, chatId) => {
   })
 }
 
-export const chatUpdate = (user, chatId, updateChatData) => {
+export const chatUpdate = (user, chat, id) => {
   return axios({
     method: 'PATCH',
-    url: apiUrl + '/chats/' + chatId,
+    url: apiUrl + '/chats/' + id,
     headers: {
-      'Authorization': `Token token=${user.token}`
+      Authorization: `Bearer ${user.token}`
     },
-    data: updateChatData
+    data: { chat: chat }
   })
 }

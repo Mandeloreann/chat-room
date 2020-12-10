@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
+<<<<<<< HEAD
 import { withRouter } from 'react-router-dom'
 // import Navbar from 'react-bootstrap/Navbar'
+=======
+import { withRouter, Link } from 'react-router-dom'
+import Navbar from 'react-bootstrap/Navbar'
+>>>>>>> 1b5d215... Debugged Update Path
 import messages from '../AutoDismissAlert/messages'
 // import socket.io to establish socket connection with server
 import io from 'socket.io-client'
 // import ThirdTitle from '../../titles/thirdTitle'
-import { chatIndex, createMessage, chatDelete, chatUpdate } from '../../api/chat'
+import { chatIndex, createMessage, chatDelete } from '../../api/chat'
+
 import '../../pages/thirdPage.scss'
 // const channelStyle = () => {
 // }
@@ -42,6 +48,8 @@ class Chats extends Component {
       }
     }
   }
+
+  // what is this section? Isn't it repeated below
   handleChange = event => this.setState({
     [event.target.name]: event.target.value
   })
@@ -118,7 +126,6 @@ class Chats extends Component {
           createdId: response.data._id
           // owner: response.data.chat.owner
         })
-        console.log('this is state ' + this.state)
       })
       .then(() => msgAlert({
         heading: 'Sent!',
@@ -135,62 +142,6 @@ class Chats extends Component {
         })
       })
   }
-
-updateChat = (event) => {
-  event.preventDefault()
-  const chatId = event.target.name
-  const data = this.state.chat.update
-  console.log(data)
-  const updateChatData = {
-    'chat': {
-      'text': data
-    }
-  }
-  console.log(updateChatData)
-
-  chatUpdate(this.props.user, chatId, updateChatData)
-    .then(() => {
-      this.setState({ text: '' })
-      this.props.msgAlert({
-        heading: 'Message Updated!',
-        message: messages.updateMessageSuccess,
-        variant: 'success'
-      })
-    })
-    .catch(error => {
-      this.props.msgAlert({
-        heading: 'Message update failed ' + error.message,
-        message: messages.updateMessageFailure,
-        variant: 'danger'
-      })
-    })
-}
-
-handleInputUpdate = (event) => {
-  event.persist()
-  console.log(event)
-  console.log(event.target.value) // this references the updated chat text
-  this.setState(prevState => {
-    const uField = {
-      'update': event.target.value
-    }
-    const uData = Object.assign({}, prevState.chat, uField)
-    console.log(uField)
-    console.log({ chat: uData })
-    return { chat: uData }
-  })
-}
-
-// handleInputChange = (event) => {
-//   event.persist()
-//   this.setState(prevState => {
-//     const updatedField = {
-//       [event.target.name]: event.target.value
-//     }
-//     const updatedData = Object.assign({}, prevState.chat, updatedField)
-//     return { chat: updatedData }
-//   })
-// }
 
   onMessageDelete = (event) => {
     event.preventDefault()
@@ -213,17 +164,18 @@ handleInputUpdate = (event) => {
         })
       })
   }
+
   // onChangeColor () {
   //   const color = document.getElementById('InputText').value
   //   document.body.style.backgroundColor = color
   // }
+
   render () {
     const chats = this.state.chats.map(chat => (
       <li key={chat._id}>
         <p className='chatTextStyle'>{chat.text}</p>
         <button name={chat._id} onClick={this.onMessageDelete}>Delete</button>
-        <textarea placeholder='update chat?' type='text' name='update' onChange={this.handleInputUpdate}/>
-        <button name={chat._id} onClick={this.updateChat}>Update</button>
+        <Link to={'/update/' + chat._id}> edit </Link>
       </li>
     ))
 
