@@ -6,7 +6,7 @@ import messages from '../AutoDismissAlert/messages'
 import io from 'socket.io-client'
 
 import { chatIndex, createMessage, chatDelete } from '../../api/chat'
-import Channels from '../ChannelIndex/ChannelIndex'
+// import Channels from '../ChannelIndex/ChannelIndex'
 import '../../pages/thirdPage.scss'
 
 // const channelStyle = {
@@ -38,7 +38,8 @@ class Chats extends Component {
       chats: [],
       chat: {
         text: '',
-        update: ''
+        update: '',
+        isEditting: false
       }
     }
   }
@@ -93,14 +94,14 @@ class Chats extends Component {
 
   handleInputChange = (event) => {
     event.persist()
-    console.log(event)
-    console.log(event.target.value)
+    // console.log(event)
+    // console.log(event.target.value)
     this.setState(prevState => {
       const updatedField = {
         [event.target.name]: event.target.value
       }
       const updatedData = Object.assign({}, prevState.chat, updatedField)
-      console.log({ chat: updatedData })
+      // console.log({ chat: updatedData })
       return { chat: updatedData }
     })
   }
@@ -217,17 +218,21 @@ class Chats extends Component {
   //   document.body.style.backgroundColor = color
   // }
 
-  editMode = () => {
-    console.log('edittttt')
-  }
+  // editMode = () => {
+  //   this.setState({
+  //     isEditting: !this.state.chat.isEditting
+  //   })
+  //   this.state.chat.isEditting ? console.log('yes') : console.log('no')
+  // }
 
   render () {
     const chats = this.state.chats.map(chat => (
       <li key={chat._id}>
         <p className='chatTextStyle'>{chat.text}</p>
-        {/* <Link to={`/chat/${chat._id}`}>{chat.text}</Link> */}
         <button name={chat._id} onClick={this.onMessageDelete}>Delete</button>
-        <button onClick={this.editMode}>edit</button>
+        <Link to={'/update/' + chat._id}>edit</Link>
+        {/* fix edit mode later */}
+        {/* <button onClick={this.editMode}>{this.state.chat.text}edit</button> */}
         {/* <textarea placeholder='update chat?' type='text' name='update' value={this.state.chat.udpateData} onChange={this.handleInputUpdate}/>
         <button name={chat._id} type='submit'onSubmit={this.updateChat}>Update</button> */}
       </li>
@@ -250,9 +255,12 @@ class Chats extends Component {
           className="createdchannels">
           Created Channels
           <Link to="/channelCreator" className="channelCreator">Create A Channel</Link>
-          <output type="text" name="channel[name]" className="channelsCreated">
-            {Channels}
-          </output>
+          <output
+            type="text"
+            name="channel[name]"
+            className="channelsCreated"
+            defaultValue={this.state.chat.text}
+          ></output>
         </div>
         <div className="defaultChannels">Default Channels
           {/* <button type="button" className="channel1" style={channelStyle}>English1</button>
@@ -263,7 +271,12 @@ class Chats extends Component {
           <button type="button" className="channel6" style={channelStyle}>Japanese2</button> */}
         </div>
         <div className="chat">
-          <output type="text" name="chat[text]" className="sentMessage">
+          <output
+            type="text"
+            name="chat[text]"
+            className="sentMessage"
+            defaultValue={this.state.chat.text}
+          >
             <ul className="chatArray">
               {chats}
               {/* {changeColor} */}
