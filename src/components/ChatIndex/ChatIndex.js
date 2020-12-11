@@ -1,14 +1,5 @@
 import React, { Component } from 'react'
-<<<<<<< HEAD
-<<<<<<< HEAD
-import { withRouter } from 'react-router-dom'
-// import Navbar from 'react-bootstrap/Navbar'
-=======
-=======
->>>>>>> tempbranch
 import { withRouter, Link } from 'react-router-dom'
-import Navbar from 'react-bootstrap/Navbar'
->>>>>>> 1b5d215... Debugged Update Path
 import messages from '../AutoDismissAlert/messages'
 // import socket.io to establish socket connection with server
 import io from 'socket.io-client'

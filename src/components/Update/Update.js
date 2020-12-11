@@ -40,7 +40,7 @@ const UpdateChat = props => {
 
   if (updated) {
     return (
-      <Redirect to={`/chats/${match.params.id}`} />
+      <Redirect to='/chats/'/>
     )
   }
 
