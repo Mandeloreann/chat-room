@@ -5,11 +5,12 @@ import { v4 as uuid } from 'uuid'
 import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from './components/AutoDismissAlert/AutoDismissAlert'
 import Header from './components/Header/Header'
+import Footer from './components/Footer/Footer'
 import SignUp from './components/SignUp/SignUp'
 import SignIn from './components/SignIn/SignIn'
 import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
-// import ChatCreate from '../src/components/ChatCreate/ChatCreate'
+
 import ChatIndex from './components/ChatIndex/ChatIndex'
 import UpdateChat from './components/Update/Update'
 import FirstPage from './pages/firstPage'
@@ -69,6 +70,7 @@ class App extends Component {
           <Route path='/sign-in' render={() => (
             <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
+          <Route path='/' component={Footer} />
           <AuthenticatedRoute user={user} path='/sign-out' render={() => (
             <SignOut msgAlert={this.msgAlert} clearUser={this.clearUser} user={user} />
           )} />
@@ -84,7 +86,15 @@ class App extends Component {
               {/* <ChatCreate msgAlert={this.msgAlert} user={user} /> */}
             </div>
           )} />
-          <AuthenticatedRoute user={user} path='/movie-update/:movieId' render={({ match, history }) => (
+          <AuthenticatedRoute user={user} path='/chat-update/:chatId' render={({ match, history }) => (
+            <UpdateChat
+              match={match}
+              history={history}
+              user={user}
+              msgAlert={this.msgAlert}
+            />
+          )}/>
+          <AuthenticatedRoute user={user} exact path='/update/:chatId' render={({ match, history }) => (
             <UpdateChat
               match={match}
               history={history}
