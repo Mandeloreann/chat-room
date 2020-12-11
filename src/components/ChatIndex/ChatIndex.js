@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter, Link } from 'react-router-dom'
 import messages from '../AutoDismissAlert/messages'
+
 // import socket.io to establish socket connection with server
 import io from 'socket.io-client'
 // import ThirdTitle from '../../titles/thirdTitle'
@@ -19,7 +20,7 @@ const channelStyle = {
 // }
 let socketUrl
 const socketUrls = {
-  production: 'wss://aqueous-atoll-85096.herokuapp.com',
+  production: 'wss://chatroommm.herokuapp.com',
   development: 'ws://localhost:4741'
 }
 // const socket = io(socketUrl, {
@@ -30,10 +31,12 @@ if (window.location.hostname === 'localhost') {
 } else {
   socketUrl = socketUrls.production
 }
+
 class Chats extends Component {
   constructor (props) {
     super(props)
     // console.log('this is ', this)
+
     this.state = {
       chats: [],
       chat: {
@@ -46,12 +49,12 @@ class Chats extends Component {
   handleChange = event => this.setState({
     [event.target.name]: event.target.value
   })
+
   componentDidMount () {
     // After Page Loads perform Axios Index Request for Chat Resource
     const { user, msgAlert } = this.props
     chatIndex(user)
       .then(res => {
-        // console.log(res)
         this.setState({ chats: res.data.chats })
       })
       // .then(console.log(this.state))
@@ -73,15 +76,18 @@ class Chats extends Component {
     const socket = io(socketUrl, {
       reconnection: false
     })
+
     // define what you will be listening for here
     socket.on('connect', () => {
       console.log(socket)
       socket.emit('join')
     })
+
     // Alert Other Users this User Has Disconnected/Closed the Page
     socket.on('disconnect', () => {
       console.log(socket)
     })
+
     // listen for messages and update the chat index when one is received
     // socket.on('message', data => {
     //   this.setState({
@@ -109,11 +115,8 @@ class Chats extends Component {
     const { msgAlert } = this.props
     // console.log('this is ', this)
     const { user } = this.props
-    console.log(this.state)
     createMessage(this.state.chat, user)
       .then(response => {
-        console.log('this is the rep ' + response)
-        console.log('this is the rep data ' + response.data.chat)
         // console.log('response.data.chat.owner is ', response.data.chat.owner)
         this.setState({
           createdId: response.data._id
@@ -132,6 +135,8 @@ class Chats extends Component {
         message: messages.createMessageSuccess,
         variant: 'success'
       }))
+      .then(() => this.setState({ chat: {
+        text: '' } }))
       // Next make form clear on submit
       .catch(error => {
         this.setState({ text: '' })
@@ -149,7 +154,8 @@ class Chats extends Component {
 
     chatDelete(this.props.user, chatId)
       .then(() => {
-        this.setState({ text: '' })
+        this.setState({ chat: {
+          text: '' } })
         this.props.msgAlert({
           heading: 'Message Deleted!',
           message: messages.deleteMessageSuccess,
