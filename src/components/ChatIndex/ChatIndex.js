@@ -37,8 +37,7 @@ class Chats extends Component {
     this.state = {
       chats: [],
       chat: {
-        text: '',
-        update: ''
+        text: ''
       }
     }
   }
@@ -121,6 +120,13 @@ class Chats extends Component {
           // owner: response.data.chat.owner
         })
       })
+      .then(props => {
+        chatIndex(this.props.user)
+          .then(res => {
+            // console.log(res)
+            this.setState({ chats: res.data.chats })
+          })
+      })
       .then(() => msgAlert({
         heading: 'Sent!',
         message: messages.createMessageSuccess,
@@ -149,6 +155,13 @@ class Chats extends Component {
           message: messages.deleteMessageSuccess,
           variant: 'success'
         })
+      })
+      .then(props => {
+        chatIndex(this.props.user)
+          .then(res => {
+            // console.log(res)
+            this.setState({ chats: res.data.chats })
+          })
       })
       .catch(error => {
         this.props.msgAlert({
