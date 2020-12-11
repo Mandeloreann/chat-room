@@ -133,6 +133,8 @@ class Chats extends Component {
         message: messages.createMessageSuccess,
         variant: 'success'
       }))
+      .then(() => this.setState({ chat: {
+        text: '' } }))
       // Next make form clear on submit
       .catch(error => {
         this.setState({ text: '' })
