@@ -1,5 +1,15 @@
 @import '~bootstrap/scss/bootstrap';
 
+Body {
+  background-image: url('../images/5bfbc6fc218ebe70-bees-bombs-rainbow-spiral.gif');
+  // background-image: url('../images/Screenshot_4.png');
+  background-size: cover;
+  // overflow: auto;
+  // position: absolute;
+  // height: 100vh;
+  // width: 100vw;
+}
+
 .firstPage {
   margin: 40px;
 }
@@ -26,11 +36,6 @@
   color: white;
   background-color: black;
   border-radius: 15%;
-}
-
-body {
-  background-image: url('../images/5bfbc6fc218ebe70-bees-bombs-rainbow-spiral.gif');
-  background-size: cover;
 }
 
 // controls the area around home

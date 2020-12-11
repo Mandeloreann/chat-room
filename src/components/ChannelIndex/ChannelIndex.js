@@ -10,7 +10,7 @@ const createChannelStyle = {
   color: 'red'
 }
 
-class Channels extends Component {
+export class Channels extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -136,10 +136,9 @@ class Channels extends Component {
         <div className="row">
           <Link to="/chats" className="backButton">Back</Link>
           <div className="col-sm-10 col-md-8 mx-auto mt-5">
-            <h3 className="createChannelStyle" style={createChannelStyle}>Create A Channel</h3>
+            <h3 className="createChannelStyle" style={createChannelStyle}>Create a Channel</h3>
             <Form onSubmit={this.onChannelCreate}>
               <Form.Group controlId="name">
-                <Form.Label className="createChannelStyle" style={createChannelStyle}>Name of Channel</Form.Label>
                 <Form.Control
                   required
                   type="text"
@@ -155,27 +154,16 @@ class Channels extends Component {
               >
                 Submit
               </Button>
-              <ul>
+              <p className="createdChannelText">
                 {channels}
-              </ul>
+              </p>
             </Form>
           </div>
         </div>
       )
-      //   <div>
-      //     <p>Creating A Channel
-      //       <form onSubmit={this.onChannelCreate} className="channelCreateForm">
-      //         <input
-      //           type="text"
-      //           name="text"
-      //           value={this.state.channel.name}
-      //           onChange={this.handleInputChange}
-      //           placeholder="Your Channels Name">{channels}</input>
-      //       </form>
-      //     </p>
-      //   </div>
-      // )
     }
 }
 
-export default withRouter(Channels)
+export default (
+  withRouter(Channels)
+)
