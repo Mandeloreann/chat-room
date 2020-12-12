@@ -10,9 +10,6 @@ import { chatIndex, createMessage, chatDelete } from '../../api/chat'
 import '../../pages/thirdPage.scss'
 // const channelStyle = () => {
 // }
-const channelStyle = {
-  outline: 'none'
-}
 // const navBarHomeStyle = {
 //   color: 'white',
 //   borderRadius: '30%',
@@ -202,16 +199,6 @@ class Chats extends Component {
     // )
     return (
       <div>
-        <p
-          className="channels">
-          CHANNELS
-          <button type="button" className="channel1" style={channelStyle}>English1</button>
-          {/* <button type="button" className="channel2">English2</button>
-          <button type="button" className="channel3">Spanish1</button>
-          <button type="button" className="channel4">Spanish2</button>
-          <button type="button" className="channel5">Japanese1</button>
-          <button type="button" className="channel6">Japanese2</button> */}
-        </p>
         <form onSubmit={this.onCreateMessage} className="typeMessageForm">
           <div className="chat">
             <textarea
