@@ -39,12 +39,18 @@ significant roadblocks or were needing to work on the same files.
 
 ## User Stories
 As a user, I want to create an account so I can have ownership over my messages.
+
 As a user, I want to send messages so I can communicate with others on the application.
+
 As a user, I want to be able to edit my messages so I can improve sent messages.
+
 As a user, I want to delete messages so I can clear the feeds old messages.
+
 As a user, I want to be able to type in a message box so I can then send messages.
+
 As a user, I want to see an index of the messages upon log in so I can read messages
 of others easily.
+
 As a user I want there to be clear conrast in the pages elements so I can see them clearly.
 ## Wireframes
 
