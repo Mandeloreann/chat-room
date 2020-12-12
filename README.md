@@ -36,3 +36,7 @@ styling, user authentication, CRUD for user messages, and sockets.
 Three times a day we met to debug and merge branches. Combined with
 these stand-ups, we also mob programmed any time we ran into
 significant roadblocks or were needing to work on the same files.
+
+## Wireframes
+
+<https://imgur.com/a/ZzOdBnO>
