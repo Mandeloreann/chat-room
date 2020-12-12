@@ -3,7 +3,7 @@ import { withRouter, Link } from 'react-router-dom'
 import messages from '../AutoDismissAlert/messages'
 
 // import socket.io to establish socket connection with server
-import io from 'socket.io-client'
+// import io from 'socket.io-client'
 // import ThirdTitle from '../../titles/thirdTitle'
 import { chatIndex, createMessage, chatDelete } from '../../api/chat'
 
@@ -15,19 +15,19 @@ import '../../pages/thirdPage.scss'
 //   borderRadius: '30%',
 //   top: '-15%'
 // }
-let socketUrl
-const socketUrls = {
-  production: 'wss://chatroommm.herokuapp.com',
-  development: 'ws://localhost:4741'
-}
+// let socketUrl
+// const socketUrls = {
+//   production: 'wss://chatroommm.herokuapp.com',
+//   development: 'ws://localhost:4741'
+// }
 // const socket = io(socketUrl, {
 //   // reconnection: false
 // })
-if (window.location.hostname === 'localhost') {
-  socketUrl = socketUrls.development
-} else {
-  socketUrl = socketUrls.production
-}
+// if (window.location.hostname === 'localhost') {
+//   socketUrl = socketUrls.development
+// } else {
+//   socketUrl = socketUrls.production
+// }
 
 class Chats extends Component {
   constructor (props) {
@@ -70,20 +70,20 @@ class Chats extends Component {
         })
       })
     // Initialize the Server Side Socket
-    const socket = io(socketUrl, {
-      reconnection: false
-    })
-
-    // define what you will be listening for here
-    socket.on('connect', () => {
-      console.log(socket)
-      socket.emit('join')
-    })
-
-    // Alert Other Users this User Has Disconnected/Closed the Page
-    socket.on('disconnect', () => {
-      console.log(socket)
-    })
+    // const socket = io(socketUrl, {
+    //   reconnection: false
+    // })
+    //
+    // // define what you will be listening for here
+    // socket.on('connect', () => {
+    //   console.log(socket)
+    //   socket.emit('join')
+    // })
+    //
+    // // Alert Other Users this User Has Disconnected/Closed the Page
+    // socket.on('disconnect', () => {
+    //   console.log(socket)
+    // })
 
     // listen for messages and update the chat index when one is received
     // socket.on('message', data => {
@@ -95,14 +95,14 @@ class Chats extends Component {
 
   handleInputChange = (event) => {
     event.persist()
-    console.log(event)
-    console.log(event.target.value)
+    // console.log(event)
+    // console.log(event.target.value)
     this.setState(prevState => {
       const updatedField = {
         [event.target.name]: event.target.value
       }
       const updatedData = Object.assign({}, prevState.chat, updatedField)
-      console.log({ chat: updatedData })
+      // console.log({ chat: updatedData })
       return { chat: updatedData }
     })
   }
