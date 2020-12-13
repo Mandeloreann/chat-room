@@ -28,7 +28,7 @@ const UpdateChat = props => {
       // .then(() => props.history.push('/chat-show/' + match.params.chatId))
       .then(() => msgAlert({
         heading: 'Update successful',
-        message: 'Nice work',
+        message: 'Message has been edited',
         variant: 'success'
       }))
       .catch(err => msgAlert({

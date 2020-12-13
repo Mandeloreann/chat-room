@@ -2,294 +2,276 @@
 
 body {
   overflow: hidden;
-  outline: none;
+}
+
+.channels {
+  fill-opacity: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  border-top: 5px solid rgb(150, 55, 59);
+  width: 25vw;
+  height: 93vh;
+  font-size: 50px;
+  text-align: center;
+  position: absolute;
+  left: 0%;
+  bottom: -5%;
+  color: red;
   background-color: black;
+  overflow: auto;
+}
 
-  .channels {
-    fill-opacity: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
-    border-top: 5px solid rgb(150, 55, 59);
-    width: 25vw;
-    height: 100vh;
-    font-size: 50px;
-    text-align: center;
-    position: absolute;
-    left: 0%;
+.chat {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 5px solid rgb(150, 55, 59);
+  border-right: 5px solid rgb(150, 55, 59);
+  border-top: 5px solid rgb(150, 55, 59);
+  width: 75vw;
+  height: 100vh;
+  font-size: 50px;
+  text-align: center;
+  position: absolute;
+  left: 25%;
+  bottom: -10%;
+  color: blue;
+  background-color: black;
+  overflow: auto;
+}
+
+.misc {
+  font-size: 50px;
+  text-align: center;
+  position: absolute;
+  right: 0%;
+  color: green;
+}
+
+.typeMessage {
+  outline: none;
+  height: 15%;
+  width: 85%;
+  position: absolute;
+  left: 0%;
+  bottom: 10%;
+  background-color: transparent;
+  font-size: 70%;
+  color: white;
+  border-top: 3px solid rgb(150, 55, 59);
+  border-right: 3px solid rgb(150, 55, 59);
+  border-bottom: none;
+  border-left: none;
+}
+
+.sendMessageButton {
+  outline: none;
+  height: 15%;
+  width: 15%;
+  background-image: url('https://image.flaticon.com/icons/png/512/60/60525.png');
+  background-color: white;
+  border-top: 3px solid rgb(150, 55, 59);
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  background-size: cover;
+  background-position: absolute;
+  background-position-x: 80%;
+  background-position-y: -20px;
+  position: absolute;
+  bottom: 10%;
+  right: 0%;
+}
+
+.sentMessage {
+  text-align: center;
+  border: 3px solid rgb(150, 55, 59);
+  border-radius: 4px;
+  word-wrap: normal;
+  word-break: break-all;
+  color: white;
+  width: 100%;
+  height: 75%;
+  position: absolute;
+  right: 0%;
+  bottom: 25%;
+  overflow: auto;
+  &:hover{
     color: red;
-    background-color: black;
-  }
-
-  .chat {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-left: 5px solid rgb(150, 55, 59);
-    border-right: 5px solid rgb(150, 55, 59);
-    border-top: 5px solid rgb(150, 55, 59);
-    width: 50vw;
-    height: 100vh;
-    font-size: 50px;
-    text-align: center;
-    position: absolute;
-    left: 25%;
-    color: blue;
-    background-color: black;
-    overflow: auto;
-  }
-
-  .profile {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-top: 5px solid rgb(150, 55, 59);
-    width: 25vw;
-    height: 100vh;
-    font-size: 50px;
-    text-align: center;
-    position: absolute;
-    right: 0%;
-    color: green;
-    background-color: black;
-  }
-
-  .typeMessage {
-    outline: none;
-    height: 20%;
-    width: 85%;
-    position: absolute;
-    left: 0%;
-    bottom: 0%;
-    background-color: transparent;
-    font-size: 70%;
-    color: white;
-    border-top: 3px solid rgb(150, 55, 59);
-    border-right: 3px solid rgb(150, 55, 59);
-    border-bottom: none;
-    border-left: none;
-  }
-
-  .sendMessageButton {
-    outline: none;
-    height: 20%;
-    width: 15%;
-    background-image: url('https://image.flaticon.com/icons/png/512/60/60525.png');
-    background-color: white;
-    border-top: 3px solid rgb(150, 55, 59);
-    border-bottom: none;
-    border-left: none;
-    border-right: none;
-    background-size: cover;
-    background-position: absolute;
-    background-position-x: 80%;
-    background-position-y: -20px;
-    position: absolute;
-    bottom: 0%;
-    right: 0%;
-  }
-
-  .sentMessage {
-    text-align: center;
-    vertical-align: top;
-    border: 3px solid rgb(150, 55, 59);
-    border-radius: 4px;
-    width: 100%;
-    word-wrap: normal;
-    word-break: break-all;
-    color: white;
-    position: absolute;
-    right: 0%;
-    bottom: 22%;
-    overflow: auto;
-    &:hover{
-      color: red;
-    }
-    height: 100vh;
-  }
-
-  // .chatList {
-  //   color: red;
-  //   position: absolute;
-  //   left: 23%;
-  // }
-
-  .chatArray {
-    position: absolute;
-    top: 100vh;
-    left: 6vw;
-    color: black;
-    font-size: 20px;
-  }
-
-  .channels {
-    outline: none;
-    display: none;
-  }
-
-  .channel1 {
-    outline: none;
-    position: absolute;
-    top: 15%;
-    right: 35%;
-    height: 10%;
-    width: 40%;
-    font-size: 50%;
-    text-align: center;
-    background-color: transparent;
-    border-radius: 35%;
-    animation: channelNames 10s infinite;
-    @keyframes channelNames {
-      from {
-        text-shadow: 0 0 10px blue, 0 0 20px white, 0 0 30px red, 0 0 40px blue, 0 0 50px white, 0 0 60px red, 0 0 70px blue;
-      }
-      to {
-        text-shadow: 0 0 10px red, 0 0 20px white, 0 0 30px blue, 0 0 40px red, 0 0 50px white, 0 0 60px blue, 0 0 70px red;
-      }
-    }
-    color: white;
-    &:hover {
-      color: cyan;
-    }
-    border: none;
-  }
-
-  .channel2 {
-    outline: none;
-    position: absolute;
-    right: 35%;
-    height: 10%;
-    width: 40%;
-    font-size: 50%;
-    text-align: center;
-    border-radius: 25%;
-    background-color: transparent;
-    animation: channelNames 10s infinite;
-    @keyframes channelNames {
-      from {
-        text-shadow: 0 0 20px blue, 0 0 30px white, 0 0 40px red, 0 0 50px blue, 0 0 60px white, 0 0 70px red, 0 0 80px blue;
-      }
-      to {
-        text-shadow: 0 0 10px red, 0 0 20px white, 0 0 30px blue, 0 0 40px red, 0 0 50px white, 0 0 60px blue, 0 0 70px red;
-      }
-    }
-    border: none;
-    top: 25%;
-    color: white;
-    &:hover {
-      color: cyan;
-    }
-  }
-
-  .channel3 {
-    outline: none;
-    position: absolute;
-    right: 35%;
-    height: 10%;
-    width: 40%;
-    font-size: 50%;
-    text-align: center;
-    border-radius: 25%;
-    background-color: transparent;
-    animation: channelNames 10s infinite;
-    @keyframes channelNames {
-      from {
-        text-shadow: 0 0 20px blue, 0 0 30px white, 0 0 40px red, 0 0 50px blue, 0 0 60px white, 0 0 70px red, 0 0 80px blue;
-      }
-      to {
-        text-shadow: 0 0 10px red, 0 0 20px white, 0 0 30px blue, 0 0 40px red, 0 0 50px white, 0 0 60px blue, 0 0 70px red;
-      }
-    }
-    border: none;
-    top: 35%;
-    color: white;
-    &:hover {
-      color: cyan;
-    }
-  }
-
-  .channel4 {
-    outline: none;
-    position: absolute;
-    right: 35%;
-    height: 10%;
-    width: 40%;
-    font-size: 50%;
-    text-align: center;
-    border-radius: 25%;
-    background-color: transparent;
-    animation: channelNames 10s infinite;
-    @keyframes channelNames {
-      from {
-        text-shadow: 0 0 20px blue, 0 0 30px white, 0 0 40px red, 0 0 50px blue, 0 0 60px white, 0 0 70px red, 0 0 80px blue;
-      }
-      to {
-        text-shadow: 0 0 10px red, 0 0 20px white, 0 0 30px blue, 0 0 40px red, 0 0 50px white, 0 0 60px blue, 0 0 70px red;
-      }
-    }
-    border: none;
-    top: 45%;
-    color: white;
-    &:hover {
-      color: cyan;
-    }
-  }
-
-  .channel5 {
-    outline: none;
-    position: absolute;
-    right: 35%;
-    height: 10%;
-    width: 40%;
-    font-size: 50%;
-    text-align: center;
-    border-radius: 25%;
-    background-color: transparent;
-    animation: channelNames 10s infinite;
-    @keyframes channelNames {
-      from {
-        text-shadow: 0 0 20px blue, 0 0 30px white, 0 0 40px red, 0 0 50px blue, 0 0 60px white, 0 0 70px red, 0 0 80px blue;
-      }
-      to {
-        text-shadow: 0 0 10px red, 0 0 20px white, 0 0 30px blue, 0 0 40px red, 0 0 50px white, 0 0 60px blue, 0 0 70px red;
-      }
-    }
-    border: none;
-    top: 55%;
-    color: white;
-    &:hover {
-      color: cyan;
-    }
-  }
-
-  .channel6 {
-    outline: none;
-    position: absolute;
-    right: 35%;
-    height: 10%;
-    width: 40%;
-    font-size: 50%;
-    text-align: center;
-    border-radius: 25%;
-    background-color: transparent;
-    animation: channelNames 10s infinite;
-    @keyframes channelNames {
-      from {
-        text-shadow: 0 0 20px blue, 0 0 30px white, 0 0 40px red, 0 0 50px blue, 0 0 60px white, 0 0 70px red, 0 0 80px blue;
-      }
-      to {
-        text-shadow: 0 0 10px red, 0 0 20px white, 0 0 30px blue, 0 0 40px red, 0 0 50px white, 0 0 60px blue, 0 0 70px red;
-      }
-    }
-    border: none;
-    top: 65%;
-    color: white;
-    &:hover {
-      color: cyan;
-    }
   }
 }
 
-.chatTextStyle {
-    color: white;
+.chatArray {
+  text-align: center;
+  position: absolute;
+  top: 0vh;
+  color: black;
+  font-size: 20px;
+}
+
+.chatTextStyle{
+  color: white;
+}
+
+.channel1 {
+  outline: none;
+  position: absolute;
+  top: 50%;
+  right: 35%;
+  height: 10%;
+  width: 40%;
+  font-size: 50%;
+  text-align: center;
+  background-color: transparent;
+  border-radius: 35%;
+  animation: channelNames 10s infinite;
+  @keyframes channelNames {
+    from {
+      text-shadow: 0 0 10px blue, 0 0 20px white, 0 0 30px red, 0 0 40px blue, 0 0 50px white, 0 0 60px red, 0 0 70px blue;
+    }
+    to {
+      text-shadow: 0 0 10px red, 0 0 20px white, 0 0 30px blue, 0 0 40px red, 0 0 50px white, 0 0 60px blue, 0 0 70px red;
+    }
+  }
+  color: white;
+  &:hover {
+    color: cyan;
+  }
+  border: none;
+}
+
+.channel2 {
+  outline: none;
+  position: absolute;
+  top: 60%;
+  right: 35%;
+  height: 10%;
+  width: 40%;
+  font-size: 50%;
+  text-align: center;
+  border-radius: 25%;
+  background-color: transparent;
+  animation: channelNames 10s infinite;
+  @keyframes channelNames {
+    from {
+      text-shadow: 0 0 20px blue, 0 0 30px white, 0 0 40px red, 0 0 50px blue, 0 0 60px white, 0 0 70px red, 0 0 80px blue;
+    }
+    to {
+      text-shadow: 0 0 10px red, 0 0 20px white, 0 0 30px blue, 0 0 40px red, 0 0 50px white, 0 0 60px blue, 0 0 70px red;
+    }
+  }
+  border: none;
+  color: white;
+  &:hover {
+    color: cyan;
+  }
+}
+
+.channel3 {
+  outline: none;
+  position: absolute;
+  right: 35%;
+  height: 10%;
+  width: 40%;
+  font-size: 50%;
+  text-align: center;
+  border-radius: 25%;
+  background-color: transparent;
+  animation: channelNames 10s infinite;
+  @keyframes channelNames {
+    from {
+      text-shadow: 0 0 20px blue, 0 0 30px white, 0 0 40px red, 0 0 50px blue, 0 0 60px white, 0 0 70px red, 0 0 80px blue;
+    }
+    to {
+      text-shadow: 0 0 10px red, 0 0 20px white, 0 0 30px blue, 0 0 40px red, 0 0 50px white, 0 0 60px blue, 0 0 70px red;
+    }
+  }
+  border: none;
+  top: 45%;
+  color: white;
+  &:hover {
+    color: cyan;
+  }
+}
+
+.channel4 {
+  outline: none;
+  position: absolute;
+  right: 35%;
+  height: 10%;
+  width: 40%;
+  font-size: 50%;
+  text-align: center;
+  border-radius: 25%;
+  background-color: transparent;
+  animation: channelNames 10s infinite;
+  @keyframes channelNames {
+    from {
+      text-shadow: 0 0 20px blue, 0 0 30px white, 0 0 40px red, 0 0 50px blue, 0 0 60px white, 0 0 70px red, 0 0 80px blue;
+    }
+    to {
+      text-shadow: 0 0 10px red, 0 0 20px white, 0 0 30px blue, 0 0 40px red, 0 0 50px white, 0 0 60px blue, 0 0 70px red;
+    }
+  }
+  border: none;
+  top: 55%;
+  color: white;
+  &:hover {
+    color: cyan;
+  }
+}
+
+.channel5 {
+  outline: none;
+  position: absolute;
+  right: 35%;
+  height: 10%;
+  width: 40%;
+  font-size: 50%;
+  text-align: center;
+  border-radius: 25%;
+  background-color: transparent;
+  animation: channelNames 10s infinite;
+  @keyframes channelNames {
+    from {
+      text-shadow: 0 0 20px blue, 0 0 30px white, 0 0 40px red, 0 0 50px blue, 0 0 60px white, 0 0 70px red, 0 0 80px blue;
+    }
+    to {
+      text-shadow: 0 0 10px red, 0 0 20px white, 0 0 30px blue, 0 0 40px red, 0 0 50px white, 0 0 60px blue, 0 0 70px red;
+    }
+  }
+  border: none;
+  top: 65%;
+  color: white;
+  &:hover {
+    color: cyan;
+  }
+}
+
+.channel6 {
+  outline: none;
+  position: absolute;
+  right: 35%;
+  height: 10%;
+  width: 40%;
+  font-size: 50%;
+  text-align: center;
+  border-radius: 25%;
+  background-color: transparent;
+  animation: channelNames 10s infinite;
+  @keyframes channelNames {
+    from {
+      text-shadow: 0 0 20px blue, 0 0 30px white, 0 0 40px red, 0 0 50px blue, 0 0 60px white, 0 0 70px red, 0 0 80px blue;
+    }
+    to {
+      text-shadow: 0 0 10px red, 0 0 20px white, 0 0 30px blue, 0 0 40px red, 0 0 50px white, 0 0 60px blue, 0 0 70px red;
+    }
+  }
+  border: none;
+  top: 75%;
+  color: white;
+  &:hover {
+    color: cyan;
+  }
 }

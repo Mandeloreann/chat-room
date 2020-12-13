@@ -4,20 +4,15 @@ import { withRouter, Link } from 'react-router-dom'
 import messages from '../AutoDismissAlert/messages'
 // import socket.io to establish socket connection with server
 import io from 'socket.io-client'
-// import ThirdTitle from '../../titles/thirdTitle'
+
 import { chatIndex, createMessage, chatDelete } from '../../api/chat'
 
 import '../../pages/thirdPage.scss'
-// const channelStyle = () => {
+
+// const channelStyle = {
+//   outline: 'none'
 // }
-const channelStyle = {
-  outline: 'none'
-}
-// const navBarHomeStyle = {
-//   color: 'white',
-//   borderRadius: '30%',
-//   top: '-15%'
-// }
+
 let socketUrl
 const socketUrls = {
   production: 'wss://aqueous-atoll-85096.herokuapp.com',
@@ -77,12 +72,12 @@ class Chats extends Component {
     })
     // define what you will be listening for here
     socket.on('connect', () => {
-      console.log(socket)
+      // console.log(socket)
       socket.emit('join')
     })
     // Alert Other Users this User Has Disconnected/Closed the Page
     socket.on('disconnect', () => {
-      console.log(socket)
+      // console.log(socket)
     })
     // listen for messages and update the chat index when one is received
     // socket.on('message', data => {
@@ -94,14 +89,14 @@ class Chats extends Component {
 
   handleInputChange = (event) => {
     event.persist()
-    console.log(event)
-    console.log(event.target.value)
+    // console.log(event)
+    // console.log(event.target.value)
     this.setState(prevState => {
       const updatedField = {
         [event.target.name]: event.target.value
       }
       const updatedData = Object.assign({}, prevState.chat, updatedField)
-      console.log({ chat: updatedData })
+      // console.log({ chat: updatedData })
       return { chat: updatedData }
     })
   }
@@ -111,11 +106,11 @@ class Chats extends Component {
     const { msgAlert } = this.props
     // console.log('this is ', this)
     const { user } = this.props
-    console.log(this.state)
+    // console.log(this.state)
     createMessage(this.state.chat, user)
       .then(response => {
-        console.log('this is the rep ' + response)
-        console.log('this is the rep data ' + response.data.chat)
+        // console.log('this is the rep ' + response)
+        // console.log('this is the rep data ' + response.data.chat)
         // console.log('response.data.chat.owner is ', response.data.chat.owner)
         this.setState({
           createdId: response.data._id
@@ -170,7 +165,7 @@ class Chats extends Component {
       <li key={chat._id}>
         <p className='chatTextStyle'>{chat.text}</p>
         <button name={chat._id} onClick={this.onMessageDelete}>Delete</button>
-        <Link to={'/update/' + chat._id}> edit </Link>
+        <Link to={'/update/' + chat._id}>edit</Link>
       </li>
     ))
 
@@ -187,7 +182,7 @@ class Chats extends Component {
         <p
           className="channels">
           CHANNELS
-          <button type="button" className="channel1" style={channelStyle}>English1</button>
+          {/* <button type="button" className="channel1" style={channelStyle}>English1</button> */}
           {/* <button type="button" className="channel2">English2</button>
           <button type="button" className="channel3">Spanish1</button>
           <button type="button" className="channel4">Spanish2</button>
