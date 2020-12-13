@@ -225,6 +225,9 @@ class Chats extends Component {
             </output>
           </div>
         </form>
+        <div className="channels">
+          Channels
+        </div>
       </div>
     )
   }
