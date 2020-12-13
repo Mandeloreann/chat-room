@@ -7,7 +7,9 @@ Whispers is an instant messaging application that uses React to facilitate authe
 ## Links
 
 [Deployed Client](https://mandeloreann.github.io/chat-room/)
+
 [Back-End Repo](https://github.com/Mandeloreann/chat-room-express-2)
+
 [Deployed Back-End](https://chatroommm.herokuapp.com/)
 
 ---
@@ -30,10 +32,11 @@ During the next few sprints, the Development Team aims to:
  2. We would like to establish a third Chat Room resource to group chats by theme e.g. language or topic.
 
  3. Formatting:
-   - Add username to individual chats
-   - Justify Chats by User e.g. your messages justify-right, others justify-left
-   - We would prefer if the Chat Update CRUD action did not require a page redirection
-   - We would like to create editable user profiles and customizable colors
+ 
+    - Add username to individual chats
+    - Justify Chats by User e.g. your messages justify-right, others justify-left
+    - We would prefer if the Chat Update CRUD action did not require a page redirection
+    - We would like to create editable user profiles and customizable colors
 
 ---
 
