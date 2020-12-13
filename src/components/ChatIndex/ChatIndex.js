@@ -88,14 +88,14 @@ class Chats extends Component {
 
   handleInputChange = (event) => {
     event.persist()
-    console.log(event)
-    console.log(event.target.value)
+    // console.log(event)
+    // console.log(event.target.value)
     this.setState(prevState => {
       const updatedField = {
         [event.target.name]: event.target.value
       }
       const updatedData = Object.assign({}, prevState.chat, updatedField)
-      console.log({ chat: updatedData })
+      // console.log({ chat: updatedData })
       return { chat: updatedData }
     })
   }
