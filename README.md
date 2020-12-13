@@ -1,57 +1,67 @@
-# Whispers: A Chat App
-Whispers is a instant messaging app users may use by creating an
-account and signing in. Through the use of socket.io and its web
-sockets, users can chat in real time using the public channel.
-With the use of our express back-end application, messages are
-created and stored on a database made with MongoDB. Back-end
-routes communicate with the front end to allow users to create,
-update, read, and delete messages. Through token authentication
-users can only delete and update messages which they own.
+# Whispers Chat
 
-### Links
-Deployed Client: <https://mandeloreann.github.io/chat-room/>
+Whispers is an instant messaging application that uses React to facilitate authenticated user chat. This application connects with a server to manipulate user and chat resources.
 
+---
 
-Back-end Repo: <https://github.com/Mandeloreann/chat-room-express-2>
+## Links
 
+[Deployed Client](https://mandeloreann.github.io/chat-room/)
+[Back-End Repo](https://github.com/Mandeloreann/chat-room-express-2)
+[Deployed Back-End](https://chatroommm.herokuapp.com/)
 
-Deployed Back-end: <https://chatroommm.herokuapp.com/>
-
+---
 
 ## Technologies Used
-Socket.io, JavaScript, CSS, HTML, ATOM, VS Code, MongoDB, React,
-GitHib, and ZenHub.
+
+ - Socket.IO-Client
+ - React
+ - GitHub
+ - JavaScript & SCSS
+
+---
 
 ## The Future of Whispers:
-In future iterations of Whispers, the dev team hopes to add
-the ability for users to create and delete channels to create
-specific communities. We would also like to add show/hide
-functionality to the udpate message field so chat indicies will
-not be crowded with empty forms.
+
+During the next few sprints, the Development Team aims to:
+
+ 1. Fully enable Sockets to emit events to all users. At the moment, a socket is established when the Chat Index Module renders but otherwise not utilized.
+
+ 2. We would like to establish a third Chat Room resource to group chats by theme e.g. language or topic.
+
+ 3. Formatting:
+   - Add username to individual chats
+   - Justify Chats by User e.g. your messages justify-right, others justify-left
+   - We would prefer if the Chat Update CRUD action did not require a page redirection
+   - We would like to create editable user profiles and customizable colors
+
+---
 
 ## Development Process
-First, the team created wireframes and user stories in order to
-plan the process out properly. We then each split off to work on
-styling, user authentication, CRUD for user messages, and sockets.
-Three times a day we met to debug and merge branches. Combined with
-these stand-ups, we also mob programmed any time we ran into
-significant roadblocks or were needing to work on the same files.
+
+Our team constructed Wireframes and an Entity Relationship Diagram on the first day. We divided project task by Chat CRUD Action and checked in three or more times per workday. For 3/4ths of the work period, we mob programmed to push our Chat Resource CRUD actions to completion.
+
+We were able to lay the groundwork for Sockets by establishing a connection, and incorporated most Chat Resource pathways through the Chat Index Component because we felt the Chat Index served as the central field Socket Emission events updated.
+
+---
 
 ## User Stories
-As a user, I want to create an account so I can have ownership over my messages.
 
-As a user, I want to send messages so I can communicate with others on the application.
+ - As a user, I want to create an account so I can have ownership over my messages.
 
-As a user, I want to be able to edit my messages so I can improve sent messages.
+ - As a user, I want to send messages so I can communicate with others on the application.
 
-As a user, I want to delete messages so I can clear the feeds old messages.
+ - As a user, I want to be able to edit my messages so I can improve sent messages.
 
-As a user, I want to be able to type in a message box so I can then send messages.
+ - As a user, I want to delete messages so I can clear the feeds old messages.
 
-As a user, I want to see an index of the messages upon log in so I can read messages
-of others easily.
+ - As a user, I want to be able to type in a message box so I can then send messages.
 
-As a user I want there to be clear conrast in the pages elements so I can see them clearly.
+ - As a user, I want to see an index of the messages upon log in so I can read messages of others easily.
+ - As a user I want there to be clear contrast in the pages elements so I can see them clearly.
+
+---
+
 ## Wireframes
 
-<https://imgur.com/a/ZzOdBnO>
+[Whispers Chat Client Browser Wireframes](https://imgur.com/a/ZzOdBnO)
