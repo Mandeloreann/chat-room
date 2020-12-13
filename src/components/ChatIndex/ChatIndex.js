@@ -40,11 +40,6 @@ class Chats extends Component {
     }
   }
 
-  // what is this section? Isn't it repeated below
-  handleChange = event => this.setState({
-    [event.target.name]: event.target.value
-  })
-
   componentDidMount () {
     // After Page Loads perform Axios Index Request for Chat Resource
     const { user, msgAlert } = this.props
@@ -90,14 +85,13 @@ class Chats extends Component {
 
   handleInputChange = (event) => {
     event.persist()
-    // console.log(event)
-    // console.log(event.target.value)
+
     this.setState(prevState => {
       const updatedField = {
         [event.target.name]: event.target.value
       }
       const updatedData = Object.assign({}, prevState.chat, updatedField)
-      // console.log({ chat: updatedData })
+
       return { chat: updatedData }
     })
   }
@@ -105,37 +99,32 @@ class Chats extends Component {
   onCreateMessage = (event) => {
     event.preventDefault()
     const { msgAlert } = this.props
-    // console.log('this is ', this)
+
     const { user } = this.props
-    // console.log(this.state)
+
     createMessage(this.state.chat, user)
       .then(response => {
-        // console.log('this is the rep ' + response)
-        // console.log('this is the rep data ' + response.data.chat)
-        // console.log('response.data.chat.owner is ', response.data.chat.owner)
         this.setState({
           createdId: response.data._id
-          // owner: response.data.chat.owner
+
         })
       })
       .then(props => {
         chatIndex(this.props.user)
           .then(res => {
-            // console.log(res)
             this.setState({ chats: res.data.chats })
           })
       })
+      // Next make form clear on submit
       .then(() => this.setState({ chat: {
         text: '' } }))
-      // Next make form clear on submit
+
       .then(() => msgAlert({
         heading: 'Sent!',
         message: messages.createMessageSuccess,
         variant: 'success'
       }))
-      .then(() => this.setState({ chat: {
-        text: '' } }))
-      // Next make form clear on submit
+
       .catch(error => {
         this.setState({ text: '' })
         msgAlert({
@@ -160,13 +149,14 @@ class Chats extends Component {
           variant: 'success'
         })
       })
+
       .then(props => {
         chatIndex(this.props.user)
           .then(res => {
-            // console.log(res)
             this.setState({ chats: res.data.chats })
           })
       })
+
       .catch(error => {
         this.props.msgAlert({
           heading: 'You are not the owner of this message ' + error.message,
