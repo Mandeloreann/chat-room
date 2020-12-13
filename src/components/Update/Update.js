@@ -49,7 +49,7 @@ const UpdateChat = props => {
       <h1>Update Message</h1>
       <form onSubmit={handleSubmit}>
         <input
-          placeholder="Edit Chat?"
+          placeholder="Edit Message"
           value={chat.text}
           onChange={handleChange}
           name="text"
