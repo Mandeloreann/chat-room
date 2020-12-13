@@ -127,15 +127,15 @@ body {
   text-align: center;
   background-color: transparent;
   border-radius: 35%;
-  animation: channelNames 10s infinite;
-  @keyframes channelNames {
-    from {
-      text-shadow: 0 0 10px blue, 0 0 20px white, 0 0 30px red, 0 0 40px blue, 0 0 50px white, 0 0 60px red, 0 0 70px blue;
-    }
-    to {
-      text-shadow: 0 0 10px red, 0 0 20px white, 0 0 30px blue, 0 0 40px red, 0 0 50px white, 0 0 60px blue, 0 0 70px red;
-    }
-  }
+  // animation: channelNames 10s infinite;
+  // @keyframes channelNames {
+  //   from {
+  //     text-shadow: 0 0 10px blue, 0 0 20px white, 0 0 30px red, 0 0 40px blue, 0 0 50px white, 0 0 60px red, 0 0 70px blue;
+  //   }
+  //   to {
+  //     text-shadow: 0 0 10px red, 0 0 20px white, 0 0 30px blue, 0 0 40px red, 0 0 50px white, 0 0 60px blue, 0 0 70px red;
+  //   }
+  // }
   color: white;
   &:hover {
     color: cyan;

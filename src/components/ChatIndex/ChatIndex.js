@@ -3,7 +3,7 @@ import { withRouter, Link } from 'react-router-dom'
 // import Navbar from 'react-bootstrap/Navbar'
 import messages from '../AutoDismissAlert/messages'
 // import socket.io to establish socket connection with server
-import io from 'socket.io-client'
+// import io from 'socket.io-client'
 
 import { chatIndex, createMessage, chatDelete } from '../../api/chat'
 
@@ -13,19 +13,19 @@ import '../../pages/thirdPage.scss'
 //   outline: 'none'
 // }
 
-let socketUrl
-const socketUrls = {
-  production: 'wss://aqueous-atoll-85096.herokuapp.com',
-  development: 'ws://localhost:4741'
-}
-// const socket = io(socketUrl, {
-//   // reconnection: false
-// })
-if (window.location.hostname === 'localhost') {
-  socketUrl = socketUrls.development
-} else {
-  socketUrl = socketUrls.production
-}
+// let socketUrl
+// const socketUrls = {
+//   production: 'wss://aqueous-atoll-85096.herokuapp.com',
+//   development: 'ws://localhost:4741'
+// }
+// // const socket = io(socketUrl, {
+// //   // reconnection: false
+// // })
+// if (window.location.hostname === 'localhost') {
+//   socketUrl = socketUrls.development
+// } else {
+//   socketUrl = socketUrls.production
+// }
 class Chats extends Component {
   constructor (props) {
     super(props)
@@ -67,18 +67,18 @@ class Chats extends Component {
         })
       })
     // Initialize the Server Side Socket
-    const socket = io(socketUrl, {
-      reconnection: false
-    })
+    // const socket = io(socketUrl, {
+    //   reconnection: false
+    // })
     // define what you will be listening for here
-    socket.on('connect', () => {
-      // console.log(socket)
-      socket.emit('join')
-    })
-    // Alert Other Users this User Has Disconnected/Closed the Page
-    socket.on('disconnect', () => {
-      // console.log(socket)
-    })
+    // socket.on('connect', () => {
+    //   // console.log(socket)
+    //   socket.emit('join')
+    // })
+    // // Alert Other Users this User Has Disconnected/Closed the Page
+    // socket.on('disconnect', () => {
+    //   // console.log(socket)
+    // })
     // listen for messages and update the chat index when one is received
     // socket.on('message', data => {
     //   this.setState({
@@ -179,16 +179,6 @@ class Chats extends Component {
     // )
     return (
       <div>
-        <p
-          className="channels">
-          CHANNELS
-          {/* <button type="button" className="channel1" style={channelStyle}>English1</button> */}
-          {/* <button type="button" className="channel2">English2</button>
-          <button type="button" className="channel3">Spanish1</button>
-          <button type="button" className="channel4">Spanish2</button>
-          <button type="button" className="channel5">Japanese1</button>
-          <button type="button" className="channel6">Japanese2</button> */}
-        </p>
         <form onSubmit={this.onCreateMessage} className="typeMessageForm">
           <div className="chat">
             <textarea
