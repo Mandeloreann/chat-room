@@ -54,4 +54,4 @@ of others easily.
 As a user I want there to be clear conrast in the pages elements so I can see them clearly.
 ## Wireframes
 
-![Wireframes](https://imgur.com/a/ZzOdBnO)
+<https://imgur.com/a/ZzOdBnO>
