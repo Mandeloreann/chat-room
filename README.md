@@ -19,7 +19,7 @@ Deployed Back-end: <https://chatroommm.herokuapp.com/>
 
 
 ## Technologies Used
-Socket.io, JavaScript, CSS, HTML, ATOM, VS Code, MongoDB, React,
+Socket.io, JavaScript, SCSS/CSS, HTML, ATOM, VS Code, MongoDB, React,
 GitHib, and ZenHub.
 
 ## The Future of Whispers:
