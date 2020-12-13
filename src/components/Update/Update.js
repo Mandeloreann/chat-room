@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import { chatUpdate } from '../../api/chat'
 
 const UpdateChat = props => {
@@ -33,7 +33,7 @@ const UpdateChat = props => {
       }))
       .catch(err => msgAlert({
         heading: 'Update failed',
-        message: 'WhOOPs ' + err.message,
+        message: 'WhOOPs looks like you are not the owner of this message ' + err.message,
         variant: 'danger'
       }))
   }
@@ -56,6 +56,7 @@ const UpdateChat = props => {
         />
         <button type="submit">Update Chat</button>
       </form>
+      <Link to="/chats" className="backButton">Back</Link>
     </React.Fragment>
   )
 }

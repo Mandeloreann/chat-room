@@ -148,7 +148,7 @@ class Chats extends Component {
       })
       .catch(error => {
         this.props.msgAlert({
-          heading: 'Message delete failed ' + error.message,
+          heading: 'You are not the owner of this message ' + error.message,
           message: messages.deleteMessageFailure,
           variant: 'danger'
         })

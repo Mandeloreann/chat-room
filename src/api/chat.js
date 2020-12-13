@@ -6,7 +6,7 @@ export const createMessage = (chat, user) => {
     method: 'POST',
     url: apiUrl + '/chats',
     headers: {
-      'Authorization': `Token token=${user.token}`
+      Authorization: `Bearer ${user.token}`
     },
     data: { chat }
   })
@@ -17,7 +17,7 @@ export const chatIndex = user => {
     method: 'GET',
     url: apiUrl + '/chats',
     headers: {
-      'Authorization': `Token token=${user.token}`
+      Authorization: `Bearer ${user.token}`
     }
   })
 }
@@ -27,7 +27,7 @@ export const chatDelete = (user, chatId) => {
     method: 'DELETE',
     url: apiUrl + '/chats/' + chatId,
     headers: {
-      'Authorization': `Token token=${user.token}`
+      Authorization: `Bearer ${user.token}`
     }
   })
 }
@@ -37,7 +37,7 @@ export const showChats = (user, chatId) => {
     method: 'GET',
     url: apiUrl + '/chats/' + chatId,
     headers: {
-      'Authorization': `Token token=${user.token}`
+      Authorization: `Bearer ${user.token}`
     }
   })
 }
