@@ -2,6 +2,7 @@
 body {
   overflow: hidden;
 }
+
 .channels {
   fill-opacity: 1;
   display: flex;
@@ -9,16 +10,17 @@ body {
   justify-content: left;
   border-top: 5px solid rgb(150, 55, 59);
   width: 25vw;
-  height: 60vh;
+  height: 93vh;
   font-size: 50px;
   text-align: center;
   position: absolute;
   left: 0%;
-  bottom: 30%;
+  bottom: -5%;
   color: red;
   background-color: black;
   overflow: auto;
 }
+
 .chat {
   display: flex;
   flex-direction: column;
@@ -27,7 +29,7 @@ body {
   border-right: 5px solid rgb(150, 55, 59);
   border-top: 5px solid rgb(150, 55, 59);
   width: 75vw;
-  height: 80vh;
+  height: 100vh;
   font-size: 50px;
   text-align: center;
   position: absolute;
@@ -37,6 +39,7 @@ body {
   background-color: black;
   overflow: auto;
 }
+
 .misc {
   font-size: 50px;
   text-align: center;
@@ -44,6 +47,7 @@ body {
   right: 0%;
   color: green;
 }
+
 .typeMessage {
   outline: none;
   height: 15%;
@@ -59,6 +63,7 @@ body {
   border-bottom: none;
   border-left: none;
 }
+
 .sendMessageButton {
   outline: none;
   height: 15%;
@@ -77,6 +82,7 @@ body {
   bottom: 10%;
   right: 0%;
 }
+
 .sentMessage {
   text-align: center;
   border: 3px solid rgb(150, 55, 59);
@@ -94,13 +100,17 @@ body {
     color: red;
   }
 }
+
 .chatArray {
   text-align: center;
   position: absolute;
   top: 0vh;
+  left: 20%;
+  right: 30%;
   color: black;
   font-size: 20px;
 }
+
 .chatTextStyle{
   color: white;
 }
@@ -118,15 +128,15 @@ body {
   text-align: center;
   background-color: transparent;
   border-radius: 35%;
-  // animation: channelNames 10s infinite;
-  // @keyframes channelNames {
-  //   from {
-  //     text-shadow: 0 0 10px blue, 0 0 20px white, 0 0 30px red, 0 0 40px blue, 0 0 50px white, 0 0 60px red, 0 0 70px blue;
-  //   }
-  //   to {
-  //     text-shadow: 0 0 10px red, 0 0 20px white, 0 0 30px blue, 0 0 40px red, 0 0 50px white, 0 0 60px blue, 0 0 70px red;
-  //   }
-  // }
+  animation: channelNames 10s infinite;
+  @keyframes channelNames {
+    from {
+      text-shadow: 0 0 10px blue, 0 0 20px white, 0 0 30px red, 0 0 40px blue, 0 0 50px white, 0 0 60px red, 0 0 70px blue;
+    }
+    to {
+      text-shadow: 0 0 10px red, 0 0 20px white, 0 0 30px blue, 0 0 40px red, 0 0 50px white, 0 0 60px blue, 0 0 70px red;
+    }
+  }
   color: white;
   &:hover {
     color: cyan;
@@ -174,21 +184,22 @@ body {
   text-align: center;
   background-color: transparent;
   border-radius: 35%;
-  // animation: channelNames 10s infinite;
-  // @keyframes channelNames {
-  //   from {
-  //     text-shadow: 0 0 10px blue, 0 0 20px white, 0 0 30px red, 0 0 40px blue, 0 0 50px white, 0 0 60px red, 0 0 70px blue;
-  //   }
-  //   to {
-  //     text-shadow: 0 0 10px red, 0 0 20px white, 0 0 30px blue, 0 0 40px red, 0 0 50px white, 0 0 60px blue, 0 0 70px red;
-  //   }
-  // }
+  animation: channelNames 10s infinite;
+  @keyframes channelNames {
+    from {
+      text-shadow: 0 0 10px blue, 0 0 20px white, 0 0 30px red, 0 0 40px blue, 0 0 50px white, 0 0 60px red, 0 0 70px blue;
+    }
+    to {
+      text-shadow: 0 0 10px red, 0 0 20px white, 0 0 30px blue, 0 0 40px red, 0 0 50px white, 0 0 60px blue, 0 0 70px red;
+    }
+  }
   color: white;
   &:hover {
     color: cyan;
   }
   border: none;
 }
+
 .channel2 {
   outline: none;
   position: absolute;
@@ -215,6 +226,7 @@ body {
     color: cyan;
   }
 }
+
 .channel3 {
   outline: none;
   position: absolute;
@@ -241,6 +253,7 @@ body {
     color: cyan;
   }
 }
+
 .channel4 {
   outline: none;
   position: absolute;
@@ -267,6 +280,7 @@ body {
     color: cyan;
   }
 }
+
 .channel5 {
   outline: none;
   position: absolute;
@@ -293,6 +307,7 @@ body {
     color: cyan;
   }
 }
+
 .channel6 {
   outline: none;
   position: absolute;

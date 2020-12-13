@@ -1,37 +1,32 @@
 import React, { Component } from 'react'
 import { withRouter, Link } from 'react-router-dom'
+// import Navbar from 'react-bootstrap/Navbar'
 import messages from '../AutoDismissAlert/messages'
 
 // import socket.io to establish socket connection with server
-import io from 'socket.io-client'
-// import ThirdTitle from '../../titles/thirdTitle'
+// import io from 'socket.io-client'
+
 import { chatIndex, createMessage, chatDelete } from '../../api/chat'
 
 import '../../pages/thirdPage.scss'
-// const channelStyle = () => {
-// }
+
 // const channelStyle = {
 //   outline: 'none'
 // }
-// const navBarHomeStyle = {
-//   color: 'white',
-//   borderRadius: '30%',
-//   top: '-15%'
-// }
-let socketUrl
-const socketUrls = {
-  production: 'wss://chatroommm.herokuapp.com',
-  development: 'ws://localhost:4741'
-}
-// const socket = io(socketUrl, {
-//   // reconnection: false
-// })
-if (window.location.hostname === 'localhost') {
-  socketUrl = socketUrls.development
-} else {
-  socketUrl = socketUrls.production
-}
 
+// let socketUrl
+// const socketUrls = {
+//   production: 'wss://aqueous-atoll-85096.herokuapp.com',
+//   development: 'ws://localhost:4741'
+// }
+// // const socket = io(socketUrl, {
+// //   // reconnection: false
+// // })
+// if (window.location.hostname === 'localhost') {
+//   socketUrl = socketUrls.development
+// } else {
+//   socketUrl = socketUrls.production
+// }
 class Chats extends Component {
   constructor (props) {
     super(props)
@@ -73,21 +68,18 @@ class Chats extends Component {
         })
       })
     // Initialize the Server Side Socket
-    const socket = io(socketUrl, {
-      reconnection: false
-    })
-
+    // const socket = io(socketUrl, {
+    //   reconnection: false
+    // })
     // define what you will be listening for here
-    socket.on('connect', () => {
-      console.log(socket)
-      socket.emit('join')
-    })
-
-    // Alert Other Users this User Has Disconnected/Closed the Page
-    socket.on('disconnect', () => {
-      console.log(socket)
-    })
-
+    // socket.on('connect', () => {
+    //   // console.log(socket)
+    //   socket.emit('join')
+    // })
+    // // Alert Other Users this User Has Disconnected/Closed the Page
+    // socket.on('disconnect', () => {
+    //   // console.log(socket)
+    // })
     // listen for messages and update the chat index when one is received
     // socket.on('message', data => {
     //   this.setState({
@@ -98,14 +90,14 @@ class Chats extends Component {
 
   handleInputChange = (event) => {
     event.persist()
-    console.log(event)
-    console.log(event.target.value)
+    // console.log(event)
+    // console.log(event.target.value)
     this.setState(prevState => {
       const updatedField = {
         [event.target.name]: event.target.value
       }
       const updatedData = Object.assign({}, prevState.chat, updatedField)
-      console.log({ chat: updatedData })
+      // console.log({ chat: updatedData })
       return { chat: updatedData }
     })
   }
@@ -115,8 +107,11 @@ class Chats extends Component {
     const { msgAlert } = this.props
     // console.log('this is ', this)
     const { user } = this.props
+    // console.log(this.state)
     createMessage(this.state.chat, user)
       .then(response => {
+        // console.log('this is the rep ' + response)
+        // console.log('this is the rep data ' + response.data.chat)
         // console.log('response.data.chat.owner is ', response.data.chat.owner)
         this.setState({
           createdId: response.data._id
@@ -130,6 +125,9 @@ class Chats extends Component {
             this.setState({ chats: res.data.chats })
           })
       })
+      .then(() => this.setState({ chat: {
+        text: '' } }))
+      // Next make form clear on submit
       .then(() => msgAlert({
         heading: 'Sent!',
         message: messages.createMessageSuccess,
@@ -152,7 +150,8 @@ class Chats extends Component {
 
     chatDelete(this.props.user, chatId)
       .then(() => {
-        this.setState({ text: '' })
+        this.setState({ chat: {
+          text: '' } })
         this.props.msgAlert({
           heading: 'Message Deleted!',
           message: messages.deleteMessageSuccess,
@@ -168,7 +167,7 @@ class Chats extends Component {
       })
       .catch(error => {
         this.props.msgAlert({
-          heading: 'Message delete failed ' + error.message,
+          heading: 'You are not the owner of this message ' + error.message,
           message: messages.deleteMessageFailure,
           variant: 'danger'
         })
@@ -185,7 +184,7 @@ class Chats extends Component {
       <li key={chat._id}>
         <p className='chatTextStyle'>{chat.text}</p>
         <button name={chat._id} onClick={this.onMessageDelete}>Delete</button>
-        <Link to={'/update/' + chat._id}> edit </Link>
+        <Link to={'/update/' + chat._id}>edit</Link>
       </li>
     ))
 
