@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import { chatUpdate } from '../../api/chat'
 
 const UpdateChat = props => {
@@ -28,12 +28,12 @@ const UpdateChat = props => {
       // .then(() => props.history.push('/chat-show/' + match.params.chatId))
       .then(() => msgAlert({
         heading: 'Update successful',
-        message: 'Nice work',
+        message: 'Message has been edited',
         variant: 'success'
       }))
       .catch(err => msgAlert({
         heading: 'Update failed',
-        message: 'WhOOPs ' + err.message,
+        message: 'WhOOPs looks like you are not the owner of this message ' + err.message,
         variant: 'danger'
       }))
   }
@@ -49,13 +49,14 @@ const UpdateChat = props => {
       <h1>Update Message</h1>
       <form onSubmit={handleSubmit}>
         <input
-          placeholder="Edit Chat?"
+          placeholder="Edit Message"
           value={chat.text}
           onChange={handleChange}
           name="text"
         />
         <button type="submit">Update Chat</button>
       </form>
+      <Link to="/chats" className="backButton">Back</Link>
     </React.Fragment>
   )
 }
