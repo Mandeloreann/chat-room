@@ -32,7 +32,7 @@ During the next few sprints, the Development Team aims to:
  2. We would like to establish a third Chat Room resource to group chats by theme e.g. language or topic.
 
  3. Formatting:
- 
+
     - Add username to individual chats
     - Justify Chats by User e.g. your messages justify-right, others justify-left
     - We would prefer if the Chat Update CRUD action did not require a page redirection
@@ -67,4 +67,4 @@ We were able to lay the groundwork for Sockets by establishing a connection, and
 
 ## Wireframes
 
-[Whispers Chat Client Browser Wireframes](https://imgur.com/a/ZzOdBnO)
+[Whispers Chat: Client Browser Wireframes](https://imgur.com/a/ZzOdBnO)
