@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
+// import Row from 'react-bootstrap/Row'
 
 const navBarTextStyle = {
   color: 'white'
@@ -44,7 +45,7 @@ const welcomeMessageStyle = {
 }
 
 const Header = ({ user }) => (
-  <Navbar variant="dark" expand="md">
+  <Navbar className="navbar-stuff" variant="dark" expand="md">
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="ml-auto">

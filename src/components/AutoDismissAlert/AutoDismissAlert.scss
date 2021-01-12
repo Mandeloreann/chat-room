@@ -5,13 +5,18 @@
   display: flex;
   left: 0;
   margin: auto;
+  margin-top: -30px;
   max-width: 30rem;
-  position: fixed;
+  position: relative;
   right: 0;
   z-index: 10000;
+  background-color: none;
+  border: none;
 
   .alert-body {
-    margin-bottom: 0;
+    margin-bottom: -5px;
+    z-index: 1000;
+    position: relative;
   }
 }
 

@@ -21,24 +21,24 @@ body {
   overflow: auto;
 }
 
-.chat {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border-left: 5px solid rgb(150, 55, 59);
-  border-right: 5px solid rgb(150, 55, 59);
-  border-top: 5px solid rgb(150, 55, 59);
-  width: 75vw;
-  height: 100vh;
-  font-size: 50px;
-  text-align: center;
-  position: absolute;
-  left: 25%;
-  bottom: -10%;
-  color: blue;
-  background-color: black;
-  overflow: auto;
-}
+// .chat {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   border-left: 5px solid rgb(150, 55, 59);
+//   border-right: 5px solid rgb(150, 55, 59);
+//   border-top: 5px solid rgb(150, 55, 59);
+//   width: 75vw;
+//   height: 100vh;
+//   font-size: 50px;
+//   text-align: center;
+//   position: absolute;
+//   left: 25%;
+//   bottom: -10%;
+//   color: blue;
+//   background-color: black;
+//   overflow: auto;
+// }
 
 .misc {
   font-size: 50px;
@@ -48,57 +48,57 @@ body {
   color: green;
 }
 
-.typeMessage {
-  outline: none;
-  height: 15%;
-  width: 85%;
-  position: absolute;
-  left: 0%;
-  bottom: 10%;
-  background-color: transparent;
-  font-size: 70%;
-  color: white;
-  border-top: 3px solid rgb(150, 55, 59);
-  border-right: 3px solid rgb(150, 55, 59);
-  border-bottom: none;
-  border-left: none;
-}
+// .typeMessage {
+//   outline: none;
+//   height: 15%;
+//   width: 85%;
+//   position: absolute;
+//   left: 0%;
+//   bottom: 10%;
+//   background-color: transparent;
+//   font-size: 70%;
+//   color: white;
+//   border-top: 3px solid rgb(150, 55, 59);
+//   border-right: 3px solid rgb(150, 55, 59);
+//   border-bottom: none;
+//   border-left: none;
+// }
 
-.sendMessageButton {
-  outline: none;
-  height: 15%;
-  width: 15%;
-  background-color: white;
-  border-top: 3px solid rgb(150, 55, 59);
-  border-bottom: none;
-  border-left: none;
-  border-right: none;
-  background-size: cover;
-  background-position: absolute;
-  background-position-x: 80%;
-  background-position-y: -20px;
-  position: absolute;
-  bottom: 10%;
-  right: 0%;
-}
+// .sendMessageButton {
+//   outline: none;
+//   height: 15%;
+//   width: 15%;
+//   background-color: white;
+//   border-top: 3px solid rgb(150, 55, 59);
+//   border-bottom: none;
+//   border-left: none;
+//   border-right: none;
+//   background-size: cover;
+//   background-position: absolute;
+//   background-position-x: 80%;
+//   background-position-y: -20px;
+//   position: absolute;
+//   bottom: 10%;
+//   right: 0%;
+// }
 
-.sentMessage {
-  text-align: center;
-  border: 3px solid rgb(150, 55, 59);
-  border-radius: 4px;
-  word-wrap: normal;
-  word-break: break-all;
-  color: white;
-  width: 100%;
-  height: 75%;
-  position: absolute;
-  right: 0%;
-  bottom: 25%;
-  overflow: auto;
-  &:hover{
-    color: red;
-  }
-}
+// .sentMessage {
+//   text-align: center;
+//   border: 3px solid rgb(150, 55, 59);
+//   border-radius: 4px;
+//   word-wrap: normal;
+//   word-break: break-all;
+//   color: white;
+//   width: 100%;
+//   height: 75%;
+//   position: absolute;
+//   right: 0%;
+//   bottom: 25%;
+//   overflow: auto;
+//   &:hover{
+//     color: red;
+//   }
+// }
 
 .chatArray {
   text-align: center;

@@ -13,6 +13,20 @@
 }
 
 .sentMessage {
+  border: 1px solid grey;
+  border-radius: 5px;
   height: 250px;
   overflow-y: scroll;
+}
+
+.chat-container {
+  position: relative;
+}
+
+.container-alert {
+  z-index: 2;
+}
+
+.navbar-stuff {
+  margin-bottom: 20px;
 }

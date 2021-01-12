@@ -195,8 +195,8 @@ class Chats extends Component {
     //   </input>
     // )
     return (
-      <Container>
-        <Row>
+      <Container className='chat-container'>
+        <Row className="justify-content-md-center">
           <ListGroup>
             <output type="text" name="chat[text]" className="sentMessage">
               <ListGroup className="chatArray">
@@ -206,13 +206,12 @@ class Chats extends Component {
             </output>
           </ListGroup>
         </Row>
-        <Row>
+        <Row className="justify-content-md-center">
           <Form onSubmit={this.onCreateMessage}>
-            <Form.Group className="chat">
+            <Form.Group>
               <Col>
                 <Form.Control
                   as="textarea"
-                  className="typeMessage"
                   placeholder="Type A Message Here"
                   name="text"
                   value={this.state.chat.text}
