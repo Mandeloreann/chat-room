@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { withRouter, Link } from 'react-router-dom'
 // import Navbar from 'react-bootstrap/Navbar'
 import messages from '../AutoDismissAlert/messages'
-// import ListGroup from 'react-bootstrap/ListGroup'
+import ListGroup from 'react-bootstrap/ListGroup'
 
 // import socket.io to establish socket connection with server
 // import io from 'socket.io-client'
@@ -174,11 +174,11 @@ class Chats extends Component {
 
   render () {
     const chats = this.state.chats.map(chat => (
-      <li key={chat._id}>
+      <ListGroup.Item key={chat._id}>
         <p className='chatTextStyle'>{chat.text}</p>
         <button className='deleteChat' name={chat._id} onClick={this.onMessageDelete}>Delete</button>
         <Link className='deleteChat' to={'/update/' + chat._id}>Edit</Link>
-      </li>
+      </ListGroup.Item>
     ))
 
     // const changeColor = (
@@ -190,7 +190,7 @@ class Chats extends Component {
     //   </input>
     // )
     return (
-      <div className="row">
+      <div>
         <form onSubmit={this.onCreateMessage} className="typeMessageForm">
           <div className="chat">
             <textarea
@@ -202,10 +202,10 @@ class Chats extends Component {
             />
             <button type="submit" className="sendMessageButton"></button>
             <output type="text" name="chat[text]" className="sentMessage">
-              <ul className="chatArray">
+              <ListGroup className="chatArray">
                 {chats}
                 {/* {changeColor} */}
-              </ul>
+              </ListGroup>
             </output>
           </div>
         </form>
