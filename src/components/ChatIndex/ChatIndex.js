@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { withRouter, Link } from 'react-router-dom'
 // import Navbar from 'react-bootstrap/Navbar'
 import messages from '../AutoDismissAlert/messages'
+// import ListGroup from 'react-bootstrap/ListGroup'
 
 // import socket.io to establish socket connection with server
 // import io from 'socket.io-client'
@@ -175,8 +176,8 @@ class Chats extends Component {
     const chats = this.state.chats.map(chat => (
       <li key={chat._id}>
         <p className='chatTextStyle'>{chat.text}</p>
-        <button name={chat._id} onClick={this.onMessageDelete}>Delete</button>
-        <Link to={'/update/' + chat._id}>edit</Link>
+        <button className='deleteChat' name={chat._id} onClick={this.onMessageDelete}>Delete</button>
+        <Link className='deleteChat' to={'/update/' + chat._id}>Edit</Link>
       </li>
     ))
 
@@ -189,7 +190,7 @@ class Chats extends Component {
     //   </input>
     // )
     return (
-      <div>
+      <div className="row">
         <form onSubmit={this.onCreateMessage} className="typeMessageForm">
           <div className="chat">
             <textarea

@@ -1,1 +1,13 @@
 @import '~bootstrap/scss/bootstrap';
+
+.deleteChat {
+  background: none;
+  font-size: 10px;
+  border: none;
+  color: #3480eb;
+}
+
+.deleteChat :hover {
+  text-decoration: line-through;
+  color: #2a64b5;
+}
