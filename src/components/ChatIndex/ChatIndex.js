@@ -3,13 +3,18 @@ import { withRouter, Link } from 'react-router-dom'
 // import Navbar from 'react-bootstrap/Navbar'
 import messages from '../AutoDismissAlert/messages'
 import ListGroup from 'react-bootstrap/ListGroup'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+import Col from 'react-bootstrap/Col'
 
 // import socket.io to establish socket connection with server
 // import io from 'socket.io-client'
 
 import { chatIndex, createMessage, chatDelete } from '../../api/chat'
 
-import '../../pages/thirdPage.scss'
+// import '../../pages/thirdPage.scss'
 
 // const channelStyle = {
 //   outline: 'none'
@@ -190,26 +195,37 @@ class Chats extends Component {
     //   </input>
     // )
     return (
-      <div>
-        <form onSubmit={this.onCreateMessage} className="typeMessageForm">
-          <div className="chat">
-            <textarea
-              className="typeMessage"
-              placeholder="Type A Message Here"
-              name="text"
-              value={this.state.chat.text}
-              onChange={this.handleInputChange}
-            />
-            <button type="submit" className="sendMessageButton"></button>
+      <Container>
+        <Row>
+          <ListGroup>
             <output type="text" name="chat[text]" className="sentMessage">
               <ListGroup className="chatArray">
                 {chats}
                 {/* {changeColor} */}
               </ListGroup>
             </output>
-          </div>
-        </form>
-      </div>
+          </ListGroup>
+        </Row>
+        <Row>
+          <Form onSubmit={this.onCreateMessage}>
+            <Form.Group className="chat">
+              <Col>
+                <Form.Control
+                  as="textarea"
+                  className="typeMessage"
+                  placeholder="Type A Message Here"
+                  name="text"
+                  value={this.state.chat.text}
+                  onChange={this.handleInputChange}
+                />
+              </Col>
+              <Col md={1}>
+                <Button variant="info" type="submit" className="sendMessageButton">Send</Button>
+              </Col>
+            </Form.Group>
+          </Form>
+        </Row>
+      </Container>
     )
   }
 }
