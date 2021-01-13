@@ -197,33 +197,35 @@ class Chats extends Component {
     return (
       <Container className='chat-container'>
         <Row className="justify-content-md-center">
-          <ListGroup>
-            <output type="text" name="chat[text]" className="sentMessage">
-              <ListGroup className="chatArray">
-                {chats}
-                {/* {changeColor} */}
-              </ListGroup>
-            </output>
-          </ListGroup>
+          <Col>
+            <ListGroup>
+              <output type="text" name="chat[text]" className="sentMessage">
+                <ListGroup className="chatArray">
+                  {chats}
+                  {/* {changeColor} */}
+                </ListGroup>
+              </output>
+            </ListGroup>
+          </Col>
         </Row>
-        <Row className="justify-content-md-center">
-          <Form onSubmit={this.onCreateMessage}>
-            <Form.Group>
-              <Col>
-                <Form.Control
+        <Form onSubmit={this.onCreateMessage}>
+          <Row className="justify-content-md-center">
+            <Col md={11}>
+              <Form.Group>
+                <Form.Control controlId="Form.ControlTextarea"
                   as="textarea"
                   placeholder="Type A Message Here"
                   name="text"
                   value={this.state.chat.text}
                   onChange={this.handleInputChange}
                 />
-              </Col>
-              <Col md={1}>
-                <Button variant="info" type="submit" className="sendMessageButton">Send</Button>
-              </Col>
-            </Form.Group>
-          </Form>
-        </Row>
+              </Form.Group>
+            </Col>
+            <Col md={1}>
+              <Button variant="info" type="submit" className="sendMessageButton">Send</Button>
+            </Col>
+          </Row>
+        </Form>
       </Container>
     )
   }
